@@ -1,5 +1,4 @@
-
 Authors
 =======
 
-* Thomas Milliman - https://phenocam.sr.unh.edu
+* Thomas Milliman - https://github.com/tmilliman

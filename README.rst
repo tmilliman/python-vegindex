@@ -24,14 +24,6 @@ Overview
     :alt: Travis-CI Build Status
     :target: https://travis-ci.org/tmilliman/python-vegindex
 
-.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/tmilliman/python-vegindex?branch=master&svg=true
-    :alt: AppVeyor Build Status
-    :target: https://ci.appveyor.com/project/tmilliman/python-vegindex
-
-.. |codecov| image:: https://codecov.io/github/tmilliman/python-vegindex/coverage.svg?branch=master
-    :alt: Coverage Status
-    :target: https://codecov.io/github/tmilliman/python-vegindex
-
 .. |version| image:: https://img.shields.io/pypi/v/vegindex.svg
     :alt: PyPI Package latest release
     :target: https://pypi.python.org/pypi/vegindex
@@ -43,15 +35,6 @@ Overview
 .. |wheel| image:: https://img.shields.io/pypi/wheel/vegindex.svg
     :alt: PyPI Wheel
     :target: https://pypi.python.org/pypi/vegindex
-
-.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/vegindex.svg
-    :alt: Supported versions
-    :target: https://pypi.python.org/pypi/vegindex
-
-.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/vegindex.svg
-    :alt: Supported implementations
-    :target: https://pypi.python.org/pypi/vegindex
-
 
 .. end-badges
 
