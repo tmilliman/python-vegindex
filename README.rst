@@ -9,11 +9,13 @@ Overview
 
     * - docs
       - | |docs|
+
     * - tests
       - | |travis|
+
     * - package
       - | |version|
-      - | |commits-since|
+        | |commits-since|
 
 .. |docs| image:: https://readthedocs.org/projects/python-vegindex/badge/?style=flat
     :target: https://readthedocs.org/projects/python-vegindex
