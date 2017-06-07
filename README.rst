@@ -8,7 +8,7 @@ Overview
     :stub-columns: 1
 
     * - docs
-      - |docs|
+      - | |docs|
     * - tests
       - | |travis|
     * - package
