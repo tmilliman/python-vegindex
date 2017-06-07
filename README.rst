@@ -65,8 +65,10 @@ Note, to combine the coverage data from all the tox environments run:
 
     - - Windows
       - ::
+
             set PYTEST_ADDOPTS=--cov-append tox
 
     - - Other
       - ::
+
             PYTEST_ADDOPTS=--cov-append tox
