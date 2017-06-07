@@ -15,7 +15,7 @@ Overview
 
     * - package
       - | |version|
-        | |commits-since|
+          |commits-since|
 
 .. |docs| image:: https://readthedocs.org/projects/python-vegindex/badge/?style=flat
     :target: https://readthedocs.org/projects/python-vegindex
@@ -37,7 +37,7 @@ Overview
 
 Python tools for generating vegetation index timeseries from PhenoCam images.
 
-* Free software: BSD license
+* Free software: MIT license
 
 Installation
 ============
@@ -61,14 +61,13 @@ To run the all tests run::
 Note, to combine the coverage data from all the tox environments run:
 
 .. list-table::
-    :widths: 10 90
+    :widths: 10 100
     :stub-columns: 1
 
     - - Windows
       - ::
 
-            set PYTEST_ADDOPTS=--cov-append
-            tox
+            set PYTEST_ADDOPTS=--cov-append tox
 
     - - Other
       - ::
