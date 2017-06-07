@@ -10,11 +10,10 @@ Overview
     * - docs
       - |docs|
     * - tests
-      - | |travis| |appveyor|
-        | |codecov|
+      - | |travis|
     * - package
-      - | |version| |wheel| |supported-versions| |supported-implementations|
-        | |commits-since|
+      - | |version|
+      - | |commits-since|
 
 .. |docs| image:: https://readthedocs.org/projects/python-vegindex/badge/?style=flat
     :target: https://readthedocs.org/projects/python-vegindex
@@ -31,10 +30,6 @@ Overview
 .. |commits-since| image:: https://img.shields.io/github/commits-since/tmilliman/python-vegindex/v0.1.0.svg
     :alt: Commits since latest release
     :target: https://github.com/tmilliman/python-vegindex/compare/v0.1.0...master
-
-.. |wheel| image:: https://img.shields.io/pypi/wheel/vegindex.svg
-    :alt: PyPI Wheel
-    :target: https://pypi.python.org/pypi/vegindex
 
 .. end-badges
 
