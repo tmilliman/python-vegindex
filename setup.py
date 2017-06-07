@@ -61,13 +61,16 @@ setup(
         # 'Programming Language :: Python :: Implementation :: IronPython',
         # 'Programming Language :: Python :: Implementation :: Jython',
         # 'Programming Language :: Python :: Implementation :: Stackless',
-        'Topic :: Utilities',
     ],
     keywords=[
         # eg: 'keyword1', 'keyword2', 'keyword3',
     ],
     install_requires=[
-        # eg: 'aspectlib==1.1.1', 'six>=1.7',
+        'Pillow>=3.1.1',
+        'pyephem>=3.7.6.0',
+        'configparser>=3.5.0',
+        'requests>=2.17.3',
+        'numpy==1.13.0',
     ],
     extras_require={
         # eg:

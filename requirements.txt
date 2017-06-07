@@ -1,0 +1,8 @@
+configobj>=5.0.6
+configparser>=3.5.0
+ephem>=3.7.6.0
+future>=0.15.2
+numpy>=1.10.4
+Pillow>=3.1.1
+requests>=2.11.1
+scandir>=1.4
