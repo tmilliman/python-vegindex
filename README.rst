@@ -34,8 +34,8 @@ Python tools for generating vegetation index timeseries from PhenoCam images.
 
 * Free software: MIT license
 
-Overview
-========
+Introduction
+============
 
 The PhenoCam Network is a project designed to study the patterns of
 seasonal variation (phenology) of vegetation.  The project website is
