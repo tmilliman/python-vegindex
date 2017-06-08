@@ -1,8 +1,8 @@
 graft docs
 graft examples
 graft src
-graft ci
 graft tests
+graft ci
 
 include .bumpversion.cfg
 include .coveragerc
@@ -20,5 +20,4 @@ include requirements_dev.txt
 
 include tox.ini .travis.yml appveyor.yml
 recursive-include tests *
-
 global-exclude *.py[cod] __pycache__ *.so *.dylib
