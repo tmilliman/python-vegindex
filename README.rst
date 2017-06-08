@@ -28,10 +28,6 @@ Overview
     :alt: PyPI Package latest release
     :target: https://testpypi.python.org/pypi/vegindex
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/tmilliman/python-vegindex/v0.1.0.svg
-    :alt: Commits since latest release
-    :target: https://github.com/tmilliman/python-vegindex/compare/v0.1.0...master
-
 .. end-badges
 
 Python tools for generating vegetation index timeseries from PhenoCam images.
