@@ -26,7 +26,7 @@ Overview
 
 .. |version| image:: https://img.shields.io/pypi/v/vegindex.svg
     :alt: PyPI Package latest release
-    :target: https://pypi.python.org/pypi/vegindex
+    :target: https://testpypi.python.org/pypi/vegindex
 
 .. end-badges
 
