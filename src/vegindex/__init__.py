@@ -5,7 +5,7 @@ __email__ = 'thomas.milliman@unh.edu'
 __version__ = '0.1.0'
 
 import os
-import config
+from . import config
 
 # from roimask import ROIMask
 # from roilist import ROIList
