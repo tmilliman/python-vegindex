@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from datetime import datetime, date, time
-import sys
+import config
 import csv
 import re
-import utils
-import config
+import sys
+from datetime import date
+from datetime import datetime
+from datetime import time
+
+from . import utils
 
 ND_STRING = config.ND_STRING
 ND_FLOAT = config.ND_FLOAT

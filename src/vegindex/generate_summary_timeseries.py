@@ -46,13 +46,17 @@ image selection in the gcc90 calculations.
 
 """
 
-import os
-from datetime import time, timedelta, datetime
 import argparse
-import numpy as np
+import os
 from ConfigParser import SafeConfigParser
+from datetime import datetime
+from datetime import time
+from datetime import timedelta
+
+import numpy as np
 
 import vegindex as vi
+
 from .quantile import quantile
 
 # set vars

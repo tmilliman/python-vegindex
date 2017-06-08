@@ -6,7 +6,8 @@ Author  Ernesto P. Adorio, PhD.
 Version 0.0.1 August 7. 2009
 """
 
-from math import modf, floor
+from math import floor
+from math import modf
 
 
 def quantile(x, q, qtype=7, issorted=False):

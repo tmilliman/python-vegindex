@@ -9,9 +9,11 @@ Tests for `vegindex.roilist` module.
 """
 
 import os
+
 import pytest
-from vegindex import roilist
+
 from vegindex import config
+from vegindex import roilist
 
 # MODULE_DIR = os.path.dirname(vegindex.__file__)
 SAMPLE_DATA_DIR = os.path.join(os.path.dirname(__file__),

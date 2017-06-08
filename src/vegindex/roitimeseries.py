@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 
-from datetime import datetime
-import sys
+import config
+import csv
 import os
 import re
-import csv
+import sys
+from datetime import datetime
 
-from PIL import Image
 import numpy as np
-import utils
-import config
+from PIL import Image
+
+from . import utils
 
 ND_FLOAT = config.ND_FLOAT
 ND_INT = config.ND_INT

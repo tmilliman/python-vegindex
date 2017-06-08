@@ -8,13 +8,13 @@ test_vegindex
 Tests for `vegindex` module.
 """
 
-import pytest
-
 from contextlib import contextmanager
-# from click.testing import CliRunner
+
+import pytest
 
 from vegindex import vegindex
 
+# from click.testing import CliRunner
 
 @pytest.fixture
 def response():
