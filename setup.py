@@ -71,6 +71,7 @@ setup(
         'configparser>=3.5.0',
         'requests>=2.17.3',
         'numpy==1.13.0',
+        'coverage==4.4.1',
     ],
     extras_require={
         # eg:
