@@ -26,7 +26,7 @@ Overview
 
 .. |version| image:: https://img.shields.io/pypi/v/vegindex.svg
     :alt: PyPI Package latest release
-    :target: https://pypi.python.org/pypi/vegindex
+    :target: https://testpypi.python.org/pypi/vegindex
 
 .. |commits-since| image:: https://img.shields.io/github/commits-since/tmilliman/python-vegindex/v0.1.0.svg
     :alt: Commits since latest release
