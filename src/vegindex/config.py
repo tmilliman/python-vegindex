@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # flag for dealing with IR images - by default
@@ -9,29 +8,29 @@ irFlag = False
 archive_dir = '/data/archive'
 
 # set up list of predefined ROITypes
-ROITypes=['canopy',
-          'deciduous',
-          'coniferous',
-          'grass',
-          'shrub',
-          'modis',
-          'refpanel',
-          'misc',
-          'tundra',
-          'AG',
-          'DB',
-          'DN',
-          'EB',
-          'EN',
-          'GR',
-          'MX',
-          'NV',
-          'RF',
-          'SH',
-          'TN',
-          'UN',
-          'WL',
-          'XX']
+ROITypes = ['canopy',
+            'deciduous',
+            'coniferous',
+            'grass',
+            'shrub',
+            'modis',
+            'refpanel',
+            'misc',
+            'tundra',
+            'AG',
+            'DB',
+            'DN',
+            'EB',
+            'EN',
+            'GR',
+            'MX',
+            'NV',
+            'RF',
+            'SH',
+            'TN',
+            'UN',
+            'WL',
+            'XX']
 
 # set up image selection criteria for summary (gcc90 1-day
 # and gcc90 3-day) files.

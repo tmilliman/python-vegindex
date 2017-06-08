@@ -6,15 +6,16 @@ particular site and ROI.  All available images will be include.
 
 """
 
+import argparse
 import os
 import sys
-import argparse
-import numpy as np
 from ConfigParser import SafeConfigParser
 
+import numpy as np
 from PIL import Image
 
 import vegindex as vi
+
 from . import utils
 
 # set vars

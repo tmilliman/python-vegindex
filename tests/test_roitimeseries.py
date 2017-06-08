@@ -8,12 +8,14 @@ Tests for `vegindex.roitimeseries` module.
 """
 
 import os
+
 import numpy as np
+from PIL import Image
 from pkg_resources import Requirement
 from pkg_resources import resource_filename
-from vegindex import roitimeseries
+
 from vegindex import config
-from PIL import Image
+from vegindex import roitimeseries
 
 SAMPLE_DATA_DIR = os.path.join(os.path.dirname(__file__),
                                'sample_data')

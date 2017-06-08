@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import config
-from datetime import datetime
 import csv
 import re
 import sys
+from datetime import datetime
 
 
 def _filter_comments(f):

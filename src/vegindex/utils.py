@@ -4,19 +4,19 @@
 Utility functions for accessing image archive.
 """
 
-import sys
 import os
 import re
-from datetime import datetime, timedelta
+import sys
+from datetime import datetime
+from datetime import timedelta
 
-import requests
 import ephem
-
+import requests
 
 from . import config
 
-
 # ####################################################################
+
 
 def fn2date(sitename, filename, irFlag=False):
     """
