@@ -1,5 +1,5 @@
-#!/usr/bin/env python
 # -*- encoding: utf-8 -*-
+
 from __future__ import absolute_import
 from __future__ import print_function
 
@@ -66,12 +66,11 @@ setup(
         # eg: 'keyword1', 'keyword2', 'keyword3',
     ],
     install_requires=[
-        'Pillow>=3.1.1',
-        'pyephem>=3.7.6.0',
+        'Pillow>=4.0',
+        'pyephem>=3.7',
         'configparser>=3.5.0',
         'requests>=2.17.3',
         'numpy==1.13.0',
-        'coverage==4.4.1',
     ],
     extras_require={
         # eg:
@@ -80,7 +79,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'vegindex = vegindex.cli:main',
+            'generate_roi_timeseries=vegindex.generate_roi_timeseries:main',
+            'generate_summary_timeseries=vegindex.generate_summary_timeseries:main'
         ]
     },
 )
