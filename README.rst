@@ -1,45 +1,32 @@
 ========
-Overview
+vegindex
 ========
 
-.. start-badges
+.. image:: https://img.shields.io/pypi/v/vegindex.svg
+       :alt: PyPI Package latest release
+       :target: https://testpypi.python.org/pypi/vegindex
 
-.. list-table::
-    :stub-columns: 1
+.. image:: https://img.shields.io/travis/tmilliman/vegindex.svg
+       :alt: Travis-CI Build Status
+       :target: https://travis-ci.org/tmilliman/vegindex
 
-    * - docs
-      - | |docs|
+.. image:: https://readthedocs.org/projects/vegindex/badge/?version=latest
+       :target: https://vegindex.readthedocs.io/en/latest/?badge=latest
+       :alt: Documentation Status
 
-    * - tests
-      - | |travis|
-
-    * - package
-      - | |version|
-
-.. |docs| image:: https://readthedocs.org/projects/python-vegindex/badge/?style=flat
-    :target: https://readthedocs.org/projects/python-vegindex
-    :alt: Documentation Status
-
-.. |travis| image:: https://travis-ci.org/tmilliman/python-vegindex.svg?branch=master
-    :alt: Travis-CI Build Status
-    :target: https://travis-ci.org/tmilliman/python-vegindex
-
-.. |version| image:: https://img.shields.io/pypi/v/vegindex.svg
-    :alt: PyPI Package latest release
-    :target: https://testpypi.python.org/pypi/vegindex
-
-.. end-badges
 
 Python tools for generating vegetation index timeseries from PhenoCam images.
 
 * Free software: MIT license
+
+.. image:: images/gcc-values.png
 
 Introduction
 ============
 
 The PhenoCam Network is a project designed to study the patterns of
 seasonal variation (phenology) of vegetation.  The project website is
-at `https://phenocam.sr.unh.edu/ <https://phenocam.sr.unh.edu>`_.  The
+at `https://phenocam.sr.unh.edu/ <https://phenocam.sr.unh.edu/webcam/>`_.  The
 network consists of many cameras collecting images of various types of
 vegetation.  By analysing the images we can quantify the seasonal
 changes at a particular camera site.
@@ -49,12 +36,14 @@ from various spectral bands of an image of vegetation.  The image is
 typically obtained from a remote-sensing instrument on a earth
 orbiting satellite. There are several vegetation index values in
 common usage.  The most widely used are NDIV (Normalized Difference
-Vegetation Index) and EVI (Enhanced Vegetation Index).
+Vegetation Index) and EVI (Enhanced Vegetation Index).  For the PhenoCam
+project the GCC (Green Chromatic Coordinate) is our standard vegetation
+index.
 
 For the PhenoCam network, the images are obtained from webcams (usually
 installed on towers) looking across a vegetated landscape.  These
 images are typically in JPEG format and have 3-bands (Red, Green, and
-Blue).  For some cameras a separate image dominated by an infrared
+Blue).  For some cameras a separate image dominated by an IR (infrared)
 band is collected.
 
 The algorithms used in in this package have been discussed in numerous
@@ -76,8 +65,8 @@ Hopefully, installation will be as simple as installing the package:
 
 
 The package does however depend on other packages packages most
-notably ``numpy`` and ``pyephem`` which may need to be install
-separately on your platform.
+notably ``PIL/pillow``, ``numpy`` and ``pyephem`` which may need to be
+install separately on your platform.
 
 Documentation
 =============
