@@ -31,13 +31,13 @@ network consists of many cameras collecting images of various types of
 vegetation.  By analysing the images we can quantify the seasonal
 changes at a particular camera site.
 
-A "vegetation index" refers to quantity calculated using information
-from various spectral bands of an image of vegetation.  The image is
-typically obtained from a remote-sensing instrument on a earth
+A "vegetation index" refers to a quantity calculated using information
+from various spectral bands of an image of a vegetated area.  The image is
+typically obtained from a remote-sensing instrument on an earth
 orbiting satellite. There are several vegetation index values in
-common usage.  The most widely used are NDIV (Normalized Difference
+common usage.  The most widely used are NDVI (Normalized Difference
 Vegetation Index) and EVI (Enhanced Vegetation Index).  For the PhenoCam
-project the GCC (Green Chromatic Coordinate) is our standard vegetation
+project the Green Chromatic Coordinate or GCC is our standard vegetation
 index.
 
 For the PhenoCam network, the images are obtained from webcams (usually
@@ -48,7 +48,9 @@ band is collected.
 
 The algorithms used in in this package have been discussed in numerous
 publications.  You can find a list of publications for the PhenoCam
-Project `here <https://phenocam.sr.unh.edu/webcam/publications/>`_.
+Network project `here <https://phenocam.sr.unh.edu/webcam/publications/>`_.
+A python notebook detailing the calculations is available `here https://github.com/tmilliman/phenocam_notebooks/blob/master/Standard_Processing_ROI_Stats/PhenoCam_ROI_stats.ipynb`_.
+
 
 Installation
 ============
