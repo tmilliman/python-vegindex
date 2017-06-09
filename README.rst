@@ -49,7 +49,7 @@ band is collected.
 The algorithms used in in this package have been discussed in numerous
 publications.  You can find a list of publications for the PhenoCam
 Network project `here <https://phenocam.sr.unh.edu/webcam/publications/>`_.
-A python notebook detailing the calculations is available `here https://github.com/tmilliman/phenocam_notebooks/blob/master/Standard_Processing_ROI_Stats/PhenoCam_ROI_stats.ipynb`_.
+A python notebook detailing the calculations is available `here <https://github.com/tmilliman/phenocam_notebooks/blob/master/Standard_Processing_ROI_Stats/PhenoCam_ROI_stats.ipynb>`_.
 
 
 Installation
