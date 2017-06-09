@@ -66,7 +66,7 @@ setup(
         # eg: 'keyword1', 'keyword2', 'keyword3',
     ],
     install_requires=[
-        'Pillow>=4.0',
+        'pillow>=4.0',
         'pyephem>=3.7',
         'configparser>=3.5.0',
         'requests>=2.17.3',
