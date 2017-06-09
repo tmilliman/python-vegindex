@@ -19,7 +19,7 @@ Python tools for generating vegetation index timeseries from PhenoCam images.
 
 * Free software: MIT license
 
-.. image:: images/gcc-values.png
+.. image:: docs/images/gcc-values.png
 
 Introduction
 ============
