@@ -98,7 +98,7 @@ def main():
                         default=False)
 
     parser.add_argument("-p", "--aggregation-period",
-                        help="Number of Days to Aggregate",
+                        help="Number of Days to Aggregate (default=1)",
                         nargs='?', type=int, choices=range(1, 5, 2),
                         default=1)
 
