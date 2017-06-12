@@ -19,12 +19,6 @@ Python tools for generating vegetation index timeseries from PhenoCam images.
 
 * Free software: MIT license
 
-.. figure:: images/gcc-values.png
-   :scale: 75%
-   :alt: GCC Plot
-
-   GCC values from the alligatorriver camera.
-
 Introduction
 ============
 
@@ -57,6 +51,16 @@ The details of the calculation of GCC are presented in this
 `python notebook <https://github.com/tmilliman/phenocam_notebooks/blob/master/Standard_Processing_ROI_Stats/PhenoCam_ROI_stats.ipynb>`_
 .
 
+After the package is installed two python scripts should be available:
+
+* ``generate_roi_timeseries``
+* ``generate_summary_timeseries``
+
+These scripts allow you to reproduce the PhenoCam network
+"standard timeseries products" from downloaded data.  For a description
+of the products see the project
+`Tools Page <https://phenocam.sr.unh.edu/webcam/tools/>`_.
+
 
 Installation
 ============
@@ -73,11 +77,13 @@ automatically (using ``pip``) since they depend on system libraries.
 If the above command does not work you can try:
 
 ::
+
    pip install Pillow
    pip install vegindex
 
 Further information regarding installation in see the package
 documentation.
+
 
 Documentation
 =============
