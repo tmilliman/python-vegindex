@@ -62,8 +62,8 @@ of the products see the project
 `Tools Page <https://phenocam.sr.unh.edu/webcam/tools/>`_.
 
 
-Installation
-============
+Quick Installation
+==================
 
 From the command line type:
 
