@@ -49,7 +49,7 @@ def main():
 
     # positional arguments
     parser.add_argument("site", help="PhenoCam site name")
-    parser.add_argument("roiname", help="ROI name, e.g. canopy_0001")
+    parser.add_argument("roiname", help="ROI name, e.g. DB_0001")
 
     # get args
     args = parser.parse_args()
