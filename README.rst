@@ -81,11 +81,6 @@ If the above command does not work you can try:
    pip install Pillow
    pip install vegindex
 
-Further information regarding installation in see the package
-documentation.
 
-
-Documentation
-=============
-
-https://python-vegindex.readthedocs.io/
+The latest version of the documentation can be found at
+`readthedocs.io <https://python-vegindex.readthedocs.io/>`_
