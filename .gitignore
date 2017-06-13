@@ -44,6 +44,9 @@ htmlcov
 *.iml
 *.komodoproject
 
+# cookiecutter
+.cookiecutterrc
+
 # Complexity
 output/*.html
 output/*/index.html

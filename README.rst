@@ -51,6 +51,15 @@ The details of the calculation of GCC are presented in this
 `python notebook <https://github.com/tmilliman/phenocam_notebooks/blob/master/Standard_Processing_ROI_Stats/PhenoCam_ROI_stats.ipynb>`_
 .
 
+..
+   Richardson, A.D., Hufkens, K., Milliman, T., Aubrecht, D.M.,
+   Chen, M., Gray, J.M., Johnston, M.R., Keenan, T.F., Klosterman,
+   S.T., Kosmala, M., Melaas, E.K., Friedl, M.A., Frolking, S. 2017.
+   Vegetation Phenology from PhenoCam v1.0. ORNL DAAC, Oak Ridge, Tennessee,
+   USA. https://doi.org/10.3334/ORNLDAAC/1358
+
+
+
 After the package is installed two python scripts should be available:
 
 * ``generate_roi_timeseries``
