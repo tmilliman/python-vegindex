@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 """
 test_roitimeseries
 ------------------
@@ -70,7 +69,6 @@ def test_roits_roistats():
     r_mean = r_stats['mean']
     r_sd = r_stats['stdev']
     r_pcts = r_stats['percentiles']
-    print r_pcts
     g_mean = g_stats['mean']
     g_sd = g_stats['stdev']
     g_pcts = g_stats['percentiles']

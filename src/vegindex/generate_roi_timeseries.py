@@ -5,18 +5,27 @@ Command line script to generate a ROI timeseries CSV from images for a
 particular site and ROI.  All available images will be include.
 
 """
+from __future__ import absolute_import
+from __future__ import print_function
 
 import argparse
 import os
 import sys
-from ConfigParser import SafeConfigParser
 
 import numpy as np
 from PIL import Image
 
 import vegindex as vi
+from vegindex.roitimeseries import ROITimeSeries
+from vegindex.vegindex import get_roi_list
 
 from . import utils
+
+# try python3 import then python2 import
+try:
+    import configparser
+except:
+    from ConfigParser import SafeConfigParser as configparser
 
 # set vars
 
@@ -59,25 +68,25 @@ def main():
     dryrun = args.dry_run
 
     if verbose:
-        print "site: {0}".format(sitename)
-        print "roiname: {0}".format(roiname)
-        print "verbose: {0}".format(verbose)
-        print "dryrun: {0}".format(dryrun)
+        print("site: {0}".format(sitename))
+        print("roiname: {0}".format(roiname))
+        print("verbose: {0}".format(verbose))
+        print("dryrun: {0}".format(dryrun))
 
     # set output filename
     outname = '%s_%s_timeseries.csv' % (sitename, roiname,)
     outdir = os.path.join(archive_dir, sitename, 'ROI')
     outpath = os.path.join(outdir, outname)
     if verbose:
-        print "archive dir: {0}".format(archive_dir)
-        print "output file: {0}".format(outname)
+        print("archive dir: {0}".format(archive_dir))
+        print("output file: {0}".format(outname))
 
     # read in config file for this site if it exists
     config_file = "{0}_{1}.cfg".format(sitename, roiname)
     config_path = os.path.join(archive_dir, sitename, 'ROI',
                                config_file)
     if os.path.exists(config_path):
-        cfgparser = SafeConfigParser(
+        cfgparser = configparser(
             defaults={'resize': str(default_resize)})
         cfgparser.read(config_path)
         if cfgparser.has_section('roi_timeseries'):
@@ -90,22 +99,22 @@ def main():
 
     # print config values
     if verbose:
-        print ''
-        print 'ROI timeseries config:'
-        print '======================'
-        print 'roi_list: ', '{0}_{1}_roi.csv'.format(sitename, roiname)
+        print('')
+        print('ROI timeseries config:')
+        print('======================')
+        print('roi_list: ', '{0}_{1}_roi.csv'.format(sitename, roiname))
         if os.path.exists(config_path):
-            print "config file: {0}".format(config_file)
+            print("config file: {0}".format(config_file))
         else:
-            print "config file: None"
-        print 'Resize Flag: ', resizeFlg
+            print("config file: None")
+        print('Resize Flag: ', resizeFlg)
 
     # create new roi_timeseries object for this ROIList
-    roits = vi.ROITimeSeries(site=sitename, ROIListID=roiname,
-                             resizeFlag=resizeFlg)
+    roits = ROITimeSeries(site=sitename, ROIListID=roiname,
+                          resizeFlag=resizeFlg)
 
     # grab roi list
-    roi_list = vi.get_roi_list(sitename, roiname)
+    roi_list = get_roi_list(sitename, roiname)
 
     # loop over mask entries in ROI list
     nimage = 0
@@ -154,7 +163,7 @@ def main():
 
             if verbose:
                 csvstr = roits.format_csvrow(roits_row)
-                print csvstr
+                print(csvstr)
 
             if debug:
                 if nupdate == 10:
@@ -166,9 +175,9 @@ def main():
     else:
         nout = roits.writeCSV(outpath)
 
-    print 'Images processed: %d' % (nimage,)
-    print 'Images added to CSV: %d' % (nupdate,)
-    print 'Total: %d' % (nout,)
+    print('Images processed: %d' % (nimage,))
+    print('Images added to CSV: %d' % (nupdate,))
+    print('Total: %d' % (nout,))
 
 
 if __name__ == '__main__':

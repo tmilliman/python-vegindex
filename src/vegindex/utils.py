@@ -202,12 +202,12 @@ def getsiteimglist(sitename,
                     if not os.path.isdir(imgpath):
                         imglist.append(imgpath)
 
-            except OSError, e:
+            except OSError as e:
                 if e.errno == 20:
                     continue
                 else:
                     errstring = "Python OSError: %s" % (e,)
-                    print errstring
+                    print(errstring)
 
     imglist.sort()
     return imglist

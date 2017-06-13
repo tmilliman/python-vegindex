@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 
-import config
 import csv
 import os
 import re
@@ -10,6 +10,7 @@ from datetime import datetime
 import numpy as np
 from PIL import Image
 
+from . import config
 from . import utils
 
 ND_FLOAT = config.ND_FLOAT
@@ -181,7 +182,7 @@ def get_roi_stats(im, roimask):
     try:
         r_ma = np.ma.array(r_array, mask=roimask)
     except Exception as inst:
-        print inst
+        print(inst)
         errstr = "Error applying mask to image file.\n"
         sys.stderr.write(errstr)
         return None
@@ -421,7 +422,7 @@ class ROITimeSeries(object):
         except KeyboardInterrupt:
             sys.exit()
         except Exception as inst:
-            print inst
+            print(inst)
             errstr1 = "Problem getting ROI " + \
                       "stats for file in create_row(): {0}\n".format(impath)
             sys.stderr.write(errstr1)
@@ -715,7 +716,7 @@ class ROITimeSeries(object):
         for line in hdstrings:
             fo.write(line)
 
-        # print fields line
+        # write fields line
         fields_str = 'date,local_std_time,doy,filename,' + \
                      'solar_elev,exposure,' + \
                      'mask_index,gcc,rcc,' + \
@@ -819,7 +820,7 @@ class ROITimeSeries(object):
                                      int(m), int(s))
                 self.created_at = create_dt
             except ValueError:
-                print "Invalid creation date or time in CSV."
+                print("Invalid creation date or time in CSV.")
 
         # make sure we can form a proper date time from update_date and
         # update_time
@@ -833,7 +834,7 @@ class ROITimeSeries(object):
                                      int(m), int(s))
                 self.updated_at = update_dt
             except ValueError:
-                print "Invalid update date or time in CSV."
+                print("Invalid update date or time in CSV.")
 
         # do I need to grab lat, lon, elev and tzoffset?  Probably!
 
