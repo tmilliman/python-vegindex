@@ -63,7 +63,7 @@ file and the associated ``ROI Mask`` images.
 The ``ROI List`` file is a simple text file with
 a list of ``ROI mask`` images and the dates for which the masks are
 valid.  The ``ROI List`` format description can be found
-`here <https://phenocam.sr.unh.edu/webcam/tools/roi_list_format/>`_
+on this `page <https://phenocam.sr.unh.edu/webcam/tools/roi_list_format/>`_
 Here's a simple example where there is only one mask file:
 
 ::
@@ -205,8 +205,8 @@ in the previous section:
    $ generate_summary_timeseries -p 3 harvard DB_0001
    Total: 51
 
-A description of the summary files can be found
-`here <https://phenocam.sr.unh.edu/webcam/tools/gcc_file_format/>`_
+A `description of the summary files <https://phenocam.sr.unh.edu/webcam/tools/gcc_file_format/>`_
+can be found on the project website.
 
 API
 ---
