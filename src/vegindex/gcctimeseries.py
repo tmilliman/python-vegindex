@@ -590,19 +590,19 @@ class GCCTimeSeries(object):
         hdstrings.append('# Creation Date: {0}\n'.format(
             self.created_at.date()))
         create_time = self.created_at.time()
-        hdstrings.append('# Creation Time: {0:02d}:{1:02d}:' +
-                         '{2:02d}\n'.format(create_time.hour,
-                                            create_time.minute,
-                                            create_time.second))
+        create_time_str = '# Creation Time: {0:02d}:{1:02d}:{2:02d}\n'
+        hdstrings.append(create_time_str.format(create_time.hour,
+                                                create_time.minute,
+                                                create_time.second))
         # set update time to now
         self.updated_at = datetime.now()
         update_time = self.updated_at.time()
         hdstrings.append('# Update Date: {0}\n'.format(
             self.updated_at.date()))
-        hdstrings.append('# Update Time: {0:02d}:{1:02d}:' +
-                         '{2:02d}\n'.format(update_time.hour,
-                                            update_time.minute,
-                                            update_time.second))
+        update_time_str = '# Update Time: {0:02d}:{1:02d}:{2:02d}\n'
+        hdstrings.append(update_time_str.format(update_time.hour,
+                                                update_time.minute,
+                                                update_time.second))
         hdstrings.append('#\n')
 
         for line in hdstrings:
