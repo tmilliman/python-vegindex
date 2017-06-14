@@ -14,6 +14,9 @@ vegindex
        :target: https://vegindex.readthedocs.io/en/latest/?badge=latest
        :alt: Documentation Status
 
+.. image:: https://img.shields.io/pypi/pyversions/vegindex.svg
+       :target: https://pypi.python.org/pypi/vegindex
+       :alt: Supported versions
 
 Python tools for generating vegetation index timeseries from PhenoCam images.
 
