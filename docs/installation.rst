@@ -29,6 +29,7 @@ Hopefully, installation will be as simple as installing the package:
 At the command line::
 
 ::
+
     pip install vegindex
 
 
