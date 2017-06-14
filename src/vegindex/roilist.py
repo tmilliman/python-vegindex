@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 
-import config
 import csv
 import re
 import sys
 from datetime import datetime
+
+from . import config
 
 
 def _filter_comments(f):
@@ -109,7 +111,7 @@ class ROIList(object):
         try:
             self.sequence_number = int(sequence_number)
         except ValueError:
-            print "CSV ROI ID Number not valid"
+            print("CSV ROI ID Number not valid")
 
         # initially create the object with an empty list
         # of masks
@@ -152,7 +154,7 @@ class ROIList(object):
                 config.ROITypes.index(roitype)
                 self.roitype = roitype
             except ValueError:
-                print "Unknown Veg Type in CSV"
+                print("Unknown Veg Type in CSV")
 
         # sequence number should be decimal
         sequence_number = _get_comment_field(comments, 'ROI ID Number')
@@ -160,7 +162,7 @@ class ROIList(object):
             try:
                 self.sequence_number = int(sequence_number)
             except ValueError:
-                print "CSV ROI ID Number not valid"
+                print("CSV ROI ID Number not valid")
 
         # make sure we can form a proper date time from create_date and
         # create_time
@@ -174,7 +176,7 @@ class ROIList(object):
                                      int(m), int(s))
                 self.created_at = create_dt
             except ValueError:
-                print "Invalid creation date or time in CSV."
+                print("Invalid creation date or time in CSV.")
 
         # make sure we can form a proper date time from update_date and
         # update_time
@@ -188,7 +190,7 @@ class ROIList(object):
                                      int(m), int(s))
                 self.updated_at = update_dt
             except ValueError:
-                print "Invalid update date or time in CSV."
+                print("Invalid update date or time in CSV.")
 
         # no validation for owner
         self.owner = _get_comment_field(comments, 'Owner')
@@ -285,7 +287,7 @@ class ROIList(object):
         for line in hdstrings:
             fo.write(line)
 
-        # print fields line
+        # write fields line
         fo.write("start_date,start_time,end_date,end_time,maskfile," +
                  "sample_image\n")
 

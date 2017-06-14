@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 
-import config
 import csv
 import re
 import sys
@@ -8,6 +8,7 @@ from datetime import date
 from datetime import datetime
 from datetime import time
 
+from . import config
 from . import utils
 
 ND_STRING = config.ND_STRING
@@ -265,7 +266,7 @@ class GCCTimeSeries(object):
                                      int(m), int(s))
                 self.created_at = create_dt
             except ValueError:
-                print "Invalid creation date or time in CSV."
+                print("Invalid creation date or time in CSV.")
 
         # make sure we can form a proper date time from update_date and
         # update_time
@@ -279,7 +280,7 @@ class GCCTimeSeries(object):
                                      int(m), int(s))
                 self.updated_at = update_dt
             except ValueError:
-                print "Invalid update date or time in CSV."
+                print("Invalid update date or time in CSV.")
 
         # get timeseries rows
         f.seek(0)

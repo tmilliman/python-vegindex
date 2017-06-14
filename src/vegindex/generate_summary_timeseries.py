@@ -43,12 +43,12 @@ brt_threshold_min=160
 You can specify any of the above parameters to configure
 image selection in the gcc90 calculations.
 
-
 """
+from __future__ import absolute_import
+from __future__ import print_function
 
 import argparse
 import os
-from ConfigParser import SafeConfigParser
 from datetime import datetime
 from datetime import time
 from datetime import timedelta
@@ -56,8 +56,16 @@ from datetime import timedelta
 import numpy as np
 
 import vegindex as vi
+from vegindex.gcctimeseries import GCCTimeSeries
+from vegindex.vegindex import daterange2
+from vegindex.vegindex import get_roi_timeseries
 
 from .quantile import quantile
+
+try:
+    import configparser
+except:
+    from ConfigParser import SafeConfigParser as configparser
 
 # set vars
 
@@ -115,11 +123,11 @@ def main():
     ndays = args.aggregation_period
 
     if verbose:
-        print "site: {0}".format(sitename)
-        print "roiname: {0}".format(roiname)
-        print "verbose: {0}".format(verbose)
-        print "dryrun: {0}".format(dryrun)
-        print "period: {0}".format(ndays)
+        print("site: {0}".format(sitename))
+        print("roiname: {0}".format(roiname))
+        print("verbose: {0}".format(verbose))
+        print("dryrun: {0}".format(dryrun))
+        print("period: {0}".format(ndays))
 
     # read in config file for this ROI List if it exists
     config_file = "{0}_{1}.cfg".format(sitename, roiname)
@@ -128,7 +136,7 @@ def main():
     if os.path.exists(config_path):
         # NOTE: should probably subclass safe config parser
         # and add gettime() method which checks for time validity
-        cfgparser = SafeConfigParser(
+        cfgparser = configparser(
             defaults={'nimage_threshold': str(default_nimage_threshold),
                       'time_min': str(default_time_min),
                       'time_max': str(default_time_max),
@@ -175,51 +183,51 @@ def main():
 
     # print config values
     if verbose:
-        print ''
-        print 'gcc config:'
-        print '==========='
-        print 'roi_list: ', '{0}_{1}_roi.csv'.format(sitename, roiname)
+        print('')
+        print('gcc config:')
+        print('===========')
+        print('roi_list: ', '{0}_{1}_roi.csv'.format(sitename, roiname))
         if os.path.exists(config_path):
-            print "config file: {0}".format(config_file)
+            print("config file: {0}".format(config_file))
         else:
-            print "config file: None"
-        print 'nimage threshold: ', nimage_threshold
-        print 'time of day min: ', time_min
-        print 'time of day max: ', time_max
-        print 'sun elev min: ', sunelev_min
-        print 'aggregate days: ', ndays
-        print 'minimum brightness: ', brt_min
-        print 'maximum brightness: ', brt_max
+            print("config file: None")
+        print('nimage threshold: ', nimage_threshold)
+        print('time of day min: ', time_min)
+        print('time of day max: ', time_max)
+        print('sun elev min: ', sunelev_min)
+        print('aggregate days: ', ndays)
+        print('minimum brightness: ', brt_min)
+        print('maximum brightness: ', brt_max)
 
     # set up output filename
     outdir = os.path.join(archive_dir, sitename, 'ROI')
     outfile = '{0}_{1}_{2}day.csv'.format(sitename, roiname, ndays)
     outpath = os.path.join(outdir, outfile)
     if verbose:
-        print 'output file: ', outfile
+        print('output file: ', outfile)
 
     # create gcc timeseries object as empty list
-    gcc_ts = vi.GCCTimeSeries(site=sitename, ROIListID=roiname,
-                              nday=ndays,
-                              nmin=nimage_threshold,
-                              tod_min=time_min,
-                              tod_max=time_max,
-                              sunelev_min=sunelev_min,
-                              brt_min=brt_min,
-                              brt_max=brt_max)
+    gcc_ts = GCCTimeSeries(site=sitename, ROIListID=roiname,
+                           nday=ndays,
+                           nmin=nimage_threshold,
+                           tod_min=time_min,
+                           tod_max=time_max,
+                           sunelev_min=sunelev_min,
+                           brt_min=brt_min,
+                           brt_max=brt_max)
 
     # get roi timeseries for this site and roi
-    roits = vi.get_roi_timeseries(sitename, roiname)
+    roits = get_roi_timeseries(sitename, roiname)
 
     if verbose:
-        print ''
-        print 'ROI timeseries info:'
-        print '===================='
-        print 'site: ', roits.site
-        print 'ROI list id: ', roits.roilistid
-        print 'create date: ', roits.created_at
-        print 'update date: ', roits.updated_at
-        print 'nrows: ', len(roits.rows)
+        print('')
+        print('ROI timeseries info:')
+        print('====================')
+        print('site: ', roits.site)
+        print('ROI list id: ', roits.roilistid)
+        print('create date: ', roits.created_at)
+        print('update date: ', roits.updated_at)
+        print('nrows: ', len(roits.rows))
 
     # make list of rows which match image selection criteria
     roits_rows = roits.select_rows(tod_min=time_min,
@@ -231,11 +239,11 @@ def main():
     # check that some rows passed selection criteria
     nrows = len(roits_rows)
     if nrows == 0:
-        print "No rows passed the selection criteria"
+        print("No rows passed the selection criteria")
         return
 
     if verbose:
-        print 'Number of selected rows: {0}'.format(nrows)
+        print('Number of selected rows: {0}'.format(nrows))
 
     # make a list of dates for selected images
     img_date = []
@@ -248,7 +256,7 @@ def main():
 
     # set up a generator which yields dates for the start
     # of the next nday period covering the date range of image
-    gcc_dr = vi.daterange2(dt_first, dt_last, ndays)
+    gcc_dr = daterange2(dt_first, dt_last, ndays)
 
     # calculate offset for timeseries based on nday
     day_offset = ndays / 2
@@ -450,10 +458,10 @@ def main():
                                        outlierflag_gcc_75,
                                        outlierflag_gcc_90)
 
-        # print result if verbose
+        # print(result if verbose)
         if verbose:
             csvstr = gcc_ts.format_csvrow(gcc_ts_row)
-            print csvstr
+            print(csvstr)
 
         # reset accumulated values
         img_cnt = 0
@@ -472,7 +480,7 @@ def main():
     else:
         nout = gcc_ts.writeCSV(outpath)
 
-    print 'Total: %d' % (nout,)
+    print('Total: %d' % (nout,))
 
 
 # run main when called from command line

@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
@@ -7,6 +6,8 @@ test_roilist
 
 Tests for `vegindex.roilist` module.
 """
+
+from __future__ import print_function
 
 import os
 
@@ -51,7 +52,7 @@ def test_roilist_vegtype():
                                  descrip='test ROI',
                                  sequence_number=1,
                                  owner='phenocam')
-        print mylist
+        print(mylist)
 
 
 def test_roilist_readcsv():
