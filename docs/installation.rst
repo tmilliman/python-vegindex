@@ -26,9 +26,10 @@ When using ``virtulalenvwrapper``:
 
 This both creates and activates the virtualenv wrapper.  After that
 Hopefully, installation will be as simple as installing the package:
-At the command line::
+At the command line:
 
 ::
+
     pip install vegindex
 
 
