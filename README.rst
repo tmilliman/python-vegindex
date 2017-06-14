@@ -59,7 +59,6 @@ The details of the calculation of GCC are presented in this
    USA. https://doi.org/10.3334/ORNLDAAC/1358
 
 
-
 After the package is installed two python scripts should be available:
 
 * ``generate_roi_timeseries``
