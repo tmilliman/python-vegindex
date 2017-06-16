@@ -1,12 +1,10 @@
 graft docs
-graft examples
 graft src
 graft tests
 graft ci
 
 include .bumpversion.cfg
 include .coveragerc
-include .cookiecutterrc
 include .editorconfig
 include .isort.cfg
 
