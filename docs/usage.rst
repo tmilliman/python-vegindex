@@ -14,9 +14,10 @@ scripts will be installed:
 
 The first script generates summary statistics for a Region of Interest
 (ROI) for each image which passes certain basic selection criteria and
-writes the results to a file.  The second script reads in this file
-and then calculates either 1-day or 3-day summaries statistics for all
-the images in this period.
+writes the results to a CSV file.  The second script reads in this file
+and then calculates either 1-day or 3-day summary statistics for
+the images in this time period.  For each time period a single line
+in the CSV file is produced.
 
 Setting up the Data Directory
 -----------------------------
@@ -49,8 +50,8 @@ structure.  For example if we download data from the ``harvard`` site.
    └── harvard_meta.txt
 
 where the we have a top level directory for ``sitename`` then
-subdirectories for year and month, with the image files in the
-month directories.
+subdirectories for four-digit year and two-digit month, with
+the image files in the month directories.
 
 
 ROI Lists and Masks
