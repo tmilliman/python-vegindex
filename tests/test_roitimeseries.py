@@ -87,3 +87,20 @@ def test_roits_roistats():
     np.testing.assert_approx_equal(RG_cor, 0.975, 3)
     np.testing.assert_approx_equal(GB_cor, 0.944, 3)
     np.testing.assert_approx_equal(BR_cor, 0.964, 3)
+
+
+def test_roits_metadata():
+    """
+    test reading image metadata
+    """
+
+    image_file = 'harvardlph_2017_08_25_120008.jpg'
+    sitename, year, month, dom, xx = image_file.split('_')
+    image_path = os.path.join(SAMPLE_DATA_DIR, sitename, year,
+                              month, image_file)
+
+    image_metadata = roitimeseries.get_im_metadata(image_path)
+    im_exposure = int(image_metadata['exposure'])
+    im_saturation = int(image_metadata['saturation'])
+    np.testing.assert_equal(im_exposure, 44)
+    np.testing.assert_equal(im_saturation, 140)
