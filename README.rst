@@ -94,4 +94,4 @@ If the above command does not work you can try:
 
 
 The latest version of the documentation can be found at
-`readthedocs.io <https://python-vegindex.readthedocs.io/>`_
+`readthedocs.io <https://python-vegindex.readthedocs.io/en/latest/>`_

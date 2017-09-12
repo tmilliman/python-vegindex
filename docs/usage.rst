@@ -23,8 +23,8 @@ Setting up the Data Directory
 -----------------------------
 
 The vegindex package is designed to work with images downloaded from
-the PhenoCam network server.  To download images you can go to our
-`data page <https://phenocam.sr.unh.edu/webcam/network/download/>`_.
+the PhenoCam network server.  To download images you can go to the
+data tab at the `project website <https://phenocam.sr.unh.edu/webcam/>`_.
 
 The images you select come in a zip file with a specific directory
 structure.  For example if we download data from the ``harvard`` site.
