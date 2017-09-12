@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.3.0rc1 (2017-09-12)
+
+* Added support for .meta files
+* Change data product name from _timeseries.csv to _roi_statistics.csv
+
 0.2.0rc1 (2017-06-14)
 ---------------------
 
