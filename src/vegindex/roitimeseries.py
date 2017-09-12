@@ -237,6 +237,38 @@ def get_roi_stats(im, roimask):
              'percentiles': b_pcts},
             RG_cor, GB_cor, BR_cor]
 
+######################################################################
+
+
+def get_im_metadata(impath):
+    """
+    look for a matching metadata file and return values in a
+    dictionary
+    """
+
+    metadata_path = os.path.splitext(impath)[0] + ".meta"
+    meta_dict = {}
+    if os.path.exists(metadata_path):
+        with open(metadata_path, 'r') as infile:
+            for line in infile:
+                try:
+                    key, value = line.split('=')
+                    meta_dict[key] = value.rstrip()
+                except:
+                    pass
+
+        # make sure we got some key/value pairs
+        if any(meta_dict):
+            return meta_dict
+        else:
+            return None
+
+    else:
+        return None
+
+
+######################################################################
+
 
 def _filter_comments(f):
     """
@@ -405,6 +437,9 @@ class ROITimeSeries(object):
             sys.stderr.write(errstr2)
             return None
 
+        # Try to load image metadata file
+        im_metadata = get_im_metadata(impath)
+
         # if resizeFlg is True resize image to match mask
         if self.resizeFlg:
             ysize, xsize = roimask.shape
@@ -470,8 +505,11 @@ class ROITimeSeries(object):
             gcc = ND_FLOAT
             rcc = ND_FLOAT
 
-        # get exposure - just set to missing value for now
-        exposure = ND_INT
+        # get exposure - if None just set to missing value
+        if im_metadata is not None:
+            exposure = int(im_metadata['exposure'])
+        else:
+            exposure = ND_INT
 
         # make a structure for the roi timeseries
         roits_row = {'date': img_date,
