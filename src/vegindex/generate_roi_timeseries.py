@@ -74,7 +74,7 @@ def main():
         print("dryrun: {0}".format(dryrun))
 
     # set output filename
-    outname = '%s_%s_timeseries.csv' % (sitename, roiname,)
+    outname = '%s_%s_roi_statistics.csv' % (sitename, roiname,)
     outdir = os.path.join(archive_dir, sitename, 'ROI')
     outpath = os.path.join(outdir, outname)
     if verbose:

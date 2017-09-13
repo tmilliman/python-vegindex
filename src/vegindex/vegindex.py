@@ -101,7 +101,7 @@ def get_roi_timeseries(site, roilist_id):
     roidir = os.path.join(config.archive_dir, site, 'ROI')
 
     # set cannonical filename
-    roitsfile = site + '_' + roilist_id + '_timeseries.csv'
+    roitsfile = site + '_' + roilist_id + '_roi_statistics.csv'
     roitspath = os.path.join(roidir, roitsfile)
     # print roitspath
 

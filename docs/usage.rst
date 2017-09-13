@@ -23,8 +23,8 @@ Setting up the Data Directory
 -----------------------------
 
 The vegindex package is designed to work with images downloaded from
-the PhenoCam network server.  To download images you can go to our
-`data page <https://phenocam.sr.unh.edu/webcam/network/download/>`_.
+the PhenoCam network server.  To download images you can go to the
+data tab at the `project website <https://phenocam.sr.unh.edu/webcam/>`_.
 
 The images you select come in a zip file with a specific directory
 structure.  For example if we download data from the ``harvard`` site.
@@ -120,8 +120,8 @@ DB_0001
 <https://phenocam.sr.unh.edu/data/archive/harvard/ROI/harvard_DB_0001.html>`_
 
 
-Generating the "All-image" file
--------------------------------
+Generating the ROI Image Statistics file
+----------------------------------------
 
 The ``generate_roi_timeseries`` script reads in the ``ROI List``
 file and ``ROI Mask`` images. Then for each image found within the
@@ -174,7 +174,7 @@ Here's an example command line session:
 
 
 The output format for the "All Image" file can be found
-`here <https://phenocam.sr.unh.edu/webcam/tools/roi_timeseries_format/>`_
+`here <https://phenocam.sr.unh.edu/webcam/tools/roi_statistics_format/>`_
 
 Generating the 1-day and 3-day Summary Files
 --------------------------------------------
@@ -206,7 +206,7 @@ in the previous section:
    $ generate_summary_timeseries -p 3 harvard DB_0001
    Total: 51
 
-A `description of the summary files <https://phenocam.sr.unh.edu/webcam/tools/gcc_file_format/>`_
+A `description of the summary files <https://phenocam.sr.unh.edu/webcam/tools/summary_file_format/>`_
 can be found on the project website.
 
 API

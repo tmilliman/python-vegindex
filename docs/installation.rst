@@ -13,7 +13,7 @@ Virtual Environments
 The ``vegindex`` package has typically been used in a virtual environment.
 For Python2 this means installing ``virtualenv`` (and optionally
 ``virtualenvwrapper``) or ``pyenv``.  I have also used
-`Anaconda/Miniconda <https://www.continuum.io>`_ which has it's own virtual
+`Anaconda/Miniconda <https://www.anaconda.com>`_ which has it's own virtual
 environment manager.  The use of virtual environments is
 beyond the scope of this document but using them is highly recommended.
 

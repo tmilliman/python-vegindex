@@ -26,7 +26,7 @@ project = u'vegindex'
 year = u'2017'
 author = u'Thomas Milliman'
 copyright = '{0}, {1}'.format(year, author)
-version = release = u'0.2.0rc1'
+version = release = u'0.3.0rc2'
 
 pygments_style = 'trac'
 templates_path = ['.']
@@ -40,7 +40,6 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 if not on_rtd:  # only set the theme if we're building docs locally
     html_theme = 'sphinx_rtd_theme'
 
-html_use_smartypants = True
 html_last_updated_fmt = '%b %d, %Y'
 html_split_index = False
 html_sidebars = {
