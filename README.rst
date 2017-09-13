@@ -6,12 +6,12 @@ vegindex
        :alt: PyPI Package latest release
        :target: https://testpypi.python.org/pypi/vegindex
 
-.. image:: https://img.shields.io/travis/tmilliman/vegindex.svg
+.. image:: https://img.shields.io/travis/tmilliman/python-vegindex.svg
        :alt: Travis-CI Build Status
-       :target: https://travis-ci.org/tmilliman/vegindex
+       :target: https://travis-ci.org/tmilliman/python-vegindex
 
-.. image:: https://readthedocs.org/projects/vegindex/badge/?version=latest
-       :target: https://vegindex.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/python-vegindex/badge/?version=latest
+       :target: https://python-vegindex.readthedocs.io/en/latest/?badge=latest
        :alt: Documentation Status
 
 .. image:: https://img.shields.io/pypi/pyversions/vegindex.svg
