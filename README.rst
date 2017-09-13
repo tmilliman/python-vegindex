@@ -4,7 +4,7 @@ vegindex
 
 .. image:: https://img.shields.io/pypi/v/vegindex.svg
        :alt: PyPI Package latest release
-       :target: https://testpypi.python.org/pypi/vegindex
+       :target: https://pypi.python.org/pypi/vegindex
 
 .. image:: https://img.shields.io/travis/tmilliman/python-vegindex.svg
        :alt: Travis-CI Build Status
