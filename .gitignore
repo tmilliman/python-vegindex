@@ -28,6 +28,7 @@ pip-log.txt
 # Unit test / coverage reports
 .coverage
 .tox
+tox.ini.save
 .coverage.*
 nosetests.xml
 coverage.xml
