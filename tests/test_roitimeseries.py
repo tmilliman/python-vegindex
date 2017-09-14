@@ -19,6 +19,8 @@ from vegindex import roitimeseries
 SAMPLE_DATA_DIR = os.path.join(os.path.dirname(__file__),
                                'sample_data')
 
+config.archive_dir = SAMPLE_DATA_DIR
+
 
 def test_roits_dnmeans():
     """
