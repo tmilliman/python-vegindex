@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.3.1 (2017-10-06)
+---------------------
+* Change data product name from _roi_statistics.csv to _roistats.csv
+
+
 0.3.0 (2017-09-12)
 ---------------------
 
