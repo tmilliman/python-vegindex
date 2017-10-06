@@ -52,7 +52,6 @@ def test_roilist_vegtype():
                                  descrip='test ROI',
                                  sequence_number=1,
                                  owner='phenocam')
-        print(mylist)
 
 
 def test_roilist_readcsv():

@@ -255,10 +255,10 @@ def deg2dms(angle):
 
 def dms2deg(dmsstr):
     """
-    convert dms string in form 'dd:mm:ss' to fractional degrees.
+    convert dms string in form 'dd:mm:ss' to decimal degrees.
     """
     (dd, mm, ss) = dmsstr.split(':')
-    degrees = dd + mm * 1. / 60. + ss * 1. / 3600.
+    degrees = int(dd) + int(mm) * 1. / 60. + int(ss) * 1. / 3600.
     return degrees
 
 # ####################################################################
