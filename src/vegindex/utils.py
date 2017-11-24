@@ -12,6 +12,7 @@ from datetime import timedelta
 
 import ephem
 import requests
+import pandas as pd
 
 from . import config
 
@@ -218,19 +219,25 @@ def getsiteimglist(sitename,
 def getsiteinfo(sitename):
     """
     Simple function to return the site info for a single site in a dictionary
-    by grabbing JSON from a URL.
+    by grabbing JSON from a URL, or a locally defined CSV file with similar
+    information for a lightweight implementation.
     """
 
     siteinfo = {}
     try:
         infourl = "https://phenocam.sr.unh.edu/webcam/" + \
                   "sites/{0}/info/".format(sitename)
-        response = requests.get(infourl)
+        response = requests.get(infourl).json()
     except:
-        sys.stderr.write("Error getting site info.\n")
-        return None
+        try:
+            df = pd.read_csv('site_info.csv', comment="#")
+            json_string = df[df.sitename == sitename].to_json(orient='records')
+            response = json.loads(json_string)[0]
+        except:
+            sys.stderr.write("Error getting site info.\n")
+            return None
 
-    siteinfo = response.json()
+    siteinfo = response
     return siteinfo
 
 # ####################################################################
