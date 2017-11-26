@@ -12,6 +12,7 @@ from datetime import timedelta
 
 import ephem
 import requests
+import json
 import pandas as pd
 
 from . import config
@@ -230,7 +231,7 @@ def getsiteinfo(sitename):
         response = requests.get(infourl).json()
     except:
         try:
-            df = pd.read_csv('site_info.csv', comment="#")
+            df = pd.read_csv(config.site_info_file, comment="#")
             json_string = df[df.sitename == sitename].to_json(orient='records')
             response = json.loads(json_string)[0]
         except:
