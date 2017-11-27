@@ -4,6 +4,7 @@
 Utility functions for accessing image archive.
 """
 
+import json
 import os
 import re
 import sys
@@ -11,9 +12,8 @@ from datetime import datetime
 from datetime import timedelta
 
 import ephem
-import requests
-import json
 import pandas as pd
+import requests
 
 from . import config
 

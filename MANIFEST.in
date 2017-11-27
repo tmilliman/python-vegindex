@@ -2,6 +2,7 @@ graft docs
 graft src
 graft tests
 graft ci
+graft .github
 
 include .bumpversion.cfg
 include .coveragerc
