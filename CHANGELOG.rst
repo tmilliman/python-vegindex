@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.4.0 (2017-11-27)
+--------------------
+* Add fallback to local site_info.csv file to get basic site metadata
+* Update exception handling (removed bare exceptions)
+
 0.3.1 (2017-10-06)
 ---------------------
 * Change data product name from _roi_statistics.csv to _roistats.csv
