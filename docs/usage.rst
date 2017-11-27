@@ -26,6 +26,7 @@ The vegindex package is designed to work with images downloaded from
 the PhenoCam network server.  To download images you can go to the
 data tab at the `project website <https://phenocam.sr.unh.edu/webcam/>`_.
 
+
 The images you select come in a zip file with a specific directory
 structure.  For example if we download data from the ``harvard`` site.
 
@@ -51,7 +52,33 @@ structure.  For example if we download data from the ``harvard`` site.
 
 where the we have a top level directory for ``sitename`` then
 subdirectories for four-digit year and two-digit month, with
-the image files in the month directories.
+the image files in the month directories.  This is the general
+structure that this package will expect the image data to be
+in.
+
+Site-Level Metadata
+-------------------
+
+The package scripts have several ways to get site-level metadata.  One
+level above the site directories you can place a text file (with a
+default name of ``site_info.csv``).  If this file is present the
+scripts will read basic site-level metadata from this file.  Here's an
+example:
+
+::
+
+    # This is a site info file
+    sitename,lat,lon,elev,start_date,end_date,tzoffset,nimage
+    test,40.00000,-60.00000,300,2008-04-04,2017-11-23,1,300
+    test2,45.00000,-65.00000,1300,2008-04-04,2017-11-23,1,300
+
+
+If you download images using the link above you will have this
+information in the included site metadata file.  If this file is not
+present the script try to use the network to get the latest version of
+this information by pulling information from our server.  The pathname
+of the site-level metadata file can be set using the
+PHENOCAM_SITE_INFO environment variable.
 
 
 ROI Lists and Masks

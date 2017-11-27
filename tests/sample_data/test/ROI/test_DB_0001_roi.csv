@@ -1,0 +1,15 @@
+#
+# ROI List for test
+#
+# Site: test
+# Veg Type: DB
+# ROI ID Number: 0001
+# Owner: tmilliman
+# Creation Date: 2012-07-12
+# Creation Time: 11:42:00
+# Update Date: 2014-12-17
+# Update Time: 13:55:25
+# Description: Deciduous trees in foreground
+#
+start_date,start_time,end_date,end_time,maskfile,sample_image
+2008-04-04,00:00:00,9999-01-01,00:00:00,test_DB_0001_01.tif,test_2008_04_30_133137.jpg

@@ -7,6 +7,9 @@ irFlag = False
 # set default archive dir
 archive_dir = '/data/archive'
 
+# set default site info CSV file
+site_info_file = '/data/archive/site_info.csv'
+
 # set up list of predefined ROITypes
 ROITypes = ['canopy',
             'deciduous',

@@ -8,6 +8,7 @@ import os
 from datetime import datetime
 
 import numpy as np
+import pandas as pd
 
 from vegindex import config
 from vegindex import utils
@@ -15,6 +16,8 @@ from vegindex import utils
 config.archive_dir = os.path.join(os.path.dirname(__file__),
                                   "sample_data")
 
+config.site_info_file = os.path.join(os.path.dirname(__file__),
+                                  "sample_data","site_info.csv")
 
 def test_fn2date():
     sitename = "harvard"
@@ -70,6 +73,16 @@ def test_get_siteinfo():
     siteinfo = utils.getsiteinfo(sitename)
 
     assert siteinfo['lon'] == -72.1715
+
+def test_get_siteinfo_local():
+    """
+    test getting site info from CSV
+    """
+
+    sitename = 'test'
+    siteinfo = utils.getsiteinfo(sitename)
+
+    assert siteinfo['lon'] == -60
 
 
 def test_deg2dms():
