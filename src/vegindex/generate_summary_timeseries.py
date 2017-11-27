@@ -64,7 +64,7 @@ from .quantile import quantile
 
 try:
     import configparser
-except:
+except ImportError:
     from ConfigParser import SafeConfigParser as configparser
 
 # set vars

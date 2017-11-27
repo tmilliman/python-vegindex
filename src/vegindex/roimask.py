@@ -61,7 +61,7 @@ class ROIMask(object):
         # read using PIL
         try:
             mask_img = Image.open(roiMaskPath)
-        except:
+        except IOError:
             sys.stderr.write("Unable to open mask file\n")
             return None
 

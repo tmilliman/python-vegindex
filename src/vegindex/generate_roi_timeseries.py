@@ -24,7 +24,7 @@ from . import utils
 # try python3 import then python2 import
 try:
     import configparser
-except:
+except ImportError:
     from ConfigParser import SafeConfigParser as configparser
 
 # set vars
@@ -130,7 +130,7 @@ def main():
         try:
             mask_img = Image.open(mask_path)
 
-        except:
+        except IOError:
             sys.stderr.write("Unable to open ROI mask file\n")
             sys.exit(1)
 

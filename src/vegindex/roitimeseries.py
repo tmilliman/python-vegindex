@@ -61,7 +61,7 @@ def get_dn_means(im, roimask):
     # split into bands
     try:
         (im_r, im_g, im_b) = im.split()
-    except:
+    except ValueError:
         sys.stderr.write("Wrong image type\n")
         return None
 
@@ -75,7 +75,7 @@ def get_dn_means(im, roimask):
     # have same size this will raise an exception.
     try:
         r_ma = np.ma.array(r_array, mask=roimask)
-    except:
+    except ValueError:
         errstr = "Error applying mask to image file.\n"
         sys.stderr.write(errstr)
         return None
@@ -103,7 +103,7 @@ def get_roi_stats(im, roimask):
     # split into bands
     try:
         (im_r, im_g, im_b) = im.split()
-    except:
+    except ValueError:
         sys.stderr.write("Wrong image type\n")
         return None
 
@@ -254,7 +254,7 @@ def get_im_metadata(impath):
                 try:
                     key, value = line.split('=')
                     meta_dict[key] = value.rstrip()
-                except:
+                except ValueError:
                     pass
 
         # make sure we got some key/value pairs
@@ -382,9 +382,8 @@ class ROITimeSeries(object):
         # class for site with all the site info ... should
         # figure out how to use Django classes here
         if site:
-            try:
-                si = utils.getsiteinfo(site)
-            except:
+            si = utils.getsiteinfo(site)
+            if si is None:
                 si = {'lat': None,
                       'lon': None,
                       'elev': None,
@@ -430,7 +429,7 @@ class ROITimeSeries(object):
         try:
             im = Image.open(impath, 'r')
             im.load()
-        except:
+        except IOError:
             errstr1 = "Unable to open file: %s\n" % (impath,)
             errstr2 = "Skipping this file.\n"
             sys.stderr.write(errstr1)
@@ -575,7 +574,7 @@ class ROITimeSeries(object):
         FN_INDEX = [row['filename'] for row in self.rows]
         try:
             row_index = FN_INDEX.index(rowfn)
-        except:
+        except ValueError:
             row_index = None
 
         # replace or append

@@ -168,7 +168,7 @@ class GCCTimeSeries(object):
         if site:
             try:
                 si = utils.getsiteinfo(site)
-            except:
+            except ValueError:
                 si = {'lat': None,
                       'lon': None,
                       'elev': None,
@@ -463,7 +463,7 @@ class GCCTimeSeries(object):
         DT_INDEX = [row['date'] for row in self.rows]
         try:
             row_index = DT_INDEX.index(date)
-        except:
+        except ValueError:
             row_index = None
 
         # replace or append

@@ -219,26 +219,35 @@ def getsiteimglist(sitename,
 
 def getsiteinfo(sitename):
     """
-    Simple function to return the site info for a single site in a dictionary
-    by grabbing JSON from a URL, or a locally defined CSV file with similar
-    information for a lightweight implementation.
+    Simple function to return the site info for a single site in a
+    dictionary by grabbing JSON from a URL, or a locally defined CSV
+    file with similar information for a lightweight implementation.
+
     """
 
-    siteinfo = {}
+    siteinfo = None
+    infourl = "https://phenocam.sr.unh.edu/webcam/" + \
+              "sites/{0}/info/".format(sitename)
+
+    # first try to get siteinfo from URL
     try:
-        infourl = "https://phenocam.sr.unh.edu/webcam/" + \
-                  "sites/{0}/info/".format(sitename)
-        response = requests.get(infourl).json()
-    except:
+        response = requests.get(infourl, timeout=0.1)
+        response.raise_for_status()
+        siteinfo = response.json()
+    except requests.exceptions.RequestException:
+        pass
+
+    # if there was an error then try a local file
+    if siteinfo is None:
         try:
             df = pd.read_csv(config.site_info_file, comment="#")
-            json_string = df[df.sitename == sitename].to_json(orient='records')
-            response = json.loads(json_string)[0]
-        except:
-            sys.stderr.write("Error getting site info.\n")
-            return None
+        except IOError:
+            sys.stderr.write("Error getting site info from file.\n")
 
-    siteinfo = response
+        json_string = df[df.sitename == sitename].to_json(
+            orient='records')
+        siteinfo = json.loads(json_string)[0]
+
     return siteinfo
 
 # ####################################################################
