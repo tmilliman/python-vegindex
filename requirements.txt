@@ -6,3 +6,4 @@ numpy>=1.10.4
 pillow>=4.0.0
 requests>=2.11.1
 scandir>=1.4
+pandas>=0.20.0
