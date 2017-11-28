@@ -331,7 +331,7 @@ class ROITimeSeries(object):
     Here's a proposed sample ROITimeSeries CSV file format:
 
         #
-        # All-image time series for arbutuslake
+        # ROI color statistics timeseries for arbutuslake
         #
         # Site: arbutuslake
         # Veg Type: DB
@@ -720,7 +720,8 @@ class ROITimeSeries(object):
         # write header
         hdstrings = []
         hdstrings.append('#\n')
-        hdstrings.append('# All-image time series for {0}\n'.format(self.site))
+        hdstrings.append(
+            '# ROI color statistics timeseries for {0}\n'.format(self.site))
         hdstrings.append('#\n')
         hdstrings.append('# Site: {0}\n'.format(self.site))
         hdstrings.append('# Veg Type: {0}\n'.format(self.roitype))
