@@ -248,7 +248,11 @@ The ``plot_roistats`` python script reads the output of
 ``generate_summary_timeseries`` script.  The ``gcc`` values for individual
 images are plotted as points and the three-day 90th-percentile summary
 is plotted as a line.  The color of the plotted points is used to show
-which data are filtered before calculating the summary statistics.
+which data (in red) are filtered before calculating the summary
+statistics.  The default filtering is shown and eliminates values
+where the sun elevation angle is low (< 10 degrees) and the mean
+brightness over the ROI is either low (< 100.) (very dark image)
+or high ( > 665.) (washed out image).
 
 ::
    
@@ -264,8 +268,9 @@ which data are filtered before calculating the summary statistics.
       -v, --verbose  increase output verbosity
 
 The script places the output .pdf file in the ROI directory alongside
-the .csv files used to produce the plot.
+the .csv files used to produce the plot.  
 
+.. image:: images/alligatorriver_DB_0001_roistats.png
 
 API
 ---
