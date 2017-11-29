@@ -244,9 +244,12 @@ def getsiteinfo(sitename):
         except IOError:
             sys.stderr.write("Error getting site info from file.\n")
 
-        json_string = df[df.sitename == sitename].to_json(
-            orient='records')
-        siteinfo = json.loads(json_string)[0]
+        try:
+            json_string = df[df.sitename == sitename].to_json(
+                orient='records')
+            siteinfo = json.loads(json_string)[0]
+        except IndexError:
+            siteinfo = None
 
     return siteinfo
 
