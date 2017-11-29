@@ -81,7 +81,7 @@ setup(
         'console_scripts': [
             'generate_roi_timeseries=vegindex.generate_roi_timeseries:main',
             'generate_summary_timeseries=vegindex.generate_summary_timeseries:main',
-            'plot_roistats:vegindex.plot_roistats:main'
+            'plot_roistats=vegindex.plot_roistats:main'
         ]
     },
 )
