@@ -14,10 +14,15 @@ import os
 
 import matplotlib.pyplot as plt
 import pandas as pd
-import vegindex as vi
+
+# import vegindex as vi
+from . import config
 
 plt.style.use('ggplot')
-archive_dir = vi.config.archive_dir
+archive_dir = config.archive_dir
+MIN_SUN_ANGLE = config.MIN_SUN_ANGLE
+MAX_BRT = config.MAX_BRT
+MIN_BRT = config.MIN_BRT
 
 
 def main():
@@ -80,10 +85,15 @@ def main():
     df['brt'] = df['r_mean'] + df['g_mean'] + df['b_mean']
 
     # for the gcc percentiles we filter data first
-    df_low = df[df.solar_elev < 10.]
-    df_day = df[df.solar_elev >= 10.]
-    df_brt_filtered = df_day[(df_day.brt < 100) | (df_day.brt > 665)]
-    df_good = df_day[(df_day.brt >= 100.) & (df_day.brt <= 665.)]
+    #
+    # NOTE: should use vegindex routines to read the ROI list
+    # which should pick up any overrides of the defaults!
+    #
+    df_low = df[df.solar_elev < MIN_SUN_ANGLE]
+    df_day = df[df.solar_elev >= MIN_SUN_ANGLE]
+    df_brt_filtered = df_day[(df_day.brt < MIN_BRT) |
+                             (df_day.brt > MAX_BRT)]
+    df_good = df_day[(df_day.brt >= MIN_BRT) & (df_day.brt <= MAX_BRT)]
     df_filtered = pd.concat([df_low, df_brt_filtered])
 
     # read in 3-day summary filename
