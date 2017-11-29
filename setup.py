@@ -70,7 +70,8 @@ setup(
         'configparser>=3.5.0',
         'requests>=2.17.3',
         'numpy==1.13.0',
-        'pandas>=0.20.0'
+        'pandas>=0.20.0',
+        'matplotlib>=1.5.3'
     ],
     extras_require={
         # eg:
