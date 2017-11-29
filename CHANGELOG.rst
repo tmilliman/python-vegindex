@@ -1,6 +1,15 @@
 Changelog
 =========
 
+0.5.0 (2017-11-29)
+--------------------
+* Fix header on roistats.csv file
+* Add plotting script (matplotlib library is now required)
+* Remove timeout on requests query which was causing
+  tests to fail.
+* Update usage docs
+
+
 0.4.0 (2017-11-27)
 --------------------
 * Add fallback to local site_info.csv file to get basic site metadata
