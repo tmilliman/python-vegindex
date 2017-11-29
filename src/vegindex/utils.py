@@ -231,7 +231,7 @@ def getsiteinfo(sitename):
 
     # first try to get siteinfo from URL
     try:
-        response = requests.get(infourl, timeout=0.1)
+        response = requests.get(infourl)
         response.raise_for_status()
         siteinfo = response.json()
     except requests.exceptions.RequestException:
