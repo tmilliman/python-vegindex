@@ -2,10 +2,10 @@
 Installation
 ============
 
-The initial version of the package only works with Python2 and
-has only been tested on version 2.7.  A Python3 version should
-be available soon.  The package had limited testing on linux, OSX
-and Windows.
+The current version of the package works with either Python2 or
+Python 3.  The primary use and testing of the package has
+been done on a Debian linux system. The package had limited
+testing on OSX and Windows.
 
 Virtual Environments
 --------------------
@@ -44,6 +44,17 @@ do the following:
 
    pip install Pillow
    pip install vegindex
+
+
+Current versions of pip allow you to specify the python version and
+can be used with python3.
+
+If you will be using Python 3 then you already have ``pyvenv`` installed
+and can use that to create your virtual environment.  
+
+
+python3 -m venv vegindex3
+source vegindex3/bin/activate
 
 
 Platform Notes
