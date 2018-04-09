@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.5.2 (2018-04-09)
+------------------
+* Really fix bug in plot_roistats when no data are filtered.
+
 0.5.1 (2018-04-09)
 ------------------
 * Fix bug in plot_roistats when no data are filtered.
