@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
@@ -95,6 +96,7 @@ def main():
                              (df_day.brt > MAX_BRT)]
     df_good = df_day[(df_day.brt >= MIN_BRT) & (df_day.brt <= MAX_BRT)]
     df_filtered = pd.concat([df_low, df_brt_filtered])
+    nrows_filtered, ncols = df_filtered.shape
 
     # read in 3-day summary filename
     df2 = pd.read_csv(inpath2, comment="#", parse_dates=[0])
@@ -102,7 +104,7 @@ def main():
 
     # make plot
     ax = df_good.gcc.plot(style='k.', markersize=.3, figsize=[16, 5])
-    if df_filtered.count > 0:
+    if nrows_filtered > 0:
         df_filtered.gcc.plot(style='r.', ax=ax, markersize=.5)
     df2.gcc_90.plot(style='g-', ax=ax)
 
@@ -110,9 +112,14 @@ def main():
     ax.set_ylabel('gcc')
     ax.set_xlabel('date')
     lines, labels = ax.get_legend_handles_labels()
-    ax.legend(lines[1:], ['filtered values',
-                          '3-day gcc 90th percentile'],
-              loc="best")
+    if nrows_filtered > 0:
+        ax.legend(lines[1:], ['filtered values',
+                              '3-day gcc 90th percentile'],
+                  loc="best")
+    else:
+        ax.legend(lines[1:], ['3-day gcc 90th percentile'],
+                  loc="best")
+
     fig = ax.get_figure()
     fig.savefig(outpath)
 
