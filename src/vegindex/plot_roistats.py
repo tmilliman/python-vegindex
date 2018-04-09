@@ -102,7 +102,8 @@ def main():
 
     # make plot
     ax = df_good.gcc.plot(style='k.', markersize=.3, figsize=[16, 5])
-    df_filtered.gcc.plot(style='r.', ax=ax, markersize=.5)
+    if df_filtered.count > 0:
+        df_filtered.gcc.plot(style='r.', ax=ax, markersize=.5)
     df2.gcc_90.plot(style='g-', ax=ax)
 
     ax.set_title('{} {}'.format(sitename, roiname))
