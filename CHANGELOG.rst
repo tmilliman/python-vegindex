@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.5.1 (2018-04-09)
+------------------
+* Fix bug in plot_roistats when no data are filtered.
+* Update docs
+
 0.5.0 (2017-11-29)
 --------------------
 * Fix header on roistats.csv file
@@ -8,7 +13,6 @@ Changelog
 * Remove timeout on requests query which was causing
   tests to fail.
 * Update usage docs
-
 
 0.4.0 (2017-11-27)
 --------------------
@@ -19,20 +23,15 @@ Changelog
 ---------------------
 * Change data product name from _roi_statistics.csv to _roistats.csv
 
-
 0.3.0 (2017-09-12)
 ---------------------
-
 * Added support for .meta files
 * Change data product name from _timeseries.csv to _roi_statistics.csv
 
 0.2.0rc1 (2017-06-14)
 ---------------------
-
 * Added support for python3
-
 
 0.1.1rc3 (2017-06-13)
 ----------------------
-
 * First release on PyPI.
