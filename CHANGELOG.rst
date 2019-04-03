@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.5.3 (2019-04-03)
+* Update requirements for python 3.7
+* Add prefix to regular expressions
+
 0.5.2 (2018-04-09)
 ------------------
 * Really fix bug in plot_roistats when no data are filtered.
