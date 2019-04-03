@@ -140,7 +140,7 @@ def getsiteimglist(sitename,
             continue
 
         # check if this yeardir could be a 4-digit year.  if not skip
-        if not re.match('^\d\d\d\d$', yeardir):
+        if not re.match(r'^\d\d\d\d$', yeardir):
             continue
 
         # check if we're before startYear
@@ -159,7 +159,7 @@ def getsiteimglist(sitename,
                 continue
 
             # check if this mondir could be a 2-digit month.  if not skip
-            if not re.match('^\d\d$', mondir):
+            if not re.match(r'^\d\d$', mondir):
                 continue
 
             # check month range
@@ -177,10 +177,10 @@ def getsiteimglist(sitename,
             try:
                 imgfiles = os.listdir(monpath)
                 if getIR:
-                    image_re = "^%s_IR_%s_%s_.*\.jpg$" % (
+                    image_re = r"^%s_IR_%s_%s_.*\.jpg$" % (
                         sitename, yeardir, mondir)
                 else:
-                    image_re = "^%s_%s_%s_.*\.jpg$" % (
+                    image_re = r"^%s_%s_%s_.*\.jpg$" % (
                         sitename, yeardir, mondir)
 
                 for imgfile in imgfiles:

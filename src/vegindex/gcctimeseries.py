@@ -54,7 +54,7 @@ def _get_comment_field(comments, var_string):
     """
 
     # set pattern to match
-    pattern = '# {0}:\ (?P<var_value>.+)$'.format(var_string)
+    pattern = r'# {0}:\ (?P<var_value>.+)$'.format(var_string)
 
     var_value = ""
     for line in comments:

@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 setup(
     name='vegindex',
-    version='0.5.2',
+    version='0.5.3',
     license='MIT',
     description='Python tools for generating vegetation index timeseries from PhenoCam images.',
     long_description='%s\n%s' % (
@@ -53,6 +53,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         # 'Programming Language :: Python :: Implementation :: CPython',
         # 'Programming Language :: Python :: Implementation :: PyPy',
         # 'Programming Language :: Python :: Implementation :: IronPython',
