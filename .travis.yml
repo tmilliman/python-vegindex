@@ -33,7 +33,7 @@ matrix:
         - TOXENV=3.7-cover,report,codecov
     - python: '3.7'
       env:
-        - TOXENV=3.6-nocov
+        - TOXENV=3.7-nocov
 before_install:
   - python --version
   - uname -a
