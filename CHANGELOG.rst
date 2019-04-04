@@ -2,6 +2,7 @@ Changelog
 =========
 
 0.5.3 (2019-04-03)
+------------------
 * Update requirements for python 3.7
 * Add prefix to regular expressions
 
