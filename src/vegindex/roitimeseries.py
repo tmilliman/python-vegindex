@@ -510,6 +510,12 @@ class ROITimeSeries(object):
         else:
             exposure = ND_INT
 
+        # get awb flag - if None just set to missing value
+        try:
+            awbflag = int(im_metadata['balance'])
+        except:
+            awbflag = ND_INT
+
         # make a structure for the roi timeseries
         roits_row = {'date': img_date,
                      'local_std_time': img_time,
@@ -553,7 +559,8 @@ class ROITimeSeries(object):
                      'filename': '%s' % (img_file,),
                      'mask_index': mask_index,
                      'solar_elev': sun_elev,
-                     'exposure': exposure}
+                     'exposure': exposure,
+                     'awbflag': awbflag}
 
         return roits_row
 
@@ -631,6 +638,7 @@ class ROITimeSeries(object):
                                    roits_row['filename'],
                                    roits_row['solar_elev'],
                                    roits_row['exposure'],
+                                   roits_row['awbflag'],
                                    roits_row['mask_index'])
 
         if roits_row['gcc'] == ND_FLOAT:
@@ -755,9 +763,8 @@ class ROITimeSeries(object):
             fo.write(line)
 
         # write fields line
-        fields_str = 'date,local_std_time,doy,filename,' + \
-                     'solar_elev,exposure,' + \
-                     'mask_index,gcc,rcc,' + \
+        fields_str = 'date,local_std_time,doy,filename,solar_elev,' + \
+                     'exposure,awbflag,mask_index,gcc,rcc,' + \
                      'r_mean,r_std,r_5_qtl,r_10_qtl,r_25_qtl,r_50_qtl,' + \
                      'r_75_qtl,r_90_qtl,r_95_qtl,' + \
                      'g_mean,g_std,g_5_qtl,g_10_qtl,g_25_qtl,g_50_qtl,' + \
@@ -891,10 +898,15 @@ class ROITimeSeries(object):
 
             row['datetime'] = im_dt
 
+            # check for awbflag
+            if not 'awbflag' in row.keys():
+                row['awbflag'] = ND_INT
+                
             # convert strings to numbers - there's got to be a more
             # efficient way to do this!
             row['solar_elev'] = _float_or_none(row['solar_elev'])
             row['exposure'] = _int_or_none(_float_or_none(row['exposure']))
+            row['awbflag'] = _int_or_none(_float_or_none(row['awbflag']))
             row['mask_index'] = _int_or_none(row['mask_index'])
             row['gcc'] = _float_or_none(row['gcc'])
             row['rcc'] = _float_or_none(row['rcc'])
