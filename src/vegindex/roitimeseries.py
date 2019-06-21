@@ -631,7 +631,7 @@ class ROITimeSeries(object):
                   roits_row['b_75_qtl'], roits_row['b_90_qtl'],
                   roits_row['b_95_qtl']]
 
-        csvstr_0 = '{},{},{},{},{:.5f},{},{}'
+        csvstr_0 = '{},{},{},{},{:.5f},{},{},{}'
         csvstr_0 = csvstr_0.format(roits_row['date'],
                                    roits_row['local_std_time'],
                                    row_doy,
