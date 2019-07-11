@@ -7,4 +7,5 @@ Sphinx>=1.4.8
 pytest>=2.9.2
 pytest-cov>=2.6.1
 check-manifest>=0.35
+twine>=1.13.0
 -r requirements.txt

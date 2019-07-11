@@ -137,7 +137,7 @@ class ROIList(object):
         """
 
         # open file for read-only access with universal line endings
-        f = open(roiListPath, 'rU')
+        f = open(roiListPath, 'r')
 
         # get comment lines
         comments = list(_get_comments(f))
