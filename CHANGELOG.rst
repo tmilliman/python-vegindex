@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.6.0 (2019-07-12)
+------------------
+* Add awbflag (auto white-balance) to roistats file
+
 0.5.3 (2019-04-03)
 ------------------
 * Update requirements for python 3.7
