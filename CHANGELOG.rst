@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6.1 (2019-07-15)
+------------------
+* Update installation doc.
+* Simple test for reading roistats file.
+
 0.6.0 (2019-07-12)
 ------------------
 * Add awbflag (auto white-balance) to roistats file
