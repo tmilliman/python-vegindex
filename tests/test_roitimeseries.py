@@ -104,5 +104,31 @@ def test_roits_metadata():
     image_metadata = roitimeseries.get_im_metadata(image_path)
     im_exposure = int(image_metadata['exposure'])
     im_saturation = int(image_metadata['saturation'])
+    im_balance = int(image_metadata['balance'])
     np.testing.assert_equal(im_exposure, 44)
     np.testing.assert_equal(im_saturation, 140)
+    np.testing.assert_equal(im_balance, 0)
+
+
+def test_reading_roits_file():
+    """
+    test reading in existing roits timeseries
+    """
+
+    sitename = 'harvard'
+    roiname = 'DB_0001'
+    roistats_file = "{}_{}_roistats.csv".format(sitename, roiname)
+
+    # set up path to roistats file
+    roistats_path = os.path.join(SAMPLE_DATA_DIR, sitename, 'ROI',
+                                 roistats_file)
+
+    roits = roitimeseries.ROITimeSeries(site=sitename,
+                                        ROIListID=roiname)
+
+    roits.readCSV(roistats_path)
+    last_row = roits.rows[-1]
+
+    np.testing.assert_equal(last_row['filename'],
+                            'harvard_2009_12_31_213139.jpg')
+    
