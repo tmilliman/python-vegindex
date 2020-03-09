@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 setup(
     name='vegindex',
-    version='0.5.3',
+    version='0.6.1',
     license='MIT',
     description='Python tools for generating vegetation index timeseries from PhenoCam images.',
     long_description='%s\n%s' % (
@@ -32,6 +32,7 @@ setup(
                    re.M | re.S).sub('', read('README.rst')),
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
     ),
+    long_description_content_type='text/x-rst',
     author='Thomas Milliman',
     author_email='thomas.milliman@unh.edu',
     url='https://github.com/tmilliman/python-vegindex',

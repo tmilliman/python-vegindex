@@ -33,12 +33,13 @@ At the command line:
     pip install vegindex
 
 
-The package does however depend on other packages, most
-notably ``PIL/pillow``, ``numpy`` and ``pyephem`` which may need to be
-installed separately on your platform.  In particular installing
-``PIL/pillow`` seems to cause problems and not work automatically.  If
-you have a modern version of ``pip`` installed you can often just
-do the following:
+The package does however depend on other packages, in particular
+``PIL/pillow``, ``numpy``, ``matplotlib``, ``pandas``, ``requests``,
+``configparser`` and ``pyephem`` which may need to be installed
+separately on your platform.  In particular installing ``PIL/pillow``
+seems to cause problems and often does not work automatically.  If you
+have a modern version of ``pip`` installed you can often just do the
+following:
 
 ::
 
@@ -49,25 +50,33 @@ do the following:
 Current versions of pip allow you to specify the python version and
 can be used with python3.
 
-If you will be using Python 3 then you already have ``pyvenv`` installed
+If you will be using Python 3 then you already have venv installed
 and can use that to create your virtual environment.  
 
+::
+   
+   python3 -m venv vegindex3
+   source vegindex3/bin/activate
+   pip install numpy matplotlib pillow requests pandas \
+       configparser pyephem
+   pip install vegindex
 
-python3 -m venv vegindex3
-source vegindex3/bin/activate
+
+For conda/miniconda environments:
+
+::
+   
+    conda create --name vegindex3 python=3.7
+    conda activate vegindex3
+    conda install numpy matplotlib pillow requests pandas \
+       configparser pyephem
+    pip install vegindex
 
 
-Platform Notes
---------------
+With ``pipenv`` you can do the following in your working directory:
 
-OSX
-^^^
-TBD
-
-Linux
-^^^^^
-TBD
-
-Windows
-^^^^^^^
-TBD
+::
+   
+   pipenv shell
+   pipenv install vegindex
+    

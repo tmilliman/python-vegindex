@@ -51,7 +51,7 @@ The algorithms used in in this package have been discussed in numerous
 publications.  You can find a list of publications for the PhenoCam
 Network project `here <https://phenocam.sr.unh.edu/webcam/publications/>`_.
 The details of the calculation of GCC are presented in this
-`python notebook <https://github.com/tmilliman/phenocam_notebooks/blob/master/Standard_Processing_ROI_Stats/PhenoCam_ROI_stats.ipynb>`_
+`jupyter notebook <https://nbviewer.jupyter.org/github/tmilliman/phenocam_notebooks/blob/master/Standard_Processing_ROI_Stats/PhenoCam_ROI_stats.ipynb>`_
 .
 
 ..

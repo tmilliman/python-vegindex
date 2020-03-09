@@ -513,7 +513,8 @@ class ROITimeSeries(object):
         # get awb flag - if None just set to missing value
         try:
             awbflag = int(im_metadata['balance'])
-        except:
+
+        except Exception:
             awbflag = ND_INT
 
         # make a structure for the roi timeseries
@@ -899,9 +900,9 @@ class ROITimeSeries(object):
             row['datetime'] = im_dt
 
             # check for awbflag
-            if not 'awbflag' in row.keys():
+            if 'awbflag' not in row.keys():
                 row['awbflag'] = ND_INT
-                
+
             # convert strings to numbers - there's got to be a more
             # efficient way to do this!
             row['solar_elev'] = _float_or_none(row['solar_elev'])

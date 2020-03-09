@@ -1,7 +1,17 @@
 Changelog
 =========
 
+0.6.1 (2019-07-15)
+------------------
+* Update installation doc.
+* Simple test for reading roistats file.
+
+0.6.0 (2019-07-12)
+------------------
+* Add awbflag (auto white-balance) to roistats file
+
 0.5.3 (2019-04-03)
+------------------
 * Update requirements for python 3.7
 * Add prefix to regular expressions
 
