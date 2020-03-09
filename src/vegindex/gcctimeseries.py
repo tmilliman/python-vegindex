@@ -568,9 +568,9 @@ class GCCTimeSeries(object):
 
         # write header
         hdstrings = []
-        hdstrings.append('#\n')
-        hdstrings.append('# {0}-day summary product time' +
-                         'series for {1}\n'.format(self.nday, self.site))
+        hdstrings.append('#\n')        
+        hdstrings.append('# {0}-day summary product time'.format(self.nday) +
+                         'series for {0}\n'.format(self.site))
         hdstrings.append('#\n')
         hdstrings.append('# Site: {0}\n'.format(self.site))
         hdstrings.append('# Veg Type: {0}\n'.format(self.roitype))
