@@ -804,6 +804,9 @@ class ROITimeSeries(object):
         """
         selected_rows = []
         for row in self.rows:
+            if row['r_mean'] == ND_FLOAT:
+             continue
+            
             brt = row['r_mean'] + row['g_mean'] + row['b_mean']
             if (row['datetime'].time() < tod_min) or \
                (row['datetime'].time() > tod_max) or \
