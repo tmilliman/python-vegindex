@@ -13,7 +13,6 @@ import os
 
 import pytest
 
-from vegindex import config
 from vegindex import roilist
 
 # MODULE_DIR = os.path.dirname(vegindex.__file__)
@@ -52,6 +51,7 @@ def test_roilist_vegtype():
                                  descrip='test ROI',
                                  sequence_number=1,
                                  owner='phenocam')
+        print(mylist)
 
 
 def test_roilist_readcsv():
@@ -65,7 +65,6 @@ def test_roilist_readcsv():
                                 roilist_site,
                                 'ROI',
                                 roilist_file)
-
     mylist = roilist.ROIList()
     mylist.readCSV(roilist_path)
     assert mylist.site == 'harvard'
