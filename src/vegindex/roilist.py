@@ -203,6 +203,7 @@ class ROIList(object):
         csvrdr = csv.DictReader(_filter_comments(f))
 
         roimaskList = []
+        last_end_dt = datetime(1999,1,1,0,0,0)
         for row in csvrdr:
 
             roi_row = {}
@@ -218,6 +219,18 @@ class ROIList(object):
             end_dt = datetime(int(end_yr), int(end_mo), int(end_dom),
                               int(end_hr), int(end_min), int(end_sec))
 
+            # validate that end_dt > start_dt
+            if end_dt <= start_dt:
+                raise ValueError("Mask end date is <= start date")
+
+            # validate that masks are in order and non-overlapping
+            if start_dt < last_end_dt:
+                raise ValueError("Mask date ranges are overlapping or" +
+                                 " out of order")
+
+            # should also check that date sample image is in the
+            # date range of the mask
+            
             roi_row['start_dt'] = start_dt
             roi_row['end_dt'] = end_dt
             roi_row['maskfile'] = row['maskfile']
@@ -225,7 +238,7 @@ class ROIList(object):
 
             roimaskList.append(roi_row)
 
-        f.close()
+            f.close()
 
         self.masks = roimaskList
 
