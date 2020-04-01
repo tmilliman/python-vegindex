@@ -198,12 +198,12 @@ class ROIList(object):
         # no validation for Description
         self.descrip = _get_comment_field(comments, 'Description')
 
-        # get mask rows
+        # rewind file
         f.seek(0)
         csvrdr = csv.DictReader(_filter_comments(f))
 
         roimaskList = []
-        last_end_dt = datetime(1999,1,1,0,0,0)
+        last_end_dt = datetime(1999, 1, 1, 0, 0, 0)
         for row in csvrdr:
 
             roi_row = {}
@@ -230,7 +230,7 @@ class ROIList(object):
 
             # should also check that date sample image is in the
             # date range of the mask
-            
+
             roi_row['start_dt'] = start_dt
             roi_row['end_dt'] = end_dt
             roi_row['maskfile'] = row['maskfile']
@@ -238,7 +238,7 @@ class ROIList(object):
 
             roimaskList.append(roi_row)
 
-            f.close()
+        f.close()
 
         self.masks = roimaskList
 
