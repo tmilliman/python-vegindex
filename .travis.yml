@@ -25,7 +25,7 @@ matrix:
         - TOXENV=3.7-cover
     - python: '3.8'
       env:
-        - TOXENV=3.7-cover
+        - TOXENV=3.8-cover
 before_install:
   - python --version
   - uname -a
