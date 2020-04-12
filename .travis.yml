@@ -22,7 +22,7 @@ matrix:
         - TOXENV=3.6-nocov
     - python: '3.7'
       env:
-        - TOXENV=3.7-cover
+        - TOXENV=3.7-nocov
     - python: '3.8'
       env:
         - TOXENV=3.8-cover
