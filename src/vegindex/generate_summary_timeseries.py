@@ -291,6 +291,15 @@ def main():
         while (roits_ndx < nrows and
                img_date[roits_ndx] >= start_date and
                img_date[roits_ndx] < end_date):
+
+            # skip this row if awbflag is 1
+            if roits_rows[roits_ndx]['awbflag'] == 1:
+                if roits_ndx < nrows:
+                    roits_ndx += 1
+                    continue
+                else:
+                    break
+
             filenames.append(roits_rows[roits_ndx]['filename'])
             r_dn = roits_rows[roits_ndx]['r_mean']
             r_dn_vals.append(r_dn)
@@ -301,7 +310,7 @@ def main():
             dnsum = r_dn + g_dn + b_dn
 
             # NOTE: I'm recomputing gcc, rcc, bcc from DN values rather
-            # than using value stored in all-image CSV
+            # than using value stored in roistats CSV
             if dnsum <= 0:
                 rcc = np.nan
                 bcc = np.nan

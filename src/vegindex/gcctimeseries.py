@@ -20,8 +20,8 @@ def _filter_comments(f):
     """
     filter comments from csv file
     """
-    for l in f:
-        line = l.rstrip()
+    for line in f:
+        line = line.rstrip()
         if line and not line.startswith("#"):
             yield line
 
@@ -30,8 +30,8 @@ def _get_comments(f):
     """
     return JUST the comment lines from a csv file
     """
-    for l in f:
-        line = l.rstrip()
+    for line in f:
+        line = line.rstrip()
         if line and line.startswith("#"):
             yield line
 
@@ -569,8 +569,8 @@ class GCCTimeSeries(object):
         # write header
         hdstrings = []
         hdstrings.append('#\n')
-        hdstrings.append('# {0}-day summary product time' +
-                         'series for {1}\n'.format(self.nday, self.site))
+        hdstrings.append(('# {0}-day summary product time' +
+                          'series for {1}\n').format(self.nday, self.site))
         hdstrings.append('#\n')
         hdstrings.append('# Site: {0}\n'.format(self.site))
         hdstrings.append('# Veg Type: {0}\n'.format(self.roitype))

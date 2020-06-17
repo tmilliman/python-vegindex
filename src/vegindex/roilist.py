@@ -13,8 +13,8 @@ def _filter_comments(f):
     """
     filter comments from csv file
     """
-    for l in f:
-        line = l.rstrip()
+    for line in f:
+        line = line.rstrip()
         if line and not line.startswith("#"):
             yield line
 
@@ -23,8 +23,8 @@ def _get_comments(f):
     """
     return JUST the comment lines from a csv file
     """
-    for l in f:
-        line = l.rstrip()
+    for line in f:
+        line = line.rstrip()
         if line and line.startswith("#"):
             yield line
 
