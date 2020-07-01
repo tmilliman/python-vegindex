@@ -51,6 +51,7 @@ def _int_or_none(str):
 
 ######################################################################
 
+
 def get_roi_IR_stats(im, roimask):
     """
     Function to return a more extensive collection of stats for DN
@@ -83,11 +84,10 @@ def get_roi_IR_stats(im, roimask):
         ir_mean = ND_FLOAT
         ir_std = ND_FLOAT
         ir_pcts = [ND_FLOAT, ND_FLOAT, ND_FLOAT, ND_FLOAT,
-                  ND_FLOAT, ND_FLOAT, ND_FLOAT]
+                   ND_FLOAT, ND_FLOAT, ND_FLOAT]
         return {'mean': ir_mean,
-                'stdev':ir_std,
+                'stdev': ir_std,
                 'percentiles': ir_pcts}
-
 
     if brt_array[30:-30, 30:-30].mean() > 725.0:
         warningstr = "WARNING: mostly white image.\n"
@@ -95,9 +95,9 @@ def get_roi_IR_stats(im, roimask):
         ir_mean = ND_FLOAT
         ir_std = ND_FLOAT
         ir_pcts = [ND_FLOAT, ND_FLOAT, ND_FLOAT, ND_FLOAT,
-                  ND_FLOAT, ND_FLOAT, ND_FLOAT]
+                   ND_FLOAT, ND_FLOAT, ND_FLOAT]
         return {'mean': ir_mean,
-                'stdev':ir_std,
+                'stdev': ir_std,
                 'percentiles': ir_pcts}
 
     # try applying mask to ir image ... if mask and image don't
@@ -124,7 +124,7 @@ def get_roi_IR_stats(im, roimask):
 
     # return list of values
     return {'mean': ir_mean,
-            'stdev':ir_std,
+            'stdev': ir_std,
             'percentiles': ir_pcts}
 
 
@@ -451,7 +451,6 @@ class IRROITimeSeries(object):
                    roits_row['ir_75_qtl'], roits_row['ir_90_qtl'],
                    roits_row['ir_95_qtl']]
 
-
         csvstr_0 = '{},{},{},{},{:.5f},{},{},{}'
         csvstr_0 = csvstr_0.format(roits_row['date'],
                                    roits_row['local_std_time'],
@@ -473,8 +472,8 @@ class IRROITimeSeries(object):
             csvfmt = '{}'
         else:
             csvfmt = '{:.0f}'
-        csvstr_2 = ','.join(csvfmt.format(k) for k in ir_pcts)
 
+        csvstr_2 = ','.join(csvfmt.format(k) for k in ir_pcts)
 
         csvstr = ','.join([csvstr_0, csvstr_1, csvstr_2])
 
