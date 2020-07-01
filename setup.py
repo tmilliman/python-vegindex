@@ -83,6 +83,8 @@ setup(
     entry_points={
         'console_scripts': [
             'generate_roi_timeseries=vegindex.generate_roi_timeseries:main',
+            'update_roi_timeseries=vegindex.update_roi_timeseries:main',
+            'generate_roi_ir_timeseries=vegindex.generate_roi_ir_timeseries:main',
             'generate_summary_timeseries=vegindex.generate_summary_timeseries:main',
             'plot_roistats=vegindex.plot_roistats:main'
         ]
