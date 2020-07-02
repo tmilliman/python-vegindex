@@ -4,19 +4,19 @@
 Update an ROI timeseries CSV file.
 """
 
-import os, sys
-from datetime import date, time, timedelta
 import argparse
-
-# use this because numpy/openblas is automatically multi-threaded.
-os.environ["OMP_NUM_THREADS"] = "1"
-import numpy as np
-
+import os
+import sys
 from ConfigParser import SafeConfigParser
+from datetime import timedelta
 
+import numpy as np
 from PIL import Image
 
 import vegindex as vi
+
+# use this because numpy/openblas is automatically multi-threaded.
+os.environ["OMP_NUM_THREADS"] = "1"
 
 # set vars
 
@@ -34,19 +34,19 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     # options
-    parser.add_argument("-v","--verbose",
+    parser.add_argument("-v", "--verbose",
                         help="increase output verbosity",
                         action="store_true",
                         default=False)
-    parser.add_argument("-n","--dry-run",
+    parser.add_argument("-n", "--dry-run",
                         help="Process data but don't save results",
                         action="store_true",
                         default=False)
 
     # positional arguments
-    parser.add_argument("site",help="PhenoCam site name")
-    parser.add_argument("roiname",help="ROI name, e.g. canopy_0001")
-    
+    parser.add_argument("site", help="PhenoCam site name")
+    parser.add_argument("roiname", help="ROI name, e.g. canopy_0001")
+
     # get args
     args = parser.parse_args()
     sitename = args.site
@@ -55,23 +55,23 @@ if __name__ == '__main__':
     dryrun = args.dry_run
 
     if verbose:
-        print "site: {0}".format(sitename)
-        print "roiname: {0}".format(roiname)
-        print "verbose: {0}".format(verbose)
-        print "dryrun: {0}".format(dryrun)
+        print("site: {0}".format(sitename))
+        print("roiname: {0}".format(roiname))
+        print("verbose: {0}".format(verbose))
+        print("dryrun: {0}".format(dryrun))
 
     # set output filename
     outname = '%s_%s_roistats.csv' % (sitename, roiname,)
-    outpath = os.path.join(archive_dir, sitename, 'ROI',outname)
+    outpath = os.path.join(archive_dir, sitename, 'ROI', outname)
     if verbose:
-        print "output file: {0}".format(outname)
+        print("output file: {0}".format(outname))
 
     # get ROI list
-    roi_list=vi.get_roi_list(sitename, roiname)
+    roi_list = vi.get_roi_list(sitename, roiname)
 
     # read existing CSV file - since this is an update throw
     # exception if the file doesn't already exist
-    try: 
+    try:
         roits = vi.ROITimeSeries(site=sitename, ROIListID=roiname)
         roits.readCSV(outpath)
     except IOError:
@@ -81,12 +81,13 @@ if __name__ == '__main__':
 
     # read in config file for this site if it exists
     config_file = "{0}_{1}.cfg".format(sitename, roiname)
-    config_path = os.path.join(archive_dir,sitename,'ROI',config_file)
+    config_path = os.path.join(archive_dir, sitename, 'ROI',
+                               config_file)
     if os.path.exists(config_path):
         cfgparser = SafeConfigParser(defaults={'resize': str(default_resize)})
         cfgparser.read(config_path)
         if cfgparser.has_section('roi_timeseries'):
-            resizeFlg = cfgparser.getboolean('roi_timeseries','resize')
+            resizeFlg = cfgparser.getboolean('roi_timeseries', 'resize')
         else:
             resizeFlg = default_resize
 
@@ -101,40 +102,40 @@ if __name__ == '__main__':
 
     # print config values
     if verbose:
-        print ''
-        print 'ROI timeseries config:'
-        print '======================'
-        print 'roi_list: ', '{0}_{1}_roi.csv'.format(sitename, roiname)
+        print('')
+        print('ROI timeseries config:')
+        print('======================')
+        print('roi_list: ', '{0}_{1}_roi.csv'.format(sitename, roiname))
         if os.path.exists(config_path):
-            print "config file: {0}".format(config_file)
+            print("config file: {0}".format(config_file))
         else:
-            print "config file: None"
-        print 'Resize Flag: ', resizeFlg
+            print("config file: None")
+        print('Resize Flag: ', resizeFlg)
 
     # get list of images already in CSV
     old_imglist = roits.get_image_list()
-    
+
     # find last dt in current timeseries CSV
-    nlast = len(roits.rows)-1;
+    nlast = len(roits.rows) - 1
     dt_last = roits.rows[nlast]['datetime']
 
-    # add five seconds so that we don't reprocess last image 
+    # add five seconds so that we don't reprocess last image
     dt_last = dt_last + timedelta(seconds=5)
 
     # start with images newer than last dt
-    dt_start=dt_last
+    dt_start = dt_last
 
     if verbose:
-        print "last image at: {0}".format(dt_last)
-        
+        print("last image at: {0}".format(dt_last))
+
     # loop over mask entries in ROI list
     nimage = 0
     nupdate = 0
     for imask, roimask in enumerate(roi_list.masks):
-        
+
         roi_startDT = roimask['start_dt']
         roi_endDT = roimask['end_dt']
-    
+
         # skip this ROI maskfile if it's validity interval ends
         # before last date before update
         if roi_endDT < dt_start:
@@ -160,7 +161,7 @@ if __name__ == '__main__':
         # print roi_path
         try:
             mask_img = Image.open(mask_path)
-        except:
+        except Exception:
             sys.stderr.write("Unable to open ROI mask file\n")
             sys.exit(1)
 
@@ -182,14 +183,14 @@ if __name__ == '__main__':
         for impath in imglist:
 
             if debug:
-                print maskfile, impath
+                print(maskfile, impath)
 
             # check if image already exists in list -- just to be
             # sure!
             fn = os.path.basename(impath)
             try:
                 row_index = old_imglist.index(fn)
-            except:
+            except Exception:
                 row_index = None
 
             # append/insert row for this image/mask - shouldn't happen
@@ -201,14 +202,14 @@ if __name__ == '__main__':
 
             # check that we could append/insert a row
             if roits_row:
-                nupdate += 1           
+                nupdate += 1
             else:
                 continue
 
             if verbose:
                 csvstr = roits.format_csvrow(roits_row)
-                print csvstr
-                
+                print(csvstr)
+
             if debug:
                 if nupdate == 10:
                     break
@@ -219,7 +220,6 @@ if __name__ == '__main__':
     else:
         nout = roits.writeCSV(outpath)
 
-    print 'Images processed: %d' % (nimage,)
-    print 'Images added to CSV: %d' % (nupdate,)
-    print 'Total: %d' % (nout,)
-
+    print('Images processed: %d' % (nimage,))
+    print('Images added to CSV: %d' % (nupdate,))
+    print('Total: %d' % (nout,))

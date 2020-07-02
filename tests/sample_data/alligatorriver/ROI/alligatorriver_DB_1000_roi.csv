@@ -1,0 +1,16 @@
+#
+# ROI List for alligatorriver
+#
+# Site: alligatorriver
+# Veg Type: DB
+# ROI ID Number: 1000
+# Owner: bijan
+# Creation Date: 2018-04-02
+# Creation Time: 13:39:55
+# Update Date: 2018-04-02
+# Update Time: 13:39:55
+# Description: canopy level DB
+#
+start_date,start_time,end_date,end_time,maskfile,sample_image
+2012-05-03,12:01:10,9999-12-31,00:00:00,alligatorriver_DB_1000_01.tif,alligatorriver_2013_01_18_120109.jpg
+

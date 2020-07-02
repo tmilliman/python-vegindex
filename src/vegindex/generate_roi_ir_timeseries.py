@@ -17,10 +17,9 @@ import numpy as np
 from PIL import Image
 
 import vegindex as vi
+from vegindex import utils
 from vegindex.ir_roitimeseries import IRROITimeSeries
 from vegindex.vegindex import get_roi_list
-
-from vegindex import utils
 
 # try python3 import then python2 import
 try:
@@ -112,7 +111,7 @@ def main():
 
     # create new roi_timeseries object for this ROIList
     roits = IRROITimeSeries(site=sitename, ROIListID=roiname,
-                          resizeFlag=resizeFlg)
+                            resizeFlag=resizeFlg)
 
     # grab roi list
     roi_list = get_roi_list(sitename, roiname)
