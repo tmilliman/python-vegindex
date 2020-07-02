@@ -7,7 +7,13 @@ Update an ROI timeseries CSV file.
 import argparse
 import os
 import sys
-from ConfigParser import SafeConfigParser
+
+# try python3 import then python2 import
+try:
+    import configparser
+except ImportError:
+    from ConfigParser import SafeConfigParser as configparser
+
 from datetime import timedelta
 
 import numpy as np
