@@ -4,22 +4,24 @@
 Update an ROI timeseries CSV file.
 """
 
+from __future__ import absolute_import
+from __future__ import print_function
+
 import argparse
 import os
 import sys
-
-# try python3 import then python2 import
-try:
-    import configparser
-except ImportError:
-    from ConfigParser import SafeConfigParser as configparser
-
 from datetime import timedelta
 
 import numpy as np
 from PIL import Image
 
 import vegindex as vi
+
+# try python3 import then python2 import
+try:
+    import configparser
+except ImportError:
+    from ConfigParser import SafeConfigParser as configparser
 
 # use this because numpy/openblas is automatically multi-threaded.
 os.environ["OMP_NUM_THREADS"] = "1"
@@ -90,7 +92,7 @@ if __name__ == '__main__':
     config_path = os.path.join(archive_dir, sitename, 'ROI',
                                config_file)
     if os.path.exists(config_path):
-        cfgparser = SafeConfigParser(defaults={'resize': str(default_resize)})
+        cfgparser = configparser(defaults={'resize': str(default_resize)})
         cfgparser.read(config_path)
         if cfgparser.has_section('roi_timeseries'):
             resizeFlg = cfgparser.getboolean('roi_timeseries', 'resize')
