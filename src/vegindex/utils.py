@@ -56,6 +56,7 @@ def fn2date(sitename, filename, irFlag=False):
     # return list
     return [year, mon, day, hour, mins, sec]
 
+
 # ####################################################################
 
 
@@ -95,13 +96,13 @@ def fn2datetime(sitename, filename, irFlag=False):
     # return list
     return datetime(year, mon, day, hour, mins, sec)
 
+
 # ####################################################################
 
 
-def getsiteimglist(sitename,
-                   startDT=datetime(1990, 1, 1, 0, 0, 0),
-                   endDT=datetime.now(),
-                   getIR=False):
+def getsiteimglist(
+    sitename, startDT=datetime(1990, 1, 1, 0, 0, 0), endDT=datetime.now(), getIR=False
+):
     """
     Returns a list of imagepath names for ALL images in
     archive for specified site.  Optional arguments:
@@ -140,7 +141,7 @@ def getsiteimglist(sitename,
             continue
 
         # check if this yeardir could be a 4-digit year.  if not skip
-        if not re.match(r'^\d\d\d\d$', yeardir):
+        if not re.match(r"^\d\d\d\d$", yeardir):
             continue
 
         # check if we're before startYear
@@ -159,7 +160,7 @@ def getsiteimglist(sitename,
                 continue
 
             # check if this mondir could be a 2-digit month.  if not skip
-            if not re.match(r'^\d\d$', mondir):
+            if not re.match(r"^\d\d$", mondir):
                 continue
 
             # check month range
@@ -177,11 +178,9 @@ def getsiteimglist(sitename,
             try:
                 imgfiles = os.listdir(monpath)
                 if getIR:
-                    image_re = r"^%s_IR_%s_%s_.*\.jpg$" % (
-                        sitename, yeardir, mondir)
+                    image_re = r"^%s_IR_%s_%s_.*\.jpg$" % (sitename, yeardir, mondir)
                 else:
-                    image_re = r"^%s_%s_%s_.*\.jpg$" % (
-                        sitename, yeardir, mondir)
+                    image_re = r"^%s_%s_%s_.*\.jpg$" % (sitename, yeardir, mondir)
 
                 for imgfile in imgfiles:
                     # check for pattern match
@@ -189,8 +188,7 @@ def getsiteimglist(sitename,
                         continue
 
                     # get image time
-                    [yr, mo, md, hr, mn, sc] = fn2date(
-                        sitename, imgfile, irFlag=getIR)
+                    [yr, mo, md, hr, mn, sc] = fn2date(sitename, imgfile, irFlag=getIR)
                     img_dt = datetime(yr, mo, md, hr, mn, sc)
 
                     if img_dt < startDT:
@@ -214,6 +212,7 @@ def getsiteimglist(sitename,
     imglist.sort()
     return imglist
 
+
 # ####################################################################
 
 
@@ -226,8 +225,7 @@ def getsiteinfo(sitename):
     """
 
     siteinfo = None
-    infourl = "https://phenocam.sr.unh.edu/webcam/" + \
-              "sites/{0}/info/".format(sitename)
+    infourl = "https://phenocam.sr.unh.edu/webcam/" + "sites/{0}/info/".format(sitename)
 
     # first try to get siteinfo from URL
     try:
@@ -245,13 +243,13 @@ def getsiteinfo(sitename):
             sys.stderr.write("Error getting site info from file.\n")
 
         try:
-            json_string = df[df.sitename == sitename].to_json(
-                orient='records')
+            json_string = df[df.sitename == sitename].to_json(orient="records")
             siteinfo = json.loads(json_string)[0]
         except IndexError:
             siteinfo = None
 
     return siteinfo
+
 
 # ####################################################################
 
@@ -263,12 +261,13 @@ def deg2dms(angle):
     """
     deg = int(angle)
     degdiff = abs(angle - float(deg))
-    minangle = degdiff * 60.
+    minangle = degdiff * 60.0
     min = int(minangle)
     mindiff = minangle - float(min)
-    sec = int(mindiff * 60.)
+    sec = int(mindiff * 60.0)
     dmsstr = "{0:02d}:{1:02d}:{2:02d}".format(deg, min, sec)
     return dmsstr
+
 
 # ####################################################################
 
@@ -277,9 +276,10 @@ def dms2deg(dmsstr):
     """
     convert dms string in form 'dd:mm:ss' to decimal degrees.
     """
-    (dd, mm, ss) = dmsstr.split(':')
-    degrees = int(dd) + int(mm) * 1. / 60. + int(ss) * 1. / 3600.
+    (dd, mm, ss) = dmsstr.split(":")
+    degrees = int(dd) + int(mm) * 1.0 / 60.0 + int(ss) * 1.0 / 3600.0
     return degrees
+
 
 # ####################################################################
 

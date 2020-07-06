@@ -45,15 +45,13 @@ def daterange2(start_date, end_date, nday):
         # if this is the last year, find the beginning
         # of the last nday period before the last date
         if iyear == year_end:
-            doy_last = (end_date -
-                        date(iyear, 1, 1)).days + 1
+            doy_last = (end_date - date(iyear, 1, 1)).days + 1
             n = (doy_last - 1) / nday
             new_doy_last = n * nday + 1
             dlast = date(iyear, 1, 1) + timedelta(new_doy_last - 1)
 
         else:
-            doy_last = (date(iyear, 12, 31) -
-                        date(iyear, 1, 1)).days + 1
+            doy_last = (date(iyear, 12, 31) - date(iyear, 1, 1)).days + 1
             dlast = date(iyear, 12, 31)
 
         # for this year yield the first day of the next nday period
@@ -69,19 +67,18 @@ def get_roi_list(site, roilist_id):
     """
 
     # take ROIList_id and parse into site, roitype, sequence_number
-    (roitype, seqno_str) = roilist_id.split('_')
+    (roitype, seqno_str) = roilist_id.split("_")
     sequence_number = int(seqno_str)
 
     # set cannonical dir for ROI Lists
-    roidir = os.path.join(config.archive_dir, site, 'ROI')
+    roidir = os.path.join(config.archive_dir, site, "ROI")
 
     # set cannonical filename
-    roifile = site + '_' + roilist_id + '_roi.csv'
+    roifile = site + "_" + roilist_id + "_roi.csv"
     roipath = os.path.join(roidir, roifile)
 
     # create ROIList object
-    roilist = ROIList(site=site, roitype=roitype,
-                      sequence_number=sequence_number)
+    roilist = ROIList(site=site, roitype=roitype, sequence_number=sequence_number)
 
     # read in from CSV file
     roilist.readCSV(roipath)
@@ -95,13 +92,13 @@ def get_roi_timeseries(site, roilist_id):
     """
 
     # take ROIList_id and parse into site, roitype, sequence_number
-    (roitype, seqno_str) = roilist_id.split('_')
+    (roitype, seqno_str) = roilist_id.split("_")
 
     # set cannonical dir for ROI Lists
-    roidir = os.path.join(config.archive_dir, site, 'ROI')
+    roidir = os.path.join(config.archive_dir, site, "ROI")
 
     # set cannonical filename
-    roitsfile = site + '_' + roilist_id + '_roistats.csv'
+    roitsfile = site + "_" + roilist_id + "_roistats.csv"
     roitspath = os.path.join(roidir, roitsfile)
     # print roitspath
 
@@ -121,13 +118,13 @@ def get_gcc_timeseries(site, roilist_id, nday=3):
     """
 
     # take ROIList_id and parse into roitype, sequence_number
-    (roitype, seqno_str) = roilist_id.split('_')
+    (roitype, seqno_str) = roilist_id.split("_")
 
     # set cannonical dir for ROI Lists
-    roidir = os.path.join(config.archive_dir, site, 'ROI')
+    roidir = os.path.join(config.archive_dir, site, "ROI")
 
     # set cannonical filename
-    gcc_tsfile = site + '_' + roilist_id + '_{0}day.csv'.format(nday)
+    gcc_tsfile = site + "_" + roilist_id + "_{0}day.csv".format(nday)
     gcc_tspath = os.path.join(roidir, gcc_tsfile)
 
     # create empty GCCTimeSeries object

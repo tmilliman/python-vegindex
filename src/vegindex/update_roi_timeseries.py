@@ -36,20 +36,26 @@ debug = False
 default_resize = vi.config.RESIZE
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     # set up command line argument processing
     parser = argparse.ArgumentParser()
 
     # options
-    parser.add_argument("-v", "--verbose",
-                        help="increase output verbosity",
-                        action="store_true",
-                        default=False)
-    parser.add_argument("-n", "--dry-run",
-                        help="Process data but don't save results",
-                        action="store_true",
-                        default=False)
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        help="increase output verbosity",
+        action="store_true",
+        default=False,
+    )
+    parser.add_argument(
+        "-n",
+        "--dry-run",
+        help="Process data but don't save results",
+        action="store_true",
+        default=False,
+    )
 
     # positional arguments
     parser.add_argument("site", help="PhenoCam site name")
@@ -69,8 +75,8 @@ if __name__ == '__main__':
         print("dryrun: {0}".format(dryrun))
 
     # set output filename
-    outname = '%s_%s_roistats.csv' % (sitename, roiname,)
-    outpath = os.path.join(archive_dir, sitename, 'ROI', outname)
+    outname = "%s_%s_roistats.csv" % (sitename, roiname)
+    outpath = os.path.join(archive_dir, sitename, "ROI", outname)
     if verbose:
         print("output file: {0}".format(outname))
 
@@ -89,13 +95,12 @@ if __name__ == '__main__':
 
     # read in config file for this site if it exists
     config_file = "{0}_{1}.cfg".format(sitename, roiname)
-    config_path = os.path.join(archive_dir, sitename, 'ROI',
-                               config_file)
+    config_path = os.path.join(archive_dir, sitename, "ROI", config_file)
     if os.path.exists(config_path):
-        cfgparser = configparser(defaults={'resize': str(default_resize)})
+        cfgparser = configparser(defaults={"resize": str(default_resize)})
         cfgparser.read(config_path)
-        if cfgparser.has_section('roi_timeseries'):
-            resizeFlg = cfgparser.getboolean('roi_timeseries', 'resize')
+        if cfgparser.has_section("roi_timeseries"):
+            resizeFlg = cfgparser.getboolean("roi_timeseries", "resize")
         else:
             resizeFlg = default_resize
 
@@ -110,22 +115,22 @@ if __name__ == '__main__':
 
     # print config values
     if verbose:
-        print('')
-        print('ROI timeseries config:')
-        print('======================')
-        print('roi_list: ', '{0}_{1}_roi.csv'.format(sitename, roiname))
+        print("")
+        print("ROI timeseries config:")
+        print("======================")
+        print("roi_list: ", "{0}_{1}_roi.csv".format(sitename, roiname))
         if os.path.exists(config_path):
             print("config file: {0}".format(config_file))
         else:
             print("config file: None")
-        print('Resize Flag: ', resizeFlg)
+        print("Resize Flag: ", resizeFlg)
 
     # get list of images already in CSV
     old_imglist = roits.get_image_list()
 
     # find last dt in current timeseries CSV
     nlast = len(roits.rows) - 1
-    dt_last = roits.rows[nlast]['datetime']
+    dt_last = roits.rows[nlast]["datetime"]
 
     # add five seconds so that we don't reprocess last image
     dt_last = dt_last + timedelta(seconds=5)
@@ -141,8 +146,8 @@ if __name__ == '__main__':
     nupdate = 0
     for imask, roimask in enumerate(roi_list.masks):
 
-        roi_startDT = roimask['start_dt']
-        roi_endDT = roimask['end_dt']
+        roi_startDT = roimask["start_dt"]
+        roi_endDT = roimask["end_dt"]
 
         # skip this ROI maskfile if it's validity interval ends
         # before last date before update
@@ -153,7 +158,7 @@ if __name__ == '__main__':
         end_date = roi_endDT.date()
         start_time = roi_startDT.time()
         end_time = roi_endDT.time()
-        maskfile = roimask['maskfile']
+        maskfile = roimask["maskfile"]
 
         # okay set the start datetime to the larger of dt_start (from
         # last row of existing timeseries CSV) and the beginning of
@@ -165,7 +170,7 @@ if __name__ == '__main__':
         if dt_start < roi_startDT:
             dt_start = roi_startDT
 
-        mask_path = os.path.join(archive_dir, sitename, 'ROI', maskfile)
+        mask_path = os.path.join(archive_dir, sitename, "ROI", maskfile)
         # print roi_path
         try:
             mask_img = Image.open(mask_path)
@@ -175,17 +180,18 @@ if __name__ == '__main__':
 
         # check that mask_img is in expected form
         mask_mode = mask_img.mode
-        if mask_mode != 'L':
+        if mask_mode != "L":
 
             # convert to 8-bit mask
-            mask_img = mask_img.convert('L')
+            mask_img = mask_img.convert("L")
 
         # make a numpy mask
         roimask = np.asarray(mask_img, dtype=np.bool8)
 
         # get list of images for this timeperiod
-        imglist = vi.getsiteimglist(sitename, getIR=False,
-                                    startDT=dt_start, endDT=roi_endDT)
+        imglist = vi.getsiteimglist(
+            sitename, getIR=False, startDT=dt_start, endDT=roi_endDT
+        )
 
         nimage += len(imglist)
         for impath in imglist:
@@ -204,9 +210,9 @@ if __name__ == '__main__':
             # append/insert row for this image/mask - shouldn't happen
             # but just to be on safe side!
             if row_index:
-                roits_row = roits.insert_row(impath, roimask, imask+1)
+                roits_row = roits.insert_row(impath, roimask, imask + 1)
             else:
-                roits_row = roits.append_row(impath, roimask, imask+1)
+                roits_row = roits.append_row(impath, roimask, imask + 1)
 
             # check that we could append/insert a row
             if roits_row:
@@ -228,6 +234,6 @@ if __name__ == '__main__':
     else:
         nout = roits.writeCSV(outpath)
 
-    print('Images processed: %d' % (nimage,))
-    print('Images added to CSV: %d' % (nupdate,))
-    print('Total: %d' % (nout,))
+    print("Images processed: %d" % (nimage,))
+    print("Images added to CSV: %d" % (nupdate,))
+    print("Total: %d" % (nout,))

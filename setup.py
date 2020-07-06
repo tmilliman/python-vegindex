@@ -17,76 +17,75 @@ from setuptools import setup
 
 def read(*names, **kwargs):
     return io.open(
-        join(dirname(__file__), *names),
-        encoding=kwargs.get('encoding', 'utf8')
+        join(dirname(__file__), *names), encoding=kwargs.get("encoding", "utf8")
     ).read()
 
 
 setup(
-    name='vegindex',
-    version='0.7.2',
-    license='MIT',
-    description='Python tools for generating vegetation index timeseries from PhenoCam images.',
-    long_description='%s\n%s' % (
-        re.compile('^.. start-badges.*^.. end-badges',
-                   re.M | re.S).sub('', read('README.rst')),
-        re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
+    name="vegindex",
+    version="0.7.2",
+    license="MIT",
+    description="Python tools for generating vegetation index timeseries from PhenoCam images.",
+    long_description="%s\n%s"
+    % (
+        re.compile("^.. start-badges.*^.. end-badges", re.M | re.S).sub(
+            "", read("README.rst")
+        ),
+        re.sub(":[a-z]+:`~?(.*?)`", r"``\1``", read("CHANGELOG.rst")),
     ),
-    long_description_content_type='text/x-rst',
-    author='Thomas Milliman',
-    author_email='thomas.milliman@unh.edu',
-    url='https://github.com/tmilliman/python-vegindex',
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
-    py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
+    long_description_content_type="text/x-rst",
+    author="Thomas Milliman",
+    author_email="thomas.milliman@unh.edu",
+    url="https://github.com/tmilliman/python-vegindex",
+    packages=find_packages("src"),
+    package_dir={"": "src"},
+    py_modules=[splitext(basename(path))[0] for path in glob("src/*.py")],
     include_package_data=True,
     zip_safe=False,
     classifiers=[
         # complete classifier list: http://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'Development Status :: 2 - Pre-Alpha',
-        'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: Unix',
-        'Operating System :: POSIX',
-        'Operating System :: Microsoft :: Windows',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
+        "Development Status :: 2 - Pre-Alpha",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: Unix",
+        "Operating System :: POSIX",
+        "Operating System :: Microsoft :: Windows",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         # 'Programming Language :: Python :: Implementation :: CPython',
         # 'Programming Language :: Python :: Implementation :: PyPy',
         # 'Programming Language :: Python :: Implementation :: IronPython',
         # 'Programming Language :: Python :: Implementation :: Jython',
         # 'Programming Language :: Python :: Implementation :: Stackless',
-        'Topic :: Scientific/Engineering :: Bio-Informatics',
+        "Topic :: Scientific/Engineering :: Bio-Informatics",
     ],
-    keywords=[
-        'phenology', 'phenocam', 'vegetation', 'index'
-    ],
+    keywords=["phenology", "phenocam", "vegetation", "index"],
     install_requires=[
-        'pillow>=4.0',
-        'pyephem>=3.7',
-        'configparser>=3.5.0',
-        'requests>=2.17.3',
-        'numpy>=1.13.0',
-        'pandas>=0.20.0',
-        'matplotlib>=1.5.3'
+        "pillow>=4.0",
+        "pyephem>=3.7",
+        "configparser>=3.5.0",
+        "requests>=2.17.3",
+        "numpy>=1.13.0",
+        "pandas>=0.20.0",
+        "matplotlib>=1.5.3",
     ],
     extras_require={
         # eg:
-        'rst': ['docutils>=0.11'],
+        "rst": ["docutils>=0.11"],
         # ':python_version=="2.6"': ['argparse'],
     },
     entry_points={
-        'console_scripts': [
-            'generate_roi_timeseries=vegindex.generate_roi_timeseries:main',
-            'update_roi_timeseries=vegindex.update_roi_timeseries:main',
-            'generate_roi_ir_timeseries=vegindex.generate_roi_ir_timeseries:main',
-            'generate_summary_timeseries=vegindex.generate_summary_timeseries:main',
-            'plot_roistats=vegindex.plot_roistats:main'
+        "console_scripts": [
+            "generate_roi_timeseries=vegindex.generate_roi_timeseries:main",
+            "update_roi_timeseries=vegindex.update_roi_timeseries:main",
+            "generate_roi_ir_timeseries=vegindex.generate_roi_ir_timeseries:main",
+            "generate_summary_timeseries=vegindex.generate_summary_timeseries:main",
+            "plot_roistats=vegindex.plot_roistats:main",
         ]
     },
 )

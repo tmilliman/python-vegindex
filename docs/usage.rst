@@ -255,20 +255,20 @@ brightness over the ROI is either low (< 100.) (very dark image)
 or high ( > 665.) (washed out image).
 
 ::
-   
+
     $ plot_roistats -h
     usage: plot_roistats [-h] [-v] site roiname
-    
+
     positional arguments:
       site           PhenoCam site name
       roiname        ROI name, e.g. DB_0001
-    
+
     optional arguments:
       -h, --help     show this help message and exit
       -v, --verbose  increase output verbosity
 
 The script places the output .pdf file in the ROI directory alongside
-the .csv files used to produce the plot.  
+the .csv files used to produce the plot.
 
 .. image:: images/alligatorriver_DB_0001_roistats.png
 

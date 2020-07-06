@@ -41,23 +41,23 @@ def quantile(x, q, qtype=7, issorted=False):
     # Parameters for the Hyndman and Fan algorithm
     abcd = [
         # inverse empirical distrib.function., R type 1
-        (0,   0, 1, 0),
+        (0, 0, 1, 0),
         # similar to type 1, averaged, R type 2
         (0.5, 0, 1, 0),
         # nearest order statistic,(SAS) R type 3
         (0.5, 0, 0, 0),
         # California linear interpolation, R type 4
-        (0,   0, 0, 1),
+        (0, 0, 0, 1),
         # hydrologists method, R type 5
         (0.5, 0, 0, 1),
         # mean-based estimate(Weibull method), (SPSS, Minitab), type 6
-        (0,   1, 0, 1),
+        (0, 1, 0, 1),
         # mode-based method,(S, S-Plus), R type 7
-        (1,  -1, 0, 1),
+        (1, -1, 0, 1),
         # median-unbiased ,  R type 8
         (1.0 / 3, 1.0 / 3, 0, 1),
         # normal-unbiased, R type 9.
-        (3 / 8.0, 0.25, 0, 1)
+        (3 / 8.0, 0.25, 0, 1),
     ]
 
     a, b, c, d = abcd[qtype - 1]

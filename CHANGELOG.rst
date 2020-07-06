@@ -7,7 +7,7 @@ Changelog
 0.7.0 (2020-04-01)
 ------------------
 * Add checks when reading an ROI List CSV file that the
-  time ranges are in order and don't overlap 
+  time ranges are in order and don't overlap
 
 0.6.1 (2019-07-15)
 ------------------

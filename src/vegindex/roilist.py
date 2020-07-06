@@ -47,7 +47,7 @@ def _get_comment_field(comments, var_string):
     """
 
     # set pattern to match
-    pattern = r'# {0}:\ (?P<var_value>.+)$'.format(var_string)
+    pattern = r"# {0}:\ (?P<var_value>.+)$".format(var_string)
 
     var_value = ""
     for line in comments:
@@ -55,7 +55,7 @@ def _get_comment_field(comments, var_string):
         result = re.match(pattern, line)
 
         if result is not None:
-            var_value = result.group('var_value')
+            var_value = result.group("var_value")
             break
 
     return var_value
@@ -66,8 +66,7 @@ class ROIList(object):
     Class for CSV version of ROI List.
     """
 
-    def __init__(self, site='', roitype='', descrip='', sequence_number=0,
-                 owner=''):
+    def __init__(self, site="", roitype="", descrip="", sequence_number=0, owner=""):
         """
         create ROIList object which matches database
 
@@ -118,8 +117,7 @@ class ROIList(object):
         self.masks = []
 
     def namestring(self):
-        name = '{0}_{1}_{2:04d}'.format(self.site, self.roitype,
-                                        self.sequence_number)
+        name = "{0}_{1}_{2:04d}".format(self.site, self.roitype, self.sequence_number)
         return name
 
     def __unicode__(self):
@@ -137,18 +135,18 @@ class ROIList(object):
         """
 
         # open file for read-only access with universal line endings
-        f = open(roiListPath, 'r')
+        f = open(roiListPath, "r")
 
         # get comment lines
         comments = list(_get_comments(f))
 
         # no validation applied to sitename
-        site = _get_comment_field(comments, 'Site')
+        site = _get_comment_field(comments, "Site")
         if site != "":
             self.site = site
 
         # roitype should be one of types defined in config.py
-        roitype = _get_comment_field(comments, 'Veg Type')
+        roitype = _get_comment_field(comments, "Veg Type")
         if roitype != "":
             try:
                 config.ROITypes.index(roitype)
@@ -157,7 +155,7 @@ class ROIList(object):
                 print("Unknown Veg Type in CSV")
 
         # sequence number should be decimal
-        sequence_number = _get_comment_field(comments, 'ROI ID Number')
+        sequence_number = _get_comment_field(comments, "ROI ID Number")
         if sequence_number != "":
             try:
                 self.sequence_number = int(sequence_number)
@@ -166,37 +164,35 @@ class ROIList(object):
 
         # make sure we can form a proper date time from create_date and
         # create_time
-        create_date = _get_comment_field(comments, 'Creation Date')
-        create_time = _get_comment_field(comments, 'Creation Time')
+        create_date = _get_comment_field(comments, "Creation Date")
+        create_time = _get_comment_field(comments, "Creation Time")
         if create_date != "" and create_time != "":
             try:
-                (Y, M, D) = create_date.split('-')
-                (h, m, s) = create_time.split(':')
-                create_dt = datetime(int(Y), int(M), int(D), int(h),
-                                     int(m), int(s))
+                (Y, M, D) = create_date.split("-")
+                (h, m, s) = create_time.split(":")
+                create_dt = datetime(int(Y), int(M), int(D), int(h), int(m), int(s))
                 self.created_at = create_dt
             except ValueError:
                 print("Invalid creation date or time in CSV.")
 
         # make sure we can form a proper date time from update_date and
         # update_time
-        update_date = _get_comment_field(comments, 'Update Date')
-        update_time = _get_comment_field(comments, 'Update Time')
+        update_date = _get_comment_field(comments, "Update Date")
+        update_time = _get_comment_field(comments, "Update Time")
         if update_date != "" and update_time != "":
             try:
-                (Y, M, D) = update_date.split('-')
-                (h, m, s) = update_time.split(':')
-                update_dt = datetime(int(Y), int(M), int(D), int(h),
-                                     int(m), int(s))
+                (Y, M, D) = update_date.split("-")
+                (h, m, s) = update_time.split(":")
+                update_dt = datetime(int(Y), int(M), int(D), int(h), int(m), int(s))
                 self.updated_at = update_dt
             except ValueError:
                 print("Invalid update date or time in CSV.")
 
         # no validation for owner
-        self.owner = _get_comment_field(comments, 'Owner')
+        self.owner = _get_comment_field(comments, "Owner")
 
         # no validation for Description
-        self.descrip = _get_comment_field(comments, 'Description')
+        self.descrip = _get_comment_field(comments, "Description")
 
         # rewind file
         f.seek(0)
@@ -209,15 +205,27 @@ class ROIList(object):
             roi_row = {}
 
             # turn date and time strings into datetime values
-            (start_yr, start_mo, start_dom) = row['start_date'].split('-')
-            (start_hr, start_min, start_sec) = row['start_time'].split(':')
-            start_dt = datetime(int(start_yr), int(start_mo), int(start_dom),
-                                int(start_hr), int(start_min), int(start_sec))
+            (start_yr, start_mo, start_dom) = row["start_date"].split("-")
+            (start_hr, start_min, start_sec) = row["start_time"].split(":")
+            start_dt = datetime(
+                int(start_yr),
+                int(start_mo),
+                int(start_dom),
+                int(start_hr),
+                int(start_min),
+                int(start_sec),
+            )
 
-            (end_yr, end_mo, end_dom) = row['end_date'].split('-')
-            (end_hr, end_min, end_sec) = row['end_time'].split(':')
-            end_dt = datetime(int(end_yr), int(end_mo), int(end_dom),
-                              int(end_hr), int(end_min), int(end_sec))
+            (end_yr, end_mo, end_dom) = row["end_date"].split("-")
+            (end_hr, end_min, end_sec) = row["end_time"].split(":")
+            end_dt = datetime(
+                int(end_yr),
+                int(end_mo),
+                int(end_dom),
+                int(end_hr),
+                int(end_min),
+                int(end_sec),
+            )
 
             # validate that end_dt > start_dt
             if end_dt <= start_dt:
@@ -225,16 +233,17 @@ class ROIList(object):
 
             # validate that masks are in order and non-overlapping
             if start_dt < last_end_dt:
-                raise ValueError("Mask date ranges are overlapping or" +
-                                 " out of order")
+                raise ValueError(
+                    "Mask date ranges are overlapping or" + " out of order"
+                )
 
             # should also check that date sample image is in the
             # date range of the mask
 
-            roi_row['start_dt'] = start_dt
-            roi_row['end_dt'] = end_dt
-            roi_row['maskfile'] = row['maskfile']
-            roi_row['sample_image'] = row['sample_image']
+            roi_row["start_dt"] = start_dt
+            roi_row["end_dt"] = end_dt
+            roi_row["maskfile"] = row["maskfile"]
+            roi_row["sample_image"] = row["sample_image"]
 
             roimaskList.append(roi_row)
 
@@ -255,7 +264,7 @@ class ROIList(object):
         if file == "":
             fo = sys.stdout
         else:
-            fo = open(file, 'w')
+            fo = open(file, "w")
 
         # Before we do anything, check to make sure the roilist object
         # if valid.  Other tests?  Check for valid user?  Warning/Error if
@@ -267,54 +276,54 @@ class ROIList(object):
 
         # write header
         hdstrings = []
-        hdstrings.append('#\n')
-        hdstrings.append('# ROI List for {0}\n'.format(self.site))
-        hdstrings.append('#\n')
-        hdstrings.append('# Site: {0}\n'.format(self.site))
-        hdstrings.append('# Veg Type: {0}\n'.format(self.roitype))
-        hdstrings.append('# ROI ID Number: {0:04d}\n'.format(
-            self.sequence_number))
-        hdstrings.append('# Owner: {0}\n'.format(self.owner))
-        hdstrings.append('# Creation Date: {0}\n'.format(
-            self.created_at.date()))
+        hdstrings.append("#\n")
+        hdstrings.append("# ROI List for {0}\n".format(self.site))
+        hdstrings.append("#\n")
+        hdstrings.append("# Site: {0}\n".format(self.site))
+        hdstrings.append("# Veg Type: {0}\n".format(self.roitype))
+        hdstrings.append("# ROI ID Number: {0:04d}\n".format(self.sequence_number))
+        hdstrings.append("# Owner: {0}\n".format(self.owner))
+        hdstrings.append("# Creation Date: {0}\n".format(self.created_at.date()))
         create_time = self.created_at.time()
         hdstrings.append(
-            '# Creation Time: {0:02d}:{1:02d}:{2:02d}\n'.format(
-                create_time.hour,
-                create_time.minute,
-                create_time.second))
-        hdstrings.append('# Update Date: {0}\n'.format(
-            self.updated_at.date()))
+            "# Creation Time: {0:02d}:{1:02d}:{2:02d}\n".format(
+                create_time.hour, create_time.minute, create_time.second
+            )
+        )
+        hdstrings.append("# Update Date: {0}\n".format(self.updated_at.date()))
 
         # set update time to now
         self.updated_at = datetime.now()
         update_time = self.updated_at.time()
         hdstrings.append(
-            '# Update Time: {0:02d}:{1:02d}:{2:02d}\n'.format(
-                update_time.hour,
-                update_time.minute,
-                update_time.second))
-        hdstrings.append('# Description: {0}\n'.format(self.descrip))
-        hdstrings.append('#\n')
+            "# Update Time: {0:02d}:{1:02d}:{2:02d}\n".format(
+                update_time.hour, update_time.minute, update_time.second
+            )
+        )
+        hdstrings.append("# Description: {0}\n".format(self.descrip))
+        hdstrings.append("#\n")
 
         for line in hdstrings:
             fo.write(line)
 
         # write fields line
-        fo.write("start_date,start_time,end_date,end_time,maskfile," +
-                 "sample_image\n")
+        fo.write("start_date,start_time,end_date,end_time,maskfile," + "sample_image\n")
 
         for mask in self.masks:
-            start_date = mask['start_dt'].date()
-            start_time = mask['start_dt'].time()
-            end_date = mask['end_dt'].date()
-            end_time = mask['end_dt'].time()
-            fo.write("{0},{1},{2},{3},{4},{5}\n".format(start_date,
-                                                        start_time,
-                                                        end_date,
-                                                        end_time,
-                                                        mask['maskfile'],
-                                                        mask['sample_image']))
+            start_date = mask["start_dt"].date()
+            start_time = mask["start_dt"].time()
+            end_date = mask["end_dt"].date()
+            end_time = mask["end_dt"].time()
+            fo.write(
+                "{0},{1},{2},{3},{4},{5}\n".format(
+                    start_date,
+                    start_time,
+                    end_date,
+                    end_time,
+                    mask["maskfile"],
+                    mask["sample_image"],
+                )
+            )
         # close output
         if not file == "":
             fo.close()
@@ -330,18 +339,25 @@ class ROIList(object):
         error_list = []
         lastmask = {}
         for imask, mask in enumerate(self.masks):
-            if mask['end_dt'] <= mask['start_dt']:
-                error_list.append({'valid': False,
-                                   'mask': imask + 1,
-                                   'msg':
-                                   'End date-time is before start datetime'})
+            if mask["end_dt"] <= mask["start_dt"]:
+                error_list.append(
+                    {
+                        "valid": False,
+                        "mask": imask + 1,
+                        "msg": "End date-time is before start datetime",
+                    }
+                )
 
             if imask > 0:
-                if mask['start_dt'] < lastmask['end_dt']:
-                    error_list.append({'valid': False,
-                                       'mask': imask + 1,
-                                       'msg': 'Overlaps previous mask.'})
+                if mask["start_dt"] < lastmask["end_dt"]:
+                    error_list.append(
+                        {
+                            "valid": False,
+                            "mask": imask + 1,
+                            "msg": "Overlaps previous mask.",
+                        }
+                    )
 
             lastmask = mask
 
-        return(error_list)
+        return error_list

@@ -16,6 +16,7 @@ from vegindex import vegindex
 
 # from click.testing import CliRunner
 
+
 @pytest.fixture
 def response():
     """Sample pytest fixture.  See more at:

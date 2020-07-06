@@ -51,10 +51,10 @@ Current versions of pip allow you to specify the python version and
 can be used with python3.
 
 If you will be using Python 3 then you already have venv installed
-and can use that to create your virtual environment.  
+and can use that to create your virtual environment.
 
 ::
-   
+
    python3 -m venv vegindex3
    source vegindex3/bin/activate
    pip install numpy matplotlib pillow requests pandas \
@@ -65,7 +65,7 @@ and can use that to create your virtual environment.
 For conda/miniconda environments:
 
 ::
-   
+
     conda create --name vegindex3 python=3.7
     conda activate vegindex3
     conda install numpy matplotlib pillow requests pandas \
@@ -76,7 +76,6 @@ For conda/miniconda environments:
 With ``pipenv`` you can do the following in your working directory:
 
 ::
-   
+
    pipenv shell
    pipenv install vegindex
-    

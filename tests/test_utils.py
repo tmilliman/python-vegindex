@@ -13,11 +13,12 @@ import pandas as pd
 from vegindex import config
 from vegindex import utils
 
-config.archive_dir = os.path.join(os.path.dirname(__file__),
-                                  "sample_data")
+config.archive_dir = os.path.join(os.path.dirname(__file__), "sample_data")
 
-config.site_info_file = os.path.join(os.path.dirname(__file__),
-                                  "sample_data","site_info.csv")
+config.site_info_file = os.path.join(
+    os.path.dirname(__file__), "sample_data", "site_info.csv"
+)
+
 
 def test_fn2date():
     sitename = "harvard"
@@ -52,15 +53,13 @@ def test_getsiteimglist():
     sitename = "harvard"
     start_dt = datetime(2009, 6, 30)
     end_dt = datetime(2009, 7, 1)
-    imglist = utils.getsiteimglist(sitename, startDT=start_dt,
-                                   endDT=end_dt)
+    imglist = utils.getsiteimglist(sitename, startDT=start_dt, endDT=end_dt)
     assert len(imglist) == 1
     assert os.path.basename(imglist[0]) == "harvard_2009_06_30_120138.jpg"
 
     # test missing dir
     sitename = "acadia"
-    imglist = utils.getsiteimglist(sitename, startDT=start_dt,
-                                   endDT=end_dt)
+    imglist = utils.getsiteimglist(sitename, startDT=start_dt, endDT=end_dt)
     assert len(imglist) == 0
 
 
@@ -69,20 +68,21 @@ def test_get_siteinfo():
     test getting site info from URL
     """
 
-    sitename = 'harvard'
+    sitename = "harvard"
     siteinfo = utils.getsiteinfo(sitename)
 
-    assert siteinfo['lon'] == -72.1715
+    assert siteinfo["lon"] == -72.1715
+
 
 def test_get_siteinfo_local():
     """
     test getting site info from CSV
     """
 
-    sitename = 'test'
+    sitename = "test"
     siteinfo = utils.getsiteinfo(sitename)
 
-    assert siteinfo['lon'] == -60
+    assert siteinfo["lon"] == -60
 
 
 def test_deg2dms():

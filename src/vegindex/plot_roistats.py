@@ -19,7 +19,7 @@ import pandas as pd
 # import vegindex as vi
 from . import config
 
-plt.style.use('ggplot')
+plt.style.use("ggplot")
 archive_dir = config.archive_dir
 MIN_SUN_ANGLE = config.MIN_SUN_ANGLE
 MAX_BRT = config.MAX_BRT
@@ -35,10 +35,13 @@ def main():
     parser = argparse.ArgumentParser()
 
     # options
-    parser.add_argument("-v", "--verbose",
-                        help="increase output verbosity",
-                        action="store_true",
-                        default=False)
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        help="increase output verbosity",
+        action="store_true",
+        default=False,
+    )
 
     # positional arguments
     parser.add_argument("site", help="PhenoCam site name")
@@ -57,7 +60,7 @@ def main():
 
     # set roistats input filename
     inname = "{}_{}_roistats.csv".format(sitename, roiname)
-    indir = os.path.join(archive_dir, sitename, 'ROI')
+    indir = os.path.join(archive_dir, sitename, "ROI")
     inpath = os.path.join(indir, inname)
 
     # set 3-day summary input filename
@@ -66,7 +69,7 @@ def main():
 
     # set output filename
     outname = "{}_{}_roistats.pdf".format(sitename, roiname)
-    outdir = os.path.join(archive_dir, sitename, 'ROI')
+    outdir = os.path.join(archive_dir, sitename, "ROI")
     outpath = os.path.join(outdir, outname)
 
     if verbose:
@@ -83,7 +86,7 @@ def main():
     df.index = df.date_local_std_time
 
     # add a column for ROI brightness (r_mean + g_mean + b_mean)
-    df['brt'] = df['r_mean'] + df['g_mean'] + df['b_mean']
+    df["brt"] = df["r_mean"] + df["g_mean"] + df["b_mean"]
 
     # for the gcc percentiles we filter data first
     #
@@ -92,8 +95,7 @@ def main():
     #
     df_low = df[df.solar_elev < MIN_SUN_ANGLE]
     df_day = df[df.solar_elev >= MIN_SUN_ANGLE]
-    df_brt_filtered = df_day[(df_day.brt < MIN_BRT) |
-                             (df_day.brt > MAX_BRT)]
+    df_brt_filtered = df_day[(df_day.brt < MIN_BRT) | (df_day.brt > MAX_BRT)]
     df_good = df_day[(df_day.brt >= MIN_BRT) & (df_day.brt <= MAX_BRT)]
     df_filtered = pd.concat([df_low, df_brt_filtered])
     nrows_filtered, ncols = df_filtered.shape
@@ -103,22 +105,21 @@ def main():
     df2.index = df2.date
 
     # make plot
-    ax = df_good.gcc.plot(style='k.', markersize=.3, figsize=[16, 5])
+    ax = df_good.gcc.plot(style="k.", markersize=0.3, figsize=[16, 5])
     if nrows_filtered > 0:
-        df_filtered.gcc.plot(style='r.', ax=ax, markersize=.5)
-    df2.gcc_90.plot(style='g-', ax=ax)
+        df_filtered.gcc.plot(style="r.", ax=ax, markersize=0.5)
+    df2.gcc_90.plot(style="g-", ax=ax)
 
-    ax.set_title('{} {}'.format(sitename, roiname))
-    ax.set_ylabel('gcc')
-    ax.set_xlabel('date')
+    ax.set_title("{} {}".format(sitename, roiname))
+    ax.set_ylabel("gcc")
+    ax.set_xlabel("date")
     lines, labels = ax.get_legend_handles_labels()
     if nrows_filtered > 0:
-        ax.legend(lines[1:], ['filtered values',
-                              '3-day gcc 90th percentile'],
-                  loc="best")
+        ax.legend(
+            lines[1:], ["filtered values", "3-day gcc 90th percentile"], loc="best"
+        )
     else:
-        ax.legend(lines[1:], ['3-day gcc 90th percentile'],
-                  loc="best")
+        ax.legend(lines[1:], ["3-day gcc 90th percentile"], loc="best")
 
     fig = ax.get_figure()
     fig.savefig(outpath)

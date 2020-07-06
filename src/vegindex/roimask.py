@@ -30,7 +30,7 @@ class ROIMask(object):
         self.sample_image = sample_image
 
         # get sitename, roi-type, sequence number from ID
-        [s1, s2, s3] = self.ROIList_id.split('_')
+        [s1, s2, s3] = self.ROIList_id.split("_")
         self.site = s1
         self.roitype = s2
         self.sequence_number = int(s3)
@@ -47,10 +47,9 @@ class ROIMask(object):
         start_time = self.start_dt.time()
         end_date = self.end_dt.date()
         end_time = self.end_dt.time()
-        csvrow = '{0},{1},{2},{3},{4},{5}'.format(start_date, start_time,
-                                                  end_date, end_time,
-                                                  self.maskfile,
-                                                  self.sample_image)
+        csvrow = "{0},{1},{2},{3},{4},{5}".format(
+            start_date, start_time, end_date, end_time, self.maskfile, self.sample_image
+        )
         return csvrow
 
     def read(self, roiMaskPath):

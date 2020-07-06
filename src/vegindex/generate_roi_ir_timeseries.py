@@ -47,14 +47,20 @@ def main():
     parser = argparse.ArgumentParser()
 
     # options
-    parser.add_argument("-v", "--verbose",
-                        help="increase output verbosity",
-                        action="store_true",
-                        default=False)
-    parser.add_argument("-n", "--dry-run",
-                        help="Process data but don't save results",
-                        action="store_true",
-                        default=False)
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        help="increase output verbosity",
+        action="store_true",
+        default=False,
+    )
+    parser.add_argument(
+        "-n",
+        "--dry-run",
+        help="Process data but don't save results",
+        action="store_true",
+        default=False,
+    )
 
     # positional arguments
     parser.add_argument("site", help="PhenoCam site name")
@@ -74,8 +80,8 @@ def main():
         print("dryrun: {0}".format(dryrun))
 
     # set output filename
-    outname = '%s_%s_IR_roistats.csv' % (sitename, roiname,)
-    outdir = os.path.join(archive_dir, sitename, 'ROI')
+    outname = "%s_%s_IR_roistats.csv" % (sitename, roiname)
+    outdir = os.path.join(archive_dir, sitename, "ROI")
     outpath = os.path.join(outdir, outname)
     if verbose:
         print("archive dir: {0}".format(archive_dir))
@@ -83,14 +89,12 @@ def main():
 
     # read in config file for this site if it exists
     config_file = "{0}_{1}.cfg".format(sitename, roiname)
-    config_path = os.path.join(archive_dir, sitename, 'ROI',
-                               config_file)
+    config_path = os.path.join(archive_dir, sitename, "ROI", config_file)
     if os.path.exists(config_path):
-        cfgparser = configparser(
-            defaults={'resize': str(default_resize)})
+        cfgparser = configparser(defaults={"resize": str(default_resize)})
         cfgparser.read(config_path)
-        if cfgparser.has_section('roi_timeseries'):
-            resizeFlg = cfgparser.getboolean('roi_timeseries', 'resize')
+        if cfgparser.has_section("roi_timeseries"):
+            resizeFlg = cfgparser.getboolean("roi_timeseries", "resize")
         else:
             resizeFlg = default_resize
 
@@ -99,19 +103,18 @@ def main():
 
     # print config values
     if verbose:
-        print('')
-        print('ROI IR timeseries config:')
-        print('=========================')
-        print('roi_list: ', '{0}_{1}_roi.csv'.format(sitename, roiname))
+        print("")
+        print("ROI IR timeseries config:")
+        print("=========================")
+        print("roi_list: ", "{0}_{1}_roi.csv".format(sitename, roiname))
         if os.path.exists(config_path):
             print("config file: {0}".format(config_file))
         else:
             print("config file: None")
-        print('Resize Flag: ', resizeFlg)
+        print("Resize Flag: ", resizeFlg)
 
     # create new roi_timeseries object for this ROIList
-    roits = IRROITimeSeries(site=sitename, ROIListID=roiname,
-                            resizeFlag=resizeFlg)
+    roits = IRROITimeSeries(site=sitename, ROIListID=roiname, resizeFlag=resizeFlg)
 
     # grab roi list
     roi_list = get_roi_list(sitename, roiname)
@@ -121,11 +124,11 @@ def main():
     nupdate = 0
     for roimask_index, roimask in enumerate(roi_list.masks):
 
-        startDT = roimask['start_dt']
-        endDT = roimask['end_dt']
-        maskfile = roimask['maskfile']
+        startDT = roimask["start_dt"]
+        endDT = roimask["end_dt"]
+        maskfile = roimask["maskfile"]
 
-        mask_path = os.path.join(archive_dir, sitename, 'ROI', maskfile)
+        mask_path = os.path.join(archive_dir, sitename, "ROI", maskfile)
         # open roi mask file
         try:
             mask_img = Image.open(mask_path)
@@ -136,17 +139,18 @@ def main():
 
         # check that mask_img is in expected form
         mask_mode = mask_img.mode
-        if mask_mode != 'L':
+        if mask_mode != "L":
 
             # convert to 8-bit mask
-            mask_img = mask_img.convert('L')
+            mask_img = mask_img.convert("L")
 
         # make a numpy mask
         roimask = np.asarray(mask_img, dtype=np.bool8)
 
         # get list of images for this timeperiod
-        imglist = utils.getsiteimglist(sitename, getIR=True,
-                                       startDT=startDT, endDT=endDT)
+        imglist = utils.getsiteimglist(
+            sitename, getIR=True, startDT=startDT, endDT=endDT
+        )
 
         nimage += len(imglist)
 
@@ -154,8 +158,7 @@ def main():
 
             # append row for this image/mask - shouldn't get
             # any duplicates so just append
-            roits_row = roits.append_row(impath, roimask,
-                                         roimask_index + 1)
+            roits_row = roits.append_row(impath, roimask, roimask_index + 1)
             if roits_row:
                 nupdate += 1
             else:
@@ -175,10 +178,10 @@ def main():
     else:
         nout = roits.writeCSV(outpath)
 
-    print('Images processed: %d' % (nimage,))
-    print('Images added to CSV: %d' % (nupdate,))
-    print('Total: %d' % (nout,))
+    print("Images processed: %d" % (nimage,))
+    print("Images added to CSV: %d" % (nupdate,))
+    print("Total: %d" % (nout,))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
