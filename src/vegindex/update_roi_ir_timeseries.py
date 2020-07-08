@@ -19,6 +19,8 @@ import vegindex as vi
 from vegindex.ir_roitimeseries import IRROITimeSeries
 from vegindex.vegindex import get_roi_list
 
+from . import utils
+
 # try python3 import then python2 import
 try:
     import configparser
@@ -93,7 +95,7 @@ def main():
     # read existing CSV file - since this is an update throw
     # exception if the file doesn't already exist
     try:
-        roits = vi.IRROITimeSeries(site=sitename, ROIListID=roiname)
+        roits = IRROITimeSeries(site=sitename, ROIListID=roiname)
         roits.readCSV(inpath)
     except IOError:
         errmsg = "Unable to read IR CSV file: {0}\n".format(outpath)
@@ -196,7 +198,7 @@ def main():
         roimask = np.asarray(mask_img, dtype=np.bool8)
 
         # get list of images for this timeperiod
-        imglist = vi.getsiteimglist(
+        imglist = utils.getsiteimglist(
             sitename, getIR=True, startDT=dt_start, endDT=roi_endDT
         )
 
