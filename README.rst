@@ -4,7 +4,7 @@ vegindex
 
 .. image:: https://img.shields.io/pypi/v/vegindex.svg
        :alt: PyPI Package latest release
-       :target: https://pypi.python.org/pypi/vegindex
+       :target: https://pypi.org/project/vegindex
 
 .. image:: https://img.shields.io/travis/tmilliman/python-vegindex.svg
        :alt: Travis-CI Build Status
@@ -15,7 +15,7 @@ vegindex
        :alt: Documentation Status
 
 .. image:: https://img.shields.io/pypi/pyversions/vegindex.svg
-       :target: https://pypi.python.org/pypi/vegindex
+       :target: https://pypi.org/project/vegindex
        :alt: Supported versions
 
 Python tools for generating vegetation index timeseries from PhenoCam images.

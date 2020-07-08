@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 """
 Update an ROI timeseries CSV file.
@@ -16,6 +16,10 @@ import numpy as np
 from PIL import Image
 
 import vegindex as vi
+from vegindex.roitimeseries import ROITimeSeries
+from vegindex.vegindex import get_roi_list
+
+from . import utils
 
 # try python3 import then python2 import
 try:
@@ -36,8 +40,10 @@ debug = False
 default_resize = vi.config.RESIZE
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
+
+def main():
     # set up command line argument processing
     parser = argparse.ArgumentParser()
 
@@ -75,18 +81,20 @@ if __name__ == "__main__":
         print("dryrun: {0}".format(dryrun))
 
     # set output filename
-    outname = "%s_%s_roistats.csv" % (sitename, roiname)
-    outpath = os.path.join(archive_dir, sitename, "ROI", outname)
+    inname = "%s_%s_roistats.csv" % (sitename, roiname)
+    outname = inname
+    inpath = os.path.join(archive_dir, sitename, "ROI", outname)
+    outpath = inpath
     if verbose:
         print("output file: {0}".format(outname))
 
     # get ROI list
-    roi_list = vi.get_roi_list(sitename, roiname)
+    roi_list = get_roi_list(sitename, roiname)
 
     # read existing CSV file - since this is an update throw
     # exception if the file doesn't already exist
     try:
-        roits = vi.ROITimeSeries(site=sitename, ROIListID=roiname)
+        roits = ROITimeSeries(site=sitename, ROIListID=roiname)
         roits.readCSV(outpath)
     except IOError:
         errmsg = "Unable to read CSV file: {0}\n".format(outpath)
@@ -154,10 +162,10 @@ if __name__ == "__main__":
         if roi_endDT < dt_start:
             continue
 
-        start_date = roi_startDT.date()
-        end_date = roi_endDT.date()
-        start_time = roi_startDT.time()
-        end_time = roi_endDT.time()
+        # start_date = roi_startDT.date()
+        # end_date = roi_endDT.date()
+        # start_time = roi_startDT.time()
+        # end_time = roi_endDT.time()
         maskfile = roimask["maskfile"]
 
         # okay set the start datetime to the larger of dt_start (from
@@ -189,7 +197,7 @@ if __name__ == "__main__":
         roimask = np.asarray(mask_img, dtype=np.bool8)
 
         # get list of images for this timeperiod
-        imglist = vi.getsiteimglist(
+        imglist = utils.getsiteimglist(
             sitename, getIR=False, startDT=dt_start, endDT=roi_endDT
         )
 

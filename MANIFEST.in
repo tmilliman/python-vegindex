@@ -20,4 +20,4 @@ include requirements_dev.txt
 include tox.ini .travis.yml appveyor.yml
 include .flake8 .pre-commit-config.yaml
 recursive-include tests *
-global-exclude *.py[cod] __pycache__ *.so *.dylib
+global-exclude *.py[cod] __pycache__ *.so *.dylib *~

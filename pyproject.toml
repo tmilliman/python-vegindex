@@ -1,5 +1,5 @@
 [tool.black]
-py36 = true
+py38 = true
 include = '\.pyi?$'
 exclude = '''
 /(
@@ -8,7 +8,6 @@ exclude = '''
   | \.mypy_cache
   | \.tox
   | \.venv
-  ! ci\templates
   | _build
   | buck-out
   | build

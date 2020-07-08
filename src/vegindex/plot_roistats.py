@@ -13,10 +13,9 @@ from __future__ import print_function
 import argparse
 import os
 
-import matplotlib.pyplot as plt
 import pandas as pd
+from matplotlib import pyplot as plt
 
-# import vegindex as vi
 from . import config
 
 plt.style.use("ggplot")
