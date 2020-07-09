@@ -527,7 +527,7 @@ class IRROITimeSeries(object):
             "date,local_std_time,doy,filename,solar_elev,"
             + "exposure,awbflag,mask_index,"
             + "ir_mean,ir_std,ir_5_qtl,ir_10_qtl,ir_25_qtl,ir_50_qtl,"
-            + "ir_75_qtl,ir_90_qtl,ir_95_qtl"
+            + "ir_75_qtl,ir_90_qtl,ir_95_qtl\n"
         )
         fo.write(fields_str)
 
