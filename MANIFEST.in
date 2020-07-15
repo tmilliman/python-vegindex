@@ -16,6 +16,7 @@ include LICENSE
 include README.rst
 include requirements.txt
 include requirements_dev.txt
+include pyproject.toml
 
 include tox.ini .travis.yml appveyor.yml
 include .flake8 .pre-commit-config.yaml
