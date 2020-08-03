@@ -704,7 +704,8 @@ class NDVITimeSeries(object):
             # convert strings to numbers - there's got to be a more
             # efficient way to do this!
             row["solar_elev"] = _float_or_none(row["solar_elev"])
-            row["exposure"] = _int_or_none(_float_or_none(row["exposure"]))
+            row["exposure_rgb"] = _int_or_none(_float_or_none(row["exposure_rgb"]))
+            row["exposure_ir"] = _int_or_none(_float_or_none(row["exposure_ir"]))
             row["awbflag"] = _int_or_none(_float_or_none(row["awbflag"]))
             row["mask_index"] = _int_or_none(row["mask_index"])
             row["gcc"] = _float_or_none(row["gcc"])

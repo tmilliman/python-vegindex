@@ -110,7 +110,7 @@ def test_reading_ndvits_file():
     """
 
     sitename = "dukehw"
-    roiname = "DB_0001"
+    roiname = "DB_1000"
     ndvi_file = "{}_{}_ndvi.csv".format(sitename, roiname)
 
     # set up path to roistats file
