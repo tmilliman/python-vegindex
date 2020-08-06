@@ -62,10 +62,15 @@ The details of the calculation of GCC are presented in this
    USA. https://doi.org/10.3334/ORNLDAAC/1358
 
 
-After the package is installed two python scripts should be available:
+After the package is installed several python scripts should be
+available as commands:
 
 * ``generate_roi_timeseries``
+* ``update_roi_timeseries``
+* ``plot_roistats``
 * ``generate_summary_timeseries``
+* ``generate_roi_ir_timeseries``
+* ``update_roi_ir_timeseries``
 * ``generate_ndvi_timeseries``
 * ``generate_ndvi_summary_timeseries``
 
