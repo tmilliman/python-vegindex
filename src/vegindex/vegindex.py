@@ -12,6 +12,7 @@ from . import config
 from .gcctimeseries import GCCTimeSeries
 from .roilist import ROIList
 from .roitimeseries import ROITimeSeries
+from .ndvitimeseries import NDVITimeSeries
 
 # ********** Public Functions **************
 
@@ -109,6 +110,30 @@ def get_roi_timeseries(site, roilist_id):
     roits.readCSV(roitspath)
 
     return roits
+
+
+def get_ndvi_timeseries(site, roilist_id):
+    """
+    function to read in NDVI CSV file and return a NDVITimeSeries object
+    """
+
+    # take ROIList_id and parse into site, roitype, sequence_number
+    (roitype, seqno_str) = roilist_id.split("_")
+
+    # set cannonical dir for ROI Lists
+    roidir = os.path.join(config.archive_dir, site, "ROI")
+
+    # set cannonical filename
+    ndvitsfile = site + "_" + roilist_id + "_ndvi.csv"
+    ndvitspath = os.path.join(roidir, ndvitsfile)
+
+    # create empty NDVITimeSeries object
+    ndvits = NDVITimeSeries(site=site, ROIListID=roilist_id)
+
+    # read in from CSV file
+    ndvits.readCSV(ndvitspath)
+
+    return ndvits
 
 
 def get_gcc_timeseries(site, roilist_id, nday=3):
