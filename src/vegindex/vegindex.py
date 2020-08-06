@@ -10,9 +10,9 @@ from datetime import timedelta
 
 from . import config
 from .gcctimeseries import GCCTimeSeries
+from .ndvitimeseries import NDVITimeSeries
 from .roilist import ROIList
 from .roitimeseries import ROITimeSeries
-from .ndvitimeseries import NDVITimeSeries
 
 # ********** Public Functions **************
 

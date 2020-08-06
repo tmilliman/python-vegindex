@@ -4,9 +4,9 @@ from __future__ import print_function
 import csv
 import re
 import sys
+from datetime import date
 from datetime import datetime
 from datetime import time
-from datetime import date
 
 from . import config
 from . import utils

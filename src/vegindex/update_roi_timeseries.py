@@ -12,11 +12,16 @@ import os
 import sys
 from datetime import timedelta
 
+# try python3 import then python2 import
+try:
+    import configparser
+except ImportError:
+    from ConfigParser import SafeConfigParser as configparser
+
 # use this because numpy/openblas is automatically multi-threaded.
 os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["MKL_NUM_THREADS"] = "1"
 import numpy as np
-
 from PIL import Image
 
 import vegindex as vi
@@ -24,12 +29,6 @@ from vegindex.roitimeseries import ROITimeSeries
 from vegindex.vegindex import get_roi_list
 
 from . import utils
-
-# try python3 import then python2 import
-try:
-    import configparser
-except ImportError:
-    from ConfigParser import SafeConfigParser as configparser
 
 # set vars
 
