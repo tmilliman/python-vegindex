@@ -61,7 +61,3 @@ RESIZE = False
 ND_FLOAT = "NA"
 ND_INT = "NA"
 ND_STRING = "None"
-
-# ND_FLOAT = '-9999.'
-# ND_INT = '-9999'
-# ND_STRING = "None"

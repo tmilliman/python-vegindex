@@ -119,7 +119,12 @@ def test_reading_ndvits_file():
     ndvits = ndvitimeseries.NDVITimeSeries(site=sitename, ROIListID=roiname)
 
     ndvits.readCSV(ndvi_path)
+    first_row = ndvits.rows[0]
     last_row = ndvits.rows[-1]
 
     np.testing.assert_equal(last_row["filename_rgb"], "dukehw_2020_07_15_215405.jpg")
     np.testing.assert_equal(last_row["filename_ir"], "dukehw_IR_2020_07_15_215405.jpg")
+    np.testing.assert_equal(first_row["exposure_rgb"], 34)
+    np.testing.assert_equal(first_row["exposure_ir"], 8)
+    np.testing.assert_equal(first_row["awbflag"], "NA")
+    np.testing.assert_equal(len(ndvits.rows), 93946)
