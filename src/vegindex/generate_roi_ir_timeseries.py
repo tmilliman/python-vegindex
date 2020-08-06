@@ -13,7 +13,12 @@ import argparse
 import os
 import sys
 
+# use this because numpy/openblas is automatically multi-threaded.
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
 import numpy as np
+import numpy as np
+
 from PIL import Image
 
 import vegindex as vi

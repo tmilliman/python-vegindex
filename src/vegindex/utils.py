@@ -241,6 +241,7 @@ def getsiteinfo(sitename):
             df = pd.read_csv(config.site_info_file, comment="#")
         except IOError:
             sys.stderr.write("Error getting site info from file.\n")
+            sys.exit(-1)
 
         try:
             json_string = df[df.sitename == sitename].to_json(orient="records")
