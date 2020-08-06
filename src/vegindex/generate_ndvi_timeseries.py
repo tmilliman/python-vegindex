@@ -234,7 +234,8 @@ def main():
         }
     )
 
-    writeCSV(roits, df_ndvi, outpath)
+    if not dryrun:
+        writeCSV(roits, df_ndvi, outpath)
 
 
 def writeCSV(roits, df_ndvi, fpath):
