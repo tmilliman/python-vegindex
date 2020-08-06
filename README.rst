@@ -66,6 +66,8 @@ After the package is installed two python scripts should be available:
 
 * ``generate_roi_timeseries``
 * ``generate_summary_timeseries``
+* ``generate_ndvi_timeseries``
+* ``generate_ndvi_summary_timeseries``
 
 These scripts allow you to reproduce the PhenoCam network
 "standard timeseries products" from downloaded data.  For a description
