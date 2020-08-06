@@ -7,11 +7,13 @@ format will be:
 
 """
 
+import argparse
 import os
 import sys
+from datetime import datetime
+from datetime import timedelta
+
 import pandas as pd
-from datetime import timedelta, datetime
-import argparse
 
 # use this because numpy/openblas is automatically multi-threaded.
 os.environ["OMP_NUM_THREADS"] = "1"

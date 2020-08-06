@@ -45,20 +45,19 @@ from datetime import datetime
 from datetime import time
 from datetime import timedelta
 
-import numpy as np
-
-import vegindex as vi
-from vegindex.ndvitimeseries import NDVITimeSeries
-from vegindex.ndvi_summary_timeseries import NDVISummaryTimeSeries
-from vegindex.vegindex import daterange2
-from vegindex.vegindex import get_ndvi_timeseries
-
-from vegindex.quantile import quantile
-
 try:
     import configparser
 except ImportError:
     from ConfigParser import SafeConfigParser as configparser
+
+import numpy as np
+
+import vegindex as vi
+from vegindex.ndvi_summary_timeseries import NDVISummaryTimeSeries
+from vegindex.ndvitimeseries import NDVITimeSeries
+from vegindex.quantile import quantile
+from vegindex.vegindex import daterange2
+from vegindex.vegindex import get_ndvi_timeseries
 
 # set vars
 
