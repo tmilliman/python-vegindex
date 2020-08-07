@@ -155,6 +155,13 @@ def main():
     df_combined = df_combined[df_combined.exposure_ir.notnull()]
     df_combined = df_combined[df_combined.exposure_rgb.notnull()]
 
+    # eliminate rows where either exposure is 0.  This is
+    # an indication that the OCR of the exposure failed so maybe
+    # letting this generate an error would be better.  The
+    # resulting CSV would have "inf" or "-inf" in the output.
+    df_combined = df_combined[df_combined.exposure_ir != 0]
+    df_combined = df_combined[df_combined.exposure_rgb != 0]
+
     # eliminate rows where there is no DN values
     df_combined = df_combined[df_combined.r_mean.notnull()]
     df_combined = df_combined[df_combined.g_mean.notnull()]
