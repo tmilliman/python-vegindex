@@ -351,6 +351,9 @@ def main():
             gcc_90 = ND_FLOAT
             ndvi_mean = ND_FLOAT
             ndvi_std = ND_FLOAT
+            ndvi_50 = ND_FLOAT
+            ndvi_75 = ND_FLOAT
+            ndvi_90 = ND_FLOAT
             max_solar_elev = ND_FLOAT
             snow_flag = ND_INT
             outlierflag_ndvi_mean = ND_INT
