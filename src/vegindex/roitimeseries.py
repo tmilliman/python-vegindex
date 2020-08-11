@@ -483,7 +483,7 @@ class ROITimeSeries(object):
         else:
             brt_mean = ND_FLOAT
 
-        if brt_mean > 0 and brt_mean != ND_FLOAT:
+        if brt_mean != ND_FLOAT and brt_mean > 0:
             gcc = g_mean / brt_mean
             rcc = r_mean / brt_mean
         else:
