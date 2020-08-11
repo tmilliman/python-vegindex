@@ -824,6 +824,7 @@ class ROITimeSeries(object):
             if (
                 (row["datetime"].time() < tod_min)
                 or (row["datetime"].time() > tod_max)
+                or (row["r_mean"] == ND_INT)
                 or (brt < brt_min)
                 or (brt > brt_max)
                 or (row["solar_elev"] < sunelev_min)
