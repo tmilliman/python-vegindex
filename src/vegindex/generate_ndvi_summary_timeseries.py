@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
@@ -308,6 +308,19 @@ def main():
                     continue
                 else:
                     break
+
+            # # filter on exposures
+            # exposure_ir = ndvits_rows[ndvits_ndx]["exposure_ir"]
+            # exposure_rgb = ndvits_rows[ndvits_ndx]["exposure_rgb"]
+
+            # if exposure_ir/exposure_rgb > 0.8:
+            #     ndvits_ndx += 1
+            #     continue
+
+            # # filter on negative NDVI
+            # if ndvits_rows[ndvits_ndx]["NDVI_c"] < 0:
+            #     ndvits_ndx += 1
+            #     continue
 
             rgb_filenames.append(ndvits_rows[ndvits_ndx]["filename_rgb"])
             ir_filenames.append(ndvits_rows[ndvits_ndx]["filename_ir"])
