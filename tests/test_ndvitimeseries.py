@@ -126,5 +126,4 @@ def test_reading_ndvits_file():
     np.testing.assert_equal(last_row["filename_ir"], "dukehw_IR_2020_07_15_215405.jpg")
     np.testing.assert_equal(first_row["exposure_rgb"], 34)
     np.testing.assert_equal(first_row["exposure_ir"], 8)
-    np.testing.assert_equal(first_row["awbflag"], "NA")
     np.testing.assert_equal(len(ndvits.rows), 93946)

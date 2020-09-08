@@ -216,7 +216,6 @@ def main():
             "exposure_rgb",
             "exposure_ir",
             "mask_index_rgb",
-            "awbflag_rgb",
             "r_mean",
             "g_mean",
             "b_mean",
@@ -237,7 +236,6 @@ def main():
             "doy_rgb": "doy",
             "solar_elev_rgb": "solar_elev",
             "mask_index_rgb": "mask_index",
-            "awbflag_rgb": "awbflag",
         }
     )
 

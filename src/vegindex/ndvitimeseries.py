@@ -124,9 +124,9 @@ class NDVITimeSeries(object):
     # Update Date: 2020-07-31
     # Update Time: 11:06:37
     #
-    date_local_std_time,doy,filename_rgb,filename_ir,solar_elev,exposure_rgb,exposur
-    e_ir,mask_index_rgb,awbflag,r_mean,g_mean,b_mean,ir_mean,gcc,Y,Z_prime,R_prime,Y
-    _prime,X_prime,NDVI_c
+    date_local_std_time,doy,filename_rgb,filename_ir,solar_elev,
+    exposure_rgb,exposure_ir,mask_index_rgb,r_mean,g_mean,b_mean,
+    ir_mean,gcc,Y,Z_prime,R_prime,Y_prime,X_prime,NDVI_c
     2013-05-31 15:31:58,151,dukehw_2013_05_31_153158.jpg,dukehw_IR_2013_05_31_153031
     .jpg,45.07987,34.0,8.0,1,,87.47313,90.74318000000001,45.38238,115.11498,0.40583,
     84.77247700000001,40.6992914870769,15.001518032986743,14.538359864525873,26.1609
@@ -697,16 +697,16 @@ class NDVITimeSeries(object):
 
             row["datetime"] = im_dt
 
-            # check for awbflag
-            if "awbflag" not in row.keys():
-                row["awbflag"] = ND_INT
+            # # check for awbflag
+            # if "awbflag" not in row.keys():
+            #     row["awbflag"] = ND_INT
 
             # convert strings to numbers - there's got to be a more
             # efficient way to do this!
             row["solar_elev"] = _float_or_none(row["solar_elev"])
             row["exposure_rgb"] = _int_or_none(_float_or_none(row["exposure_rgb"]))
             row["exposure_ir"] = _int_or_none(_float_or_none(row["exposure_ir"]))
-            row["awbflag"] = _int_or_none(_float_or_none(row["awbflag"]))
+            # row["awbflag"] = _int_or_none(_float_or_none(row["awbflag"]))
             row["mask_index"] = _int_or_none(row["mask_index"])
             row["gcc"] = _float_or_none(row["gcc"])
             row["r_mean"] = _float_or_none(row["r_mean"])
