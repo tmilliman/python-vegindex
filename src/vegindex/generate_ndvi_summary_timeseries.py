@@ -301,13 +301,13 @@ def main():
             and img_date[ndvits_ndx] < end_date
         ):
 
-            # skip this row if awbflag is 1
-            if ndvits_rows[ndvits_ndx]["awbflag"] == 1:
-                if ndvits_ndx < nrows:
-                    ndvits_ndx += 1
-                    continue
-                else:
-                    break
+            # # skip this row if awbflag is 1
+            # if ndvits_rows[ndvits_ndx]["awbflag"] == 1:
+            #     if ndvits_ndx < nrows:
+            #         ndvits_ndx += 1
+            #         continue
+            #     else:
+            #         break
 
             # # filter on exposures
             # exposure_ir = ndvits_rows[ndvits_ndx]["exposure_ir"]
