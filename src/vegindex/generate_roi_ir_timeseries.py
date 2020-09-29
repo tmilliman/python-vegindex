@@ -15,7 +15,7 @@ import sys
 
 # try python3 import then python2 import
 try:
-    import configparser
+    from configparser import ConfigParser as configparser
 except ImportError:
     from ConfigParser import SafeConfigParser as configparser
 
