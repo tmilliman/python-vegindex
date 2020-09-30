@@ -4,16 +4,18 @@
 Update summary time series CSV file.
 """
 
+import argparse
 import os
 import sys
-from datetime import date, time, timedelta, datetime
-import argparse
+from configparser import ConfigParser
+from datetime import date
+from datetime import datetime
+from datetime import time
+from datetime import timedelta
 
 # use this because numpy/openblas is automatically multi-threaded.
 os.environ["OMP_NUM_THREADS"] = "1"
 import numpy as np
-
-from configparser import ConfigParser
 
 from vegindex import vegindex as vi
 
