@@ -267,7 +267,10 @@ def main():
     # list is ordered so find first and last dates
     dt_first = img_date[0]
     dt_last = img_date[nrows - 1]
-
+    if verbose:
+        print("date first: {}".format(dt_first))
+        print("date last: {}".format(dt_last))
+        
     # set up a generator which yields dates for the start
     # of the next nday period covering the date range of image
     gcc_dr = daterange2(dt_first, dt_last, ndays)
