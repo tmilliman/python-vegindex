@@ -8,8 +8,10 @@ Tests for `vegindex.vegindex.daterange2` module
 """
 
 import os
-import numpy as np
 from datetime import date
+
+import numpy as np
+
 from vegindex import vegindex as vi
 
 end_date = date(2008, 1, 31)
