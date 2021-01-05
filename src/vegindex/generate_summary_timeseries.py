@@ -53,6 +53,7 @@ from datetime import datetime
 from datetime import time
 from datetime import timedelta
 
+os.environ["OMP_NUM_THREADS"] = "1"
 import numpy as np
 
 import vegindex as vi
