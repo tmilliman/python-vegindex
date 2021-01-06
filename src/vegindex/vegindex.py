@@ -36,7 +36,7 @@ def daterange2(start_date, end_date, nday):
         # which includes start_date
         if iyear == year_start:
             doy_start = (start_date - date(iyear, 1, 1)).days + 1
-            n = (doy_start - 1) / nday
+            n = int((doy_start - 1) / nday)
             new_doy_start = n * nday + 1
             dstart = date(iyear, 1, 1) + timedelta(new_doy_start - 1)
         else:
