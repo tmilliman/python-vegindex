@@ -271,7 +271,7 @@ def main():
     if verbose:
         print("date first: {}".format(dt_first))
         print("date last: {}".format(dt_last))
-        
+
     # set up a generator which yields dates for the start
     # of the next nday period covering the date range of image
     gcc_dr = daterange2(dt_first, dt_last, ndays)
