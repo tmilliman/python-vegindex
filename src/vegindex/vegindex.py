@@ -8,11 +8,12 @@ import os
 from datetime import date
 from datetime import timedelta
 
-from . import config
+from vegindex import config
 from .gcctimeseries import GCCTimeSeries
 from .ndvitimeseries import NDVITimeSeries
 from .roilist import ROIList
 from .roitimeseries import ROITimeSeries
+from .ir_roitimeseries import IRROITimeSeries
 
 # ********** Public Functions **************
 
@@ -89,7 +90,7 @@ def get_roi_list(site, roilist_id):
 
 def get_roi_timeseries(site, roilist_id):
     """
-    function to read in CSV ROI file and return a ROITimeSeries object
+    function to read in CSV ROI stats file and return a ROITimeSeries object
     """
 
     # take ROIList_id and parse into site, roitype, sequence_number
@@ -105,6 +106,32 @@ def get_roi_timeseries(site, roilist_id):
 
     # create empty ROITimeSeries object
     roits = ROITimeSeries(site=site, ROIListID=roilist_id)
+
+    # read in from CSV file
+    roits.readCSV(roitspath)
+
+    return roits
+
+
+def get_roi_ir_timeseries(site, roilist_id):
+    """
+    function to read in CSV ROI IR stats file and return an IR
+    ROITimeSeries object
+    """
+
+    # take ROIList_id and parse into site, roitype, sequence_number
+    (roitype, seqno_str) = roilist_id.split("_")
+
+    # set cannonical dir for ROI Lists
+    roidir = os.path.join(config.archive_dir, site, "ROI")
+
+    # set cannonical filename
+    roitsfile = site + "_" + roilist_id + "_IR_roistats.csv"
+    roitspath = os.path.join(roidir, roitsfile)
+    # print roitspath
+
+    # create empty ROITimeSeries object
+    roits = IRROITimeSeries(site=site, ROIListID=roilist_id)
 
     # read in from CSV file
     roits.readCSV(roitspath)
