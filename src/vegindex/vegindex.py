@@ -8,12 +8,12 @@ import os
 from datetime import date
 from datetime import timedelta
 
-from vegindex import config
+from . import config
 from .gcctimeseries import GCCTimeSeries
+from .ir_roitimeseries import IRROITimeSeries
 from .ndvitimeseries import NDVITimeSeries
 from .roilist import ROIList
 from .roitimeseries import ROITimeSeries
-from .ir_roitimeseries import IRROITimeSeries
 
 # ********** Public Functions **************
 
