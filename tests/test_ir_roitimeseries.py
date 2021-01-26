@@ -15,6 +15,7 @@ from pkg_resources import resource_filename
 
 from vegindex import config
 from vegindex import ir_roitimeseries
+from vegindex import vegindex as vi
 
 SAMPLE_DATA_DIR = os.path.join(os.path.dirname(__file__), "sample_data")
 
@@ -101,6 +102,22 @@ def test_reading_roits_file():
 
     roits.readCSV(roistats_path)
     last_row = roits.rows[-1]
+
+    np.testing.assert_equal(
+        last_row["filename"], "alligatorriver_IR_2015_12_31_193031.jpg"
+    )
+    np.testing.assert_equal(last_row["exposure"], 2400)
+
+
+def test_get_ir_roitimeseries():
+    """
+    test reading in existing ir_roits timeseries using helper function
+    """
+
+    sitename = "alligatorriver"
+    roiname = "DB_1000"
+    ir_roits = vi.get_roi_ir_timeseries(sitename, roiname)
+    last_row = ir_roits.rows[-1]
 
     np.testing.assert_equal(
         last_row["filename"], "alligatorriver_IR_2015_12_31_193031.jpg"
