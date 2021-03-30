@@ -44,11 +44,7 @@ import sys
 from datetime import datetime
 from datetime import time
 from datetime import timedelta
-
-try:
-    import configparser
-except ImportError:
-    from ConfigParser import SafeConfigParser as configparser
+from configparser import SafeConfigParser as config
 
 import numpy as np
 
@@ -140,7 +136,7 @@ def main():
     if os.path.exists(config_path):
         # NOTE: should probably subclass safe config parser
         # and add gettime() method which checks for time validity
-        cfgparser = configparser(
+        cfgparser = config(
             defaults={
                 "nimage_threshold": str(default_nimage_threshold),
                 "time_min": str(default_time_min),
