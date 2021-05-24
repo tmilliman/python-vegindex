@@ -11,8 +11,8 @@ from datetime import timedelta
 from . import config
 from .gcctimeseries import GCCTimeSeries
 from .ir_roitimeseries import IRROITimeSeries
-from .ndvitimeseries import NDVITimeSeries
 from .ndvi_summary_timeseries import NDVISummaryTimeSeries
+from .ndvitimeseries import NDVITimeSeries
 from .roilist import ROIList
 from .roitimeseries import ROITimeSeries
 
