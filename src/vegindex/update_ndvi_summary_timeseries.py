@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Script to generate a csv with summary files from a roi NDVI
+Script to update a csv with summary values from a roi NDVI
 timeseries csv file.  Output format will be:
 
 <TBD>
@@ -41,10 +41,14 @@ from __future__ import print_function
 import argparse
 import os
 import sys
-from configparser import SafeConfigParser as config
 from datetime import datetime
 from datetime import time
 from datetime import timedelta
+
+try:
+    import configparser
+except ImportError:
+    from ConfigParser import SafeConfigParser as configparser
 
 import numpy as np
 
@@ -66,7 +70,6 @@ ND_FLOAT = vi.config.ND_FLOAT
 ND_INT = vi.config.ND_INT
 ND_STRING = vi.config.ND_STRING
 
-irflg = False
 debug = False
 
 # get default image selectors
@@ -136,7 +139,7 @@ def main():
     if os.path.exists(config_path):
         # NOTE: should probably subclass safe config parser
         # and add gettime() method which checks for time validity
-        cfgparser = config(
+        cfgparser = configparser(
             defaults={
                 "nimage_threshold": str(default_nimage_threshold),
                 "time_min": str(default_time_min),
@@ -205,18 +208,21 @@ def main():
     if verbose:
         print("output file: ", outfile)
 
-    # create NDVI Summary timeseries object as empty list
-    ndvi_summary_ts = NDVISummaryTimeSeries(
-        site=sitename,
-        ROIListID=roiname,
-        nday=ndays,
-        nmin=nimage_threshold,
-        tod_min=time_min,
-        tod_max=time_max,
-        sunelev_min=sunelev_min,
-        brt_min=brt_min,
-        brt_max=brt_max,
+    # since this is "update" output file should already exist
+    # if not just bail out
+    if not os.path.exists(outpath):
+        sys.stderr.write("Existing NDVI summary file {0} not found.\n".format(outpath))
+        sys.exit(1)
+
+    # read in existing CSV file
+    ndvi_summary_ts = vi.NDVISummaryTimeSeries(
+        site=sitename, ROIListID=roiname, ndays=ndays
     )
+    ndvi_summary_ts.readCSV(outpath)
+
+    nrows = len(ndvi_summary_ts.rows)
+    print("Read {} rows".format(nrows))
+    sys.exit(0)
 
     # get NDVI timeseries for this site and roi
     ndvits = get_ndvi_timeseries(sitename, roiname)

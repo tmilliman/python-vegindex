@@ -88,6 +88,7 @@ setup(
             "update_summary_timeseries=vegindex.update_summary_timeseries:main",
             "generate_ndvi_timeseries=vegindex.generate_ndvi_timeseries:main",
             "generate_ndvi_summary_timeseries=vegindex.generate_ndvi_summary_timeseries:main",
+            "update_ndvi_summary_timeseries=vegindex.update_ndvi_summary_timeseries:main",
             "plot_roistats=vegindex.plot_roistats:main",
         ]
     },

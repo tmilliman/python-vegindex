@@ -308,6 +308,15 @@ def main():
             and img_date[roits_ndx] >= start_date
             and img_date[roits_ndx] < end_date
         ):
+
+            # skip this row if awbflag is 1
+            if roits_rows[roits_ndx]["awbflag"] == 1:
+                if roits_ndx < nrows:
+                    roits_ndx += 1
+                    continue
+                else:
+                    break
+
             filenames.append(new_roits_rows[roits_ndx]["filename"])
             r_dn = new_roits_rows[roits_ndx]["r_mean"]
             r_dn_vals.append(r_dn)
