@@ -152,7 +152,7 @@ def get_ndvi_timeseries(site, roilist_id):
     roidir = os.path.join(config.archive_dir, site, "ROI")
 
     # set cannonical filename
-    ndvitsfile = site + "_" + roilist_id + "_ndvi.csv"
+    ndvitsfile = site + "_" + roilist_id + "NDVI_roistats.csv"
     ndvitspath = os.path.join(roidir, ndvitsfile)
 
     # create empty NDVITimeSeries object

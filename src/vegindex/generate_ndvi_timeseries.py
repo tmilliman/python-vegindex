@@ -82,7 +82,7 @@ def main():
 
     # set up output filename
     outdir = os.path.join(archive_dir, sitename, "ROI")
-    outfile = "{0}_{1}_ndvi.csv".format(sitename, roiname)
+    outfile = "{}_{}_NDVI_roistats.csv".format(sitename, roiname)
     outpath = os.path.join(outdir, outfile)
 
     if verbose:
