@@ -28,7 +28,7 @@ def test_reading_ndvits_file():
 
     sitename = "dukehw"
     roiname = "DB_1000"
-    ndvi_file = "{}_{}_ndvi.csv".format(sitename, roiname)
+    ndvi_file = "{}_{}_NDVI_roistats.csv".format(sitename, roiname)
 
     # set up path to roistats file
     ndvi_path = os.path.join(SAMPLE_DATA_DIR, sitename, "ROI", ndvi_file)
