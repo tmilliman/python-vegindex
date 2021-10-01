@@ -82,7 +82,7 @@ def main():
 
     # set up output filename
     outdir = os.path.join(archive_dir, sitename, "ROI")
-    outfile = "{0}_{1}_ndvi.csv".format(sitename, roiname)
+    outfile = "{}_{}_NDVI_roistats.csv".format(sitename, roiname)
     outpath = os.path.join(outdir, outfile)
 
     if verbose:
@@ -220,6 +220,14 @@ def main():
             "g_mean",
             "b_mean",
             "ir_mean",
+            "ir_std",
+            "ir_5_qtl",
+            "ir_10_qtl",
+            "ir_25_qtl",
+            "ir_50_qtl",
+            "ir_75_qtl",
+            "ir_90_qtl",
+            "ir_95_qtl",
             "gcc",
             "Y",
             "Z_prime",
