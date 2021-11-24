@@ -6,12 +6,7 @@ vegindex
        :alt: PyPI Package latest release
        :target: https://pypi.org/project/vegindex
 
-..
-   .. image:: https://img.shields.io/travis/tmilliman/python-vegindex.svg
-          :alt: Travis-CI Build Status
-          :target: https://travis-ci.org/tmilliman/python-vegindex
-
-.. image:: ![example workflow](https://github.com/tmilliman/python-vegindex/actions/workflows/ci.yml/badge.svg&branch=ghactions)
+.. image:: https://github.com/tmilliman/python-vegindex/actions/workflows/ci.yml/badge.svg&branch=ghactions
        :target: https://github.com/tmilliman/python-vegindex/
        :alt: Github CI Action Status
 
