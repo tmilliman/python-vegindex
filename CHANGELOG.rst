@@ -1,6 +1,11 @@
 Changelog
 =========
-0.7.2 (2030-04-12)
+0.8.0 (2021-11-24)
+------------------
+* Add 3.9 tox environment to tox.ini
+* Add IR and camera NDVI processing scripts
+
+0.7.2 (2020-04-12)
 ------------------
 * Add 3.8 tox environment to tox.ini
 
