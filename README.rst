@@ -11,7 +11,7 @@ vegindex
           :alt: Travis-CI Build Status
           :target: https://travis-ci.org/tmilliman/python-vegindex
 
-.. image:: ![example workflow](https://github.com/tmilliman/python-vegindex/actions/workflows/ci/badge.svg)
+.. image:: ![example workflow](https://github.com/tmilliman/python-vegindex/actions/workflows/ci.yml/badge.svg&branch=ghactions)
        :target: https://github.com/tmilliman/python-vegindex/
        :alt: Github CI Action Status
 
