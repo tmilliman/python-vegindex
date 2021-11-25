@@ -26,7 +26,7 @@ project = "vegindex"
 year = "2017"
 author = "Thomas Milliman"
 copyright = "{0}, {1}".format(year, author)
-version = release = "0.7.2"
+version = release = "0.8.0"
 
 pygments_style = "trac"
 templates_path = ["."]
