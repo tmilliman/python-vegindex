@@ -73,7 +73,6 @@ setup(
         "numpy",
         "pandas",
         "matplotlib",
-        "scandir",
     ],
     extras_require={
         # eg:
