@@ -2,6 +2,11 @@ Changelog
 =========
 0.7.2 (2030-04-12)
 ------------------
+* Add 3.9 tox environment to tox.ini
+* Add scripts for processing IR images
+
+0.7.2 (2030-04-12)
+------------------
 * Add 3.8 tox environment to tox.ini
 
 0.7.0 (2020-04-01)
