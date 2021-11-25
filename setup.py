@@ -65,13 +65,15 @@ setup(
     ],
     keywords=["phenology", "phenocam", "vegetation", "index"],
     install_requires=[
-        "pillow>=4.0",
-        "pyephem>=3.7",
-        "configparser>=3.5.0",
-        "requests>=2.17.3",
-        "numpy>=1.13.0",
-        "pandas>=0.20.0",
-        "matplotlib>=1.5.3",
+        "pillow",
+        "pyephem",
+        "configparser",
+        "configobj",
+        "requests",
+        "numpy",
+        "pandas",
+        "matplotlib",
+        "scandir",
     ],
     extras_require={
         # eg:
