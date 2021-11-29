@@ -52,6 +52,7 @@ import os
 from datetime import datetime
 from datetime import time
 from datetime import timedelta
+from configparser import ConfigParser as configparser
 
 os.environ["OMP_NUM_THREADS"] = "1"
 import numpy as np
@@ -62,11 +63,6 @@ from vegindex.vegindex import daterange2
 from vegindex.vegindex import get_roi_timeseries
 
 from .quantile import quantile
-
-try:
-    from configparser import ConfigParser as configparser
-except ImportError:
-    from ConfigParser import SafeConfigParser as configparser
 
 # set vars
 

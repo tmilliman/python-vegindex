@@ -44,11 +44,7 @@ import sys
 from datetime import datetime
 from datetime import time
 from datetime import timedelta
-
-try:
-    import configparser
-except ImportError:
-    from ConfigParser import SafeConfigParser as configparser
+from configparser import ConfigParser as configparser
 
 import numpy as np
 

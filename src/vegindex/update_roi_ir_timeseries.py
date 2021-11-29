@@ -12,11 +12,8 @@ import os
 import sys
 from datetime import timedelta
 
-# try python3 import then python2 import
-try:
-    from configparser import ConfigParser as configparser
-except ImportError:
-    from ConfigParser import SafeConfigParser as configparser
+# python3 has configparser in standard library
+from configparser import ConfigParser as configparser
 
 # use this because numpy/openblas is automatically multi-threaded.
 os.environ["OMP_NUM_THREADS"] = "1"

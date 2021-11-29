@@ -1,5 +1,3 @@
-configobj>=5.0.6
-ConfigParser>=0.3
 ephem>=4.1.1
 matplotlib>=3.5.0
 numpy>=1.21.4

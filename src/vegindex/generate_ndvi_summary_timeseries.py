@@ -41,7 +41,7 @@ from __future__ import print_function
 import argparse
 import os
 import sys
-from configparser import SafeConfigParser as config
+from configparser import ConfigParser as config
 from datetime import datetime
 from datetime import time
 from datetime import timedelta
