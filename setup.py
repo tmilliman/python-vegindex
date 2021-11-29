@@ -66,7 +66,7 @@ setup(
     keywords=["phenology", "phenocam", "vegetation", "index"],
     install_requires=[
         "pillow",
-        "pyephem",
+        "ephem",
         "configparser",
         "configobj",
         "requests",
