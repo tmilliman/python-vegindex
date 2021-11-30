@@ -2,7 +2,7 @@
 
 __author__ = """Thomas Milliman"""
 __email__ = "thomas.milliman@unh.edu"
-__version__ = "0.9.0"
+__version__ = "0.10.0"
 
 import os
 
