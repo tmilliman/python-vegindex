@@ -65,15 +65,12 @@ setup(
     ],
     keywords=["phenology", "phenocam", "vegetation", "index"],
     install_requires=[
-        "jinja2",
         "matplotlib",
-        "matrix",
         "Pillow",
         "pyephem",
         "requests",
         "numpy",
         "pandas",
-        "setuptools",
     ],
     extras_require={"rst": ["docutils"]},
     entry_points={
