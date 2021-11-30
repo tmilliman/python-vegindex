@@ -1,10 +1,6 @@
-Jinja2>=3.0.3
 matplotlib>=3.3.4
-matrix>=2.0.1
 numpy>=1.19.5
 pandas>=1.1.5
 Pillow>=8.4.0
 pyephem>=9.99
-pytest>=6.2.5
 requests>=2.26.0
-setuptools>=59.4.0
