@@ -1,7 +1,7 @@
 Changelog
 =========
 0.10.0 (2021-11-30)
-------------------
+-------------------
 * Add 3.9 tox environment to tox.ini
 * Add IR and camera NDVI processing scripts
 * Drop support for python2
