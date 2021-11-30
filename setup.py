@@ -64,7 +64,17 @@ setup(
         "Topic :: Scientific/Engineering :: Bio-Informatics",
     ],
     keywords=["phenology", "phenocam", "vegetation", "index"],
-    install_requires=["pillow", "ephem", "requests", "numpy", "pandas", "matplotlib"],
+    install_requires=[
+        "jinja2",
+        "matplotlib",
+        "matrix",
+        "Pillow",
+        "pyephem",
+        "requests",
+        "numpy",
+        "pandas",
+        "setuptools",
+    ],
     extras_require={"rst": ["docutils"]},
     entry_points={
         "console_scripts": [
