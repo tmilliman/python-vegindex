@@ -12,8 +12,6 @@ from __future__ import print_function
 import argparse
 import os
 import sys
-
-# for python3 configparser is part of the standard library
 from configparser import ConfigParser as configparser
 
 # use this because numpy/openblas is automatically multi-threaded.

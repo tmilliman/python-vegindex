@@ -49,10 +49,10 @@ from __future__ import print_function
 
 import argparse
 import os
+from configparser import ConfigParser as configparser
 from datetime import datetime
 from datetime import time
 from datetime import timedelta
-from configparser import ConfigParser as configparser
 
 os.environ["OMP_NUM_THREADS"] = "1"
 import numpy as np

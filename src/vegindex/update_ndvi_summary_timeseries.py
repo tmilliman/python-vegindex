@@ -41,10 +41,10 @@ from __future__ import print_function
 import argparse
 import os
 import sys
+from configparser import ConfigParser as configparser
 from datetime import datetime
 from datetime import time
 from datetime import timedelta
-from configparser import ConfigParser as configparser
 
 import numpy as np
 

@@ -10,10 +10,8 @@ from __future__ import print_function
 import argparse
 import os
 import sys
-from datetime import timedelta
-
-# python3 has configparser in standard library
 from configparser import ConfigParser as configparser
+from datetime import timedelta
 
 # use this because numpy/openblas is automatically multi-threaded.
 os.environ["OMP_NUM_THREADS"] = "1"
