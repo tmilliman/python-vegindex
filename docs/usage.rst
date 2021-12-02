@@ -10,17 +10,19 @@ After installing the ``vegindex`` package, three python command line
 scripts will be installed:
 
 * ``generate_roi_timeseries``
-* ``generate_summary_timeseries``
+* ``update_roi_timeseries``
 * ``plot_roistats``
+* ``generate_summary_timeseries``
+* ``generate_roi_ir_timeseries``
+* ``update_roi_ir_timeseries``
+* ``generate_ndvi_timeseries``
+* ``generate_ndvi_summary_timeseries``
 
-The first script generates summary statistics for a Region of Interest
-(ROI) for each image which passes certain basic selection criteria and
-writes the results to a CSV file.  The second script reads in this
-file and then calculates either 1-day or 3-day summary statistics for
-the images in this time period.  For each time period a single line in
-the CSV file is produced.  The last script will create a .pdf file
-containing a plot of the ROI gcc values and the 3-day summary (90th
-precentile of gcc).
+These scripts allow you to reproduce the PhenoCam network
+"standard timeseries products" from downloaded data.  For a description
+of the products see the project
+`Tools Page <https://phenocam.sr.unh.edu/webcam/tools/>`_.
+
 
 Setting up the Data Directory
 -----------------------------
@@ -28,7 +30,6 @@ Setting up the Data Directory
 The vegindex package is designed to work with images downloaded from
 the PhenoCam network server.  To download images you can go to the
 data tab at the `project website <https://phenocam.sr.unh.edu/webcam/>`_.
-
 
 The images you select come in a zip file with a specific directory
 structure.  For example if we download data from the ``harvard`` site.
@@ -193,7 +194,10 @@ or
    set PHENOCAM_ARCHIVE_DIR=/mydata/directory/
 
 
-Here's an example command line session:
+All of the scripts assume the same data layout both for reading
+and writing.
+
+Here's an example command line session for a bash shell:
 ::
 
    $ export PHENOCAM_ARCHIVE_DIR=~/Downloads/phenocamdata/
@@ -205,6 +209,8 @@ Here's an example command line session:
 
 The output format for the "All Image" file can be found
 `here <https://phenocam.sr.unh.edu/webcam/tools/roi_statistics_format/>`_
+The output CSV file is written to the ROI directory and will follow
+the name convention: `<sitename>_<vegtype>_<seqno>_roistats.csv`
 
 Generating the 1-day and 3-day Summary Files
 --------------------------------------------
@@ -238,6 +244,8 @@ in the previous section:
 
 A `description of the summary files <https://phenocam.sr.unh.edu/webcam/tools/summary_file_format/>`_
 can be found on the project website.
+The output CSV file is also written to the ROI directory and will follow
+the name convention: `<sitename>_<vegtype>_<seqno>_[13]day.csv`.
 
 
 Running ``plot_roistats``
@@ -272,7 +280,108 @@ the .csv files used to produce the plot.
 
 .. image:: images/alligatorriver_DB_0001_roistats.png
 
-API
----
 
+Processing IR Images
+--------------------
+
+Starting with vers 0.10.0 scripts have been added to process the
+associated IR images.  These are used to calculate the 'camera NDVI'
+timeseries for a given ROI.  These scripts rely on having the '.meta'
+files available to extract the exposure values for both the RGB
+and IR images. For some sites these '.meta' files are not available.
+
+Generating the camera NDVI time series CSV files involves several
+steps and understanding the process is helpful:
+
+* generate the RGB ROI timeseries
+* generate the IR ROI timeseries
+* combine these two files (matching the RGB and IR images) to
+  calculate camera NDVI values for each RGB/IR image pair
+* create 1-day and 3-day of the camera NDVI values
+
+
+Generating the ROI IR Image Statistics File
+-------------------------------------------
+
+The ``generate_roi_ir_timeseries`` script reads in the ``ROI List``
+file and ``ROI Mask`` images. Then for each IR image found within the
+timeperiods in the ``ROI List`` it calculates IR image statistics over
+the ROI.  You can get help for
+
+
+:: 
+
+    $ generate_roi_ir_timeseries -h
+
+    usage: generate_roi_ir_timeseries [-h] [-v] [-n] site roiname
+    
+    positional arguments:
+      site           PhenoCam site name
+      roiname        ROI name, e.g. DB_0001
+    
+    optional arguments:
+      -h, --help     show this help message and exit
+      -v, --verbose  increase output verbosity
+      -n, --dry-run  Process data but don't save results
+
+The output CSV file is again written to the ROI directory and will follow
+the name convention: ``<sitename>_<vegtype>_<seqno>_IR_roistats.csv``.
+
+
+Generating the camera NDVI (RGB/IR Image Pair Statistics) File
+--------------------------------------------------------------
+
+The ``generate_ndvi_timeseries`` script reads in the ``RGB roistats``
+CSV file and ``IR roistats`` CSV file. Then for each
+RGB image the script tries to locate the matching IR image.  If a
+match is found then values from the two lines are combined to form
+a single line with the camera NDVI values.
+
+
+:: 
+
+    $ generate_ndvi_timeseries --help
+    usage: generate_ndvi_timeseries [-h] [-v] [-n] site roiname
+    
+    Merge RGB and IR stats and calculate camera NDVI
+    
+    positional arguments:
+      site           PhenoCam site name
+      roiname        ROI name, e.g. canopy_0001
+    
+    optional arguments:
+      -h, --help     show this help message and exit
+      -v, --verbose  increase output verbosity
+      -n, --dry-run  Process data but don't save results
+           
+The output file will be written to the ROI directory and will have a
+name like ``<sitename>_<vegtype>_<seqno>_NDVI_roistats.csv``.
+
+Generating the 1-day and 3-day Summary Files
+--------------------------------------------
+
+The ``generate_ndvi_summary_timeseries`` script reads in the "NDVI roistats"
+file and calculates summary statistics for the 1-day or 3-day period:
+
+::
+
+   $ generate_ndvi_summary_timeseries --help
+
+    usage: generate_ndvi_summary_timeseries [-h] [-v] [-n] [-p [{1,3}]]
+                                            site roiname
+    
+    Generate a summary/aggregated NDVI file
+    
+    positional arguments:
+      site                  PhenoCam site name
+      roiname               ROI name, e.g. canopy_0001
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      -v, --verbose         increase output verbosity
+      -n, --dry-run         Process data but don't save results
+      -p [{1,3}], --aggregation-period [{1,3}]
+                            Number of Days to Aggregate (default=1)   
+
+The output filename will follow the convention, ``<sitename>_<vegtype>_<seqno>_ndvi_[13]day.csv``.
 TBD
