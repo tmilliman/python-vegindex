@@ -6,7 +6,7 @@ Changelog
 * Add IR and camera NDVI processing scripts
 * Drop support for python2
 
-0.7.2 (2030-04-12)
+0.7.2 (2020-04-12)
 ------------------
 * Add 3.8 tox environment to tox.ini
 
