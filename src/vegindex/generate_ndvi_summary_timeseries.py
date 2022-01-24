@@ -240,18 +240,16 @@ def main():
         brt_max=brt_max,
     )
 
-    # # apply NDVI filters (this is a work in progress)
-    # ndvits_rows_filter = ndvits.filter_rows(
-    #     X_prime_min=10,
-    #     R_prime_min=5,
-    #     NDVI_c_min=-0.5,
-    #     ir_95_qtl_max=250,
-    #     ir_std_max=60)
+    # apply NDVI filters (this is a work in progress hence
+    # the separate routine for "filtering".
+    ndvits_rows = ndvits.filter_rows(
+        NDVI_c_min=-1.0,
+        NDVI_c_max=1.0)
 
     # check that some rows passed selection criteria
     nrows = len(ndvits_rows)
     if nrows == 0:
-        print("No rows passed the selection criteria")
+        print("No rows passed the selection+filter criteria")
         return
 
     if verbose:

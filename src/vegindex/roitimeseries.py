@@ -492,7 +492,10 @@ class ROITimeSeries(object):
 
         # get exposure - if None just set to missing value
         if im_metadata is not None:
-            exposure = int(im_metadata["exposure"])
+            try:
+                exposure = int(im_metadata["exposure"])
+            except Exception:
+                exposure = ND_INT
         else:
             exposure = ND_INT
 

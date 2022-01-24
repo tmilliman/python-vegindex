@@ -618,6 +618,29 @@ class NDVITimeSeries(object):
 
         return rows
 
+    def filter_rows(self, NDVI_c_min=-1.0, NDVI_c_max=1.0):
+        """
+        routine to return a list of the rows in self.rows
+        which meet the selection criteria for NDVI_c and possibly
+        other components of the NDVI_c calculation which might
+        reduce noise.  For now this is separated from the selection
+        routine above which focuses on image properties independent
+        of the NDVI calculation.
+        """
+        selected_rows = []
+        for row in self.rows:
+            if (
+                (row["NDVI_c"] < NDVI_c_min)
+                or (row["NDVI_c"] > NDVI_c_max)
+            ):
+                continue
+            else:
+                selected_rows.append(row)
+
+        rows = sorted(selected_rows, key=lambda k: k["datetime"])
+
+        return rows
+
     def readCSV(self, ndviTimeSeriesPath):
         """
         Method to read NDVITimeSeries object from CSV file and return

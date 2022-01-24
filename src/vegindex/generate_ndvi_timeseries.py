@@ -29,7 +29,7 @@ from vegindex.roitimeseries import ROITimeSeries
 # using the env variable, PHENOCAM_ARCHIVE_DIR.
 archive_dir = vi.config.archive_dir
 
-# set missing/no-data values
+# set missing/no-data values (move these to an include?)
 ND_FLOAT = vi.config.ND_FLOAT
 ND_INT = vi.config.ND_INT
 ND_STRING = vi.config.ND_STRING
