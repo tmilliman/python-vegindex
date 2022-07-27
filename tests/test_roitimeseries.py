@@ -81,9 +81,9 @@ def test_roits_roistats():
     np.testing.assert_approx_equal(g_sd, 32.44997, 3)
     np.testing.assert_approx_equal(b_mean, 42.85413, 3)
     np.testing.assert_approx_equal(b_sd, 27.45573, 3)
-    np.testing.assert_approx_equal(RG_cor, 0.975, 3)
-    np.testing.assert_approx_equal(GB_cor, 0.944, 3)
-    np.testing.assert_approx_equal(BR_cor, 0.964, 3)
+    np.testing.assert_approx_equal(RG_cor, 0.978, 3)
+    np.testing.assert_approx_equal(GB_cor, 0.949, 3)
+    np.testing.assert_approx_equal(BR_cor, 0.969, 3)
 
 
 def test_roits_metadata():
