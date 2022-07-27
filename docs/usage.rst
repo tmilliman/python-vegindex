@@ -21,7 +21,7 @@ scripts will be installed:
 These scripts allow you to reproduce the PhenoCam network
 "standard timeseries products" from downloaded data.  For a description
 of the products see the project
-`Tools Page <https://phenocam.sr.unh.edu/webcam/tools/>`_.
+`Tools Page <https://phenocam.nau.edu/webcam/tools/>`_.
 
 
 Setting up the Data Directory
@@ -29,7 +29,7 @@ Setting up the Data Directory
 
 The vegindex package is designed to work with images downloaded from
 the PhenoCam network server.  To download images you can go to the
-data tab at the `project website <https://phenocam.sr.unh.edu/webcam/>`_.
+data tab at the `project website <https://phenocam.nau.edu/webcam/>`_.
 
 The images you select come in a zip file with a specific directory
 structure.  For example if we download data from the ``harvard`` site.
@@ -95,7 +95,7 @@ file and the associated ``ROI Mask`` images.
 The ``ROI List`` file is a simple text file with
 a list of ``ROI mask`` images and the dates for which the masks are
 valid.  The ``ROI List`` format description can be found
-on this `page <https://phenocam.sr.unh.edu/webcam/tools/roi_list_format/>`_
+on this `page <https://phenocam.nau.edu/webcam/tools/roi_list_format/>`_
 Here's a simple example where there is only one mask file:
 
 ::
@@ -148,7 +148,7 @@ timeseries displayed on the PhenoCam Network website.  The ``ROI
 List`` files and the ``ROI Mask`` images are available for download
 from one of the ``ROI Pages`` on our site e.g.  `ROI page for harvard
 DB_0001
-<https://phenocam.sr.unh.edu/data/archive/harvard/ROI/harvard_DB_0001.html>`_
+<https://phenocam.nau.edu/data/archive/harvard/ROI/harvard_DB_0001.html>`_
 
 
 Generating the ROI Image Statistics file
@@ -208,7 +208,7 @@ Here's an example command line session for a bash shell:
 
 
 The output format for the "All Image" file can be found
-`here <https://phenocam.sr.unh.edu/webcam/tools/roi_statistics_format/>`_
+`here <https://phenocam.nau.edu/webcam/tools/roi_statistics_format/>`_
 The output CSV file is written to the ROI directory and will follow
 the name convention: `<sitename>_<vegtype>_<seqno>_roistats.csv`
 
@@ -242,7 +242,7 @@ in the previous section:
    $ generate_summary_timeseries -p 3 harvard DB_0001
    Total: 51
 
-A `description of the summary files <https://phenocam.sr.unh.edu/webcam/tools/summary_file_format/>`_
+A `description of the summary files <https://phenocam.nau.edu/webcam/tools/summary_file_format/>`_
 can be found on the project website.
 The output CSV file is also written to the ROI directory and will follow
 the name convention: `<sitename>_<vegtype>_<seqno>_[13]day.csv`.
