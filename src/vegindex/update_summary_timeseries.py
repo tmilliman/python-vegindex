@@ -302,13 +302,12 @@ def main():
         end_date = start_date + timedelta(ndays)
         gcc_date = start_date + date_offset
         doy = gcc_date.timetuple().tm_yday
-        midday_noon = datetime(gcc_date.year, gcc_date.month,
-                               gcc_date.day, 12, 0, 0)
+        midday_noon = datetime(gcc_date.year, gcc_date.month, gcc_date.day, 12, 0, 0)
 
         if verbose:
             print("start_date: {}".format(start_date))
             print("end_date: {}".format(end_date))
-            
+
         # get roits rows for this time period
         while (
             roits_ndx < nrows
