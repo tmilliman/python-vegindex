@@ -260,6 +260,8 @@ def main():
     if nrows == 0:
         print("No rows passed the selection criteria")
         sys.exit(0)
+    else:
+        print("{} new rows in roistats file".format(nrows))
 
     if debug:
         print("New selected rows: {0}".format(nrows))
@@ -300,8 +302,13 @@ def main():
         end_date = start_date + timedelta(ndays)
         gcc_date = start_date + date_offset
         doy = gcc_date.timetuple().tm_yday
-        midday_noon = datetime(gcc_date.year, gcc_date.month, gcc_date.day, 12, 0, 0)
+        midday_noon = datetime(gcc_date.year, gcc_date.month,
+                               gcc_date.day, 12, 0, 0)
 
+        if verbose:
+            print("start_date: {}".format(start_date))
+            print("end_date: {}".format(end_date))
+            
         # get roits rows for this time period
         while (
             roits_ndx < nrows
@@ -310,7 +317,7 @@ def main():
         ):
 
             # skip this row if awbflag is 1
-            if roits_rows[roits_ndx]["awbflag"] == 1:
+            if new_roits_rows[roits_ndx]["awbflag"] == 1:
                 if roits_ndx < nrows:
                     roits_ndx += 1
                     continue
@@ -330,6 +337,7 @@ def main():
                 bcc = np.nan
                 gcc = np.nan
             else:
+                img_cnt += 1
                 rcc = r_dn / dnsum
                 bcc = b_dn / dnsum
                 gcc = new_roits_rows[roits_ndx]["gcc"]
@@ -342,7 +350,6 @@ def main():
             midday_td = new_roits_rows[roits_ndx]["datetime"] - midday_noon
             midday_td_secs = np.abs(midday_td.days * 86400 + midday_td.seconds)
             midday_delta_vals.append(midday_td_secs)
-            img_cnt += 1
 
             if roits_ndx < nrows:
                 roits_ndx += 1
