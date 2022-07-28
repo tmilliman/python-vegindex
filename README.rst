@@ -27,7 +27,7 @@ Introduction
 
 The PhenoCam Network is a project designed to study the patterns of
 seasonal variation (phenology) of vegetation.  The project website is
-at `https://phenocam.sr.unh.edu/ <https://phenocam.sr.unh.edu/webcam/>`_.  The
+at `https://phenocam.nau.edu/ <https://phenocam.nau.edu/webcam/>`_.  The
 network consists of many cameras collecting images of various types of
 vegetation.  By analysing the images we can quantify the seasonal
 changes at a particular camera site.
@@ -49,9 +49,9 @@ band is collected.
 
 The algorithms used in in this package have been discussed in numerous
 publications.  You can find a list of publications for the PhenoCam
-Network project `here <https://phenocam.sr.unh.edu/webcam/publications/>`_.
+Network project `here <https://phenocam.nau.edu/webcam/publications/>`_.
 The details of the calculation of GCC are presented in this
-`jupyter notebook <https://nbviewer.jupyter.org/github/tmilliman/phenocam_notebooks/blob/master/Standard_Processing_ROI_Stats/PhenoCam_ROI_stats.ipynb>`_
+`jupyter notebook <https://nbviewer.org/github/tmilliman/phenocam_notebooks/blob/master/Standard_Processing_ROI_Stats/PhenoCam_ROI_stats.ipynb>`_
 .
 
 ..
@@ -77,7 +77,7 @@ available as commands:
 These scripts allow you to reproduce the PhenoCam network
 "standard timeseries products" from downloaded data.  For a description
 of the products see the project
-`Tools Page <https://phenocam.sr.unh.edu/webcam/tools/>`_.
+`Tools Page <https://phenocam.nau.edu/webcam/tools/>`_.
 
 
 Quick Installation
