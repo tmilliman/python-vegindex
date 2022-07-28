@@ -36,7 +36,7 @@ setup(
     long_description_content_type="text/x-rst",
     author="Thomas Milliman",
     author_email="thomas.milliman@unh.edu",
-    url="https://github.com/tmilliman/python-vegindex",
+    url="https://github.com/tmilliman/python-vegindex/",
     packages=find_packages("src"),
     package_dir={"": "src"},
     py_modules=[splitext(basename(path))[0] for path in glob("src/*.py")],
