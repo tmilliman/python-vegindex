@@ -1,8 +1,14 @@
 Changelog
 =========
+
 0.10.2 (2022-07-27)
+-------------------
 * Fix bug in update_summary_timeseries
 * change references to UNH to NAU
+
+0.10.1 (2021-12-01)
+-------------------
+* Add update script for summary timeseries
   
 0.10.0 (2021-11-30)
 -------------------
