@@ -1,5 +1,9 @@
 Changelog
 =========
+0.10.2 (2022-07-27)
+* Fix bug in update_summary_timeseries
+* change references to UNH to NAU
+  
 0.10.0 (2021-11-30)
 -------------------
 * Add 3.9 tox environment to tox.ini
