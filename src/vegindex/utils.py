@@ -225,7 +225,7 @@ def getsiteinfo(sitename):
     """
 
     siteinfo = None
-    infourl = "https://phenocam.sr.unh.edu/webcam/" + "sites/{0}/info/".format(sitename)
+    infourl = "https://phenocam.nau.edu/webcam/" + "sites/{0}/info/".format(sitename)
 
     # first try to get siteinfo from URL
     try:
