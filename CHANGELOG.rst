@@ -1,6 +1,5 @@
 Changelog
 =========
-
 0.10.2 (2022-07-27)
 -------------------
 * Fix bug in update_summary_timeseries
